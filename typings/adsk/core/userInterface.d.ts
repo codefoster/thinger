@@ -2709,46 +2709,42 @@
 //         return result ? result.value : undefined;
 //     };
 
-//     //=========== Toolbar ============
-//     // Provides access to a toolbar in the user interface. A toolbar is a collection of toolbar controls.
-//     adsk.core.Toolbar = function Toolbar(handle) {
-//         if (!(this instanceof adsk.core.Toolbar)) {
-//             return adsk.core.Toolbar.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.Toolbar.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.Toolbar.prototype.constructor = adsk.core.Toolbar;
-//     adsk.core.Toolbar.interfaceId = 'adsk.core.Toolbar';
-//     adsk.objectTypes['adsk.core.Toolbar'] = adsk.core.Toolbar;
-//     adsk.core.Toolbar.cast = function (object) {
-//         return object instanceof adsk.core.Toolbar ? object : null;
-//     };
+//=========== Toolbar ============
+// Provides access to a toolbar in the user interface. A toolbar is a collection of toolbar controls.
+interface Toolbar {
+    //         if (!(this instanceof adsk.core.Toolbar)) {
+    //             return adsk.core.Toolbar.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.core.Toolbar.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.core.Toolbar.prototype.constructor = adsk.core.Toolbar;
+    //     adsk.core.Toolbar.interfaceId = 'adsk.core.Toolbar';
+    //     adsk.objectTypes['adsk.core.Toolbar'] = adsk.core.Toolbar;
+    //     adsk.core.Toolbar.cast = function (object) {
+    //         return object instanceof adsk.core.Toolbar ? object : null;
+    //     };
 
-//     // Gets the unique ID of the toolbar that can be used programmatically
-//     // to find a specific toolbar.
-//     Object.defineProperty(adsk.core.Toolbar.prototype, 'id', {
-//         get : function () {
-//             var result = this._execute('id');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the unique ID of the toolbar that can be used programmatically
+    //     // to find a specific toolbar.
+    //     Object.defineProperty(adsk.core.Toolbar.prototype, 'id', {
+    //         get : function () {
+    //             var result = this._execute('id');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the owning UserInterface object.
-//     Object.defineProperty(adsk.core.Toolbar.prototype, 'parentUserInterface', {
-//         get : function () {
-//             var result = this._execute('parentUserInterface');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.UserInterface) : null;
-//         }
-//     });
+    //     // Gets the owning UserInterface object.
+    //     Object.defineProperty(adsk.core.Toolbar.prototype, 'parentUserInterface', {
+    //         get : function () {
+    //             var result = this._execute('parentUserInterface');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.UserInterface) : null;
+    //         }
+    //     });
 
-//     // Gets the controls in this toolbar.
-//     Object.defineProperty(adsk.core.Toolbar.prototype, 'controls', {
-//         get : function () {
-//             var result = this._execute('controls');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControls) : null;
-//         }
-//     });
+    // Gets the controls in this toolbar.
+    controls: ToolbarControls;
+}
 
 //     //=========== ToolbarControl ============
 //     // The base class for all toolbar controls.
@@ -2867,309 +2863,300 @@
 //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
 //     };
 
-//     //=========== ToolbarControls ============
-//     // ToolbarControls is a collection of ToolbarControl objects displayed in a toolbar or menu.
-//     adsk.core.ToolbarControls = function ToolbarControls(handle) {
-//         if (!(this instanceof adsk.core.ToolbarControls)) {
-//             return adsk.core.ToolbarControls.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.ToolbarControls.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.ToolbarControls.prototype.constructor = adsk.core.ToolbarControls;
-//     adsk.core.ToolbarControls.interfaceId = 'adsk.core.ToolbarControls';
-//     adsk.objectTypes['adsk.core.ToolbarControls'] = adsk.core.ToolbarControls;
-//     adsk.core.ToolbarControls.cast = function (object) {
-//         return object instanceof adsk.core.ToolbarControls ? object : null;
-//     };
+//=========== ToolbarControls ============
+// ToolbarControls is a collection of ToolbarControl objects displayed in a toolbar or menu.
+interface ToolbarControls {
+    //         if (!(this instanceof adsk.core.ToolbarControls)) {
+    //             return adsk.core.ToolbarControls.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.core.ToolbarControls.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.core.ToolbarControls.prototype.constructor = adsk.core.ToolbarControls;
+    //     adsk.core.ToolbarControls.interfaceId = 'adsk.core.ToolbarControls';
+    //     adsk.objectTypes['adsk.core.ToolbarControls'] = adsk.core.ToolbarControls;
+    //     adsk.core.ToolbarControls.cast = function (object) {
+    //         return object instanceof adsk.core.ToolbarControls ? object : null;
+    //     };
 
-//     // Gets the number of controls in the collection.
-//     Object.defineProperty(adsk.core.ToolbarControls.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the number of controls in the collection.
+    //     Object.defineProperty(adsk.core.ToolbarControls.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the ToolbarControl at the specified index.
-//     // When iterating by index, the controls are returned
-//     // in the same order as they are shown in the user interface.
-//     // index : The index of the control within the collection to return. The first item in the
-//     // collection has in index of 0.
-//     // Returns the ToolbarControl at the specified index or null if an invalid index was specified.
-//     adsk.core.ToolbarControls.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
-//     };
+    //     // Returns the ToolbarControl at the specified index.
+    //     // When iterating by index, the controls are returned
+    //     // in the same order as they are shown in the user interface.
+    //     // index : The index of the control within the collection to return. The first item in the
+    //     // collection has in index of 0.
+    //     // Returns the ToolbarControl at the specified index or null if an invalid index was specified.
+    //     adsk.core.ToolbarControls.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
+    //     };
 
-//     // Returns the ToolbarControl at the specified ID.
-//     // id : The ID of the control within the collection to return.
-//     // Returns the ToolbarControl with the specified ID or null if no control has this ID.
-//     adsk.core.ToolbarControls.prototype.itemById = function (id) {
-//         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-//         var args = {
-//             id : id
-//         };
-//         var result = this._execute('itemById', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
-//     };
+    //     // Returns the ToolbarControl at the specified ID.
+    //     // id : The ID of the control within the collection to return.
+    //     // Returns the ToolbarControl with the specified ID or null if no control has this ID.
+    //     adsk.core.ToolbarControls.prototype.itemById = function (id) {
+    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
+    //         var args = {
+    //             id : id
+    //         };
+    //         var result = this._execute('itemById', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
+    //     };
 
-//     // Adds a button to the controls in the toolbar, panel, or drop-down. The ID of the created
-//     // command control is inherited from the associated command definition.
-//     // commandDefinition : The associated CommandDefinition that defines the resources and receives events related to this control.
-//     // positionID : Specifies the reference id of the control to position this control relative to.
-//     // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
-//     // parameter specifies whether to place the control before or after the reference control.
-//     // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
-//     // This argument is ignored is positionID is not specified.
-//     // Returns the newly created ButtonControl object or null if the creation fails.
-//     adsk.core.ToolbarControls.prototype.addCommand = function (commandDefinition, positionID, isBefore) {
-//         if (commandDefinition !== null && !(commandDefinition instanceof adsk.core.CommandDefinition)) { throw new TypeError('commandDefinition must be a adsk.core.CommandDefinition'); }
-//         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
-//         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
-//         var args = {
-//             commandDefinition : (commandDefinition === null ? commandDefinition : commandDefinition.handle)
-//         };
-//         if (positionID !== undefined) {
-//             args.positionID = positionID;
-//         }
-//         if (isBefore !== undefined) {
-//             args.isBefore = isBefore;
-//         }
-//         var result = this._execute('addCommand', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.CommandControl) : null;
-//     };
+    //     // Adds a button to the controls in the toolbar, panel, or drop-down. The ID of the created
+    //     // command control is inherited from the associated command definition.
+    //     // commandDefinition : The associated CommandDefinition that defines the resources and receives events related to this control.
+    //     // positionID : Specifies the reference id of the control to position this control relative to.
+    //     // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
+    //     // parameter specifies whether to place the control before or after the reference control.
+    //     // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
+    //     // This argument is ignored is positionID is not specified.
+    //     // Returns the newly created ButtonControl object or null if the creation fails.
+    //     adsk.core.ToolbarControls.prototype.addCommand = function (commandDefinition, positionID, isBefore) {
+    //         if (commandDefinition !== null && !(commandDefinition instanceof adsk.core.CommandDefinition)) { throw new TypeError('commandDefinition must be a adsk.core.CommandDefinition'); }
+    //         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
+    //         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
+    //         var args = {
+    //             commandDefinition : (commandDefinition === null ? commandDefinition : commandDefinition.handle)
+    //         };
+    //         if (positionID !== undefined) {
+    //             args.positionID = positionID;
+    //         }
+    //         if (isBefore !== undefined) {
+    //             args.isBefore = isBefore;
+    //         }
+    //         var result = this._execute('addCommand', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.CommandControl) : null;
+    //     };
 
-//     // Adds a drop-down to the controls in the toolbar, panel, or drop-down. When the drop-down is initially created it will be empty.
-//     // you can get the associated ToolbarControls object from the DropDownControl to add additional controls to the drop-down.
-//     // text : The text displayed for the drop-down in a menu. For a drop-down in a toolbar this argument is ignored
-//     // because an icon is used.
-//     // resourceFolder : The resource folder containing the image used for the icon when the drop-down is in a toolbar.
-//     // id : Optional unique ID for the control. It must be unique with respect to other controls in this collection.
-//     // If the default empty string is provided, Fusion will create a unique ID.
-//     // positionID : Specifies the reference id of the control to position this control relative to.
-//     // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
-//     // parameter specifies whether to place the control before or after the reference control.
-//     // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
-//     // This argument is ignored is positionID is not specified.
-//     // Returns the newly created DropDownControl object or null if the creation fails.
-//     adsk.core.ToolbarControls.prototype.addDropDown = function (text, resourceFolder, id, positionID, isBefore) {
-//         if (text === undefined || text === null || text.constructor !== String) { throw new TypeError('text must be a string'); }
-//         if (resourceFolder === undefined || resourceFolder === null || resourceFolder.constructor !== String) { throw new TypeError('resourceFolder must be a string'); }
-//         if (id === null || (id !== undefined && id.constructor !== String)) { throw new TypeError('id must be a string'); }
-//         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
-//         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
-//         var args = {
-//             text : text,
-//             resourceFolder : resourceFolder
-//         };
-//         if (id !== undefined) {
-//             args.id = id;
-//         }
-//         if (positionID !== undefined) {
-//             args.positionID = positionID;
-//         }
-//         if (isBefore !== undefined) {
-//             args.isBefore = isBefore;
-//         }
-//         var result = this._execute('addDropDown', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.DropDownControl) : null;
-//     };
+    //     // Adds a drop-down to the controls in the toolbar, panel, or drop-down. When the drop-down is initially created it will be empty.
+    //     // you can get the associated ToolbarControls object from the DropDownControl to add additional controls to the drop-down.
+    //     // text : The text displayed for the drop-down in a menu. For a drop-down in a toolbar this argument is ignored
+    //     // because an icon is used.
+    //     // resourceFolder : The resource folder containing the image used for the icon when the drop-down is in a toolbar.
+    //     // id : Optional unique ID for the control. It must be unique with respect to other controls in this collection.
+    //     // If the default empty string is provided, Fusion will create a unique ID.
+    //     // positionID : Specifies the reference id of the control to position this control relative to.
+    //     // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
+    //     // parameter specifies whether to place the control before or after the reference control.
+    //     // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
+    //     // This argument is ignored is positionID is not specified.
+    //     // Returns the newly created DropDownControl object or null if the creation fails.
+    //     adsk.core.ToolbarControls.prototype.addDropDown = function (text, resourceFolder, id, positionID, isBefore) {
+    //         if (text === undefined || text === null || text.constructor !== String) { throw new TypeError('text must be a string'); }
+    //         if (resourceFolder === undefined || resourceFolder === null || resourceFolder.constructor !== String) { throw new TypeError('resourceFolder must be a string'); }
+    //         if (id === null || (id !== undefined && id.constructor !== String)) { throw new TypeError('id must be a string'); }
+    //         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
+    //         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
+    //         var args = {
+    //             text : text,
+    //             resourceFolder : resourceFolder
+    //         };
+    //         if (id !== undefined) {
+    //             args.id = id;
+    //         }
+    //         if (positionID !== undefined) {
+    //             args.positionID = positionID;
+    //         }
+    //         if (isBefore !== undefined) {
+    //             args.isBefore = isBefore;
+    //         }
+    //         var result = this._execute('addDropDown', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.DropDownControl) : null;
+    //     };
 
-//     // Adds a separator to the controls in the toolbar, panel, or drop-down.
-//     // id : Optional unique ID for the control. It must be unique with respect to other controls in this collection.
-//     // If the default empty string is provided, Fusion will create a unique ID.
-//     // positionID : Specifies the reference id of the control to position this separator control relative to.
-//     // Not setting this value indicates that the separator control will be created at the end of all other controls in toolbar.
-//     // The isBefore parameter specifies whether to place the control before or after the reference control.
-//     // isBefore : Specifies whether to place the separator control before or after the reference control specified by the positionID parameter.
-//     // This argument is ignored is positionID is not specified.
-//     // Returns the newly created separator controls or null if the creation fails.
-//     adsk.core.ToolbarControls.prototype.addSeparator = function (id, positionID, isBefore) {
-//         if (id === null || (id !== undefined && id.constructor !== String)) { throw new TypeError('id must be a string'); }
-//         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
-//         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
-//         var args;
-//         if (id !== undefined || positionID !== undefined || isBefore !== undefined) {
-//             args = {};
-//             if (id !== undefined) {
-//                 args.id = id;
-//             }
-//             if (positionID !== undefined) {
-//                 args.positionID = positionID;
-//             }
-//             if (isBefore !== undefined) {
-//                 args.isBefore = isBefore;
-//             }
-//         }
-//         var result = this._execute('addSeparator', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.SeparatorControl) : null;
-//     };
+    //     // Adds a separator to the controls in the toolbar, panel, or drop-down.
+    //     // id : Optional unique ID for the control. It must be unique with respect to other controls in this collection.
+    //     // If the default empty string is provided, Fusion will create a unique ID.
+    //     // positionID : Specifies the reference id of the control to position this separator control relative to.
+    //     // Not setting this value indicates that the separator control will be created at the end of all other controls in toolbar.
+    //     // The isBefore parameter specifies whether to place the control before or after the reference control.
+    //     // isBefore : Specifies whether to place the separator control before or after the reference control specified by the positionID parameter.
+    //     // This argument is ignored is positionID is not specified.
+    //     // Returns the newly created separator controls or null if the creation fails.
+    //     adsk.core.ToolbarControls.prototype.addSeparator = function (id, positionID, isBefore) {
+    //         if (id === null || (id !== undefined && id.constructor !== String)) { throw new TypeError('id must be a string'); }
+    //         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
+    //         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
+    //         var args;
+    //         if (id !== undefined || positionID !== undefined || isBefore !== undefined) {
+    //             args = {};
+    //             if (id !== undefined) {
+    //                 args.id = id;
+    //             }
+    //             if (positionID !== undefined) {
+    //                 args.positionID = positionID;
+    //             }
+    //             if (isBefore !== undefined) {
+    //                 args.isBefore = isBefore;
+    //             }
+    //         }
+    //         var result = this._execute('addSeparator', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.SeparatorControl) : null;
+    //     };
 
-//     // Adds a split button to the controls in a toolbar. A split button has two active areas that the user can click;
-//     // the main button portion and the drop-down arrow. Clicking the main button, executes the displayed command.
-//     // Clicking the drop-down displays the drop-down with additional commands.
-//     // The split button itself does not fire any events, but the buttons within it will fire events to their associated
-//     // command definitions.
-//     // defaultDefinition : A command definition that will be used to create the main button. A button will also be created in the drop-down
-//     // for this definition.
-//     // additionalDefinitions : A collection of command definitions that will be used to create the buttons on the drop-down.
-//     // showLastUsed : Specifies if the split button should have the behavior where the command shown on the main button changes
-//     // to the last executed command.
-//     // id : Optional unique ID for the control. It must be unique with respect to other controls in this collection.
-//     // If the default empty string is provided, Fusion will create a unique ID.
-//     // positionID : Specifies the reference id of the control to position this control relative to.
-//     // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
-//     // parameter specifies whether to place the control before or after the reference control.
-//     // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
-//     // This argument is ignored is positionID is not specified
-//     // Returns the newly created SplitButtonControl object or null if the creation fails.
-//     adsk.core.ToolbarControls.prototype.addSplitButton = function (defaultDefinition, additionalDefinitions, showLastUsed, id, positionID, isBefore) {
-//         if (defaultDefinition !== null && !(defaultDefinition instanceof adsk.core.CommandDefinition)) { throw new TypeError('defaultDefinition must be a adsk.core.CommandDefinition'); }
-//         if (!Array.isArray(additionalDefinitions)) { throw new TypeError('additionalDefinitions must be an array'); }
-//         var additionalDefinitionsLength = additionalDefinitions.length;
-//         var additionalDefinitionsIt;
-//         for (additionalDefinitionsIt = 0; additionalDefinitionsIt < additionalDefinitionsLength; ++additionalDefinitionsIt) {
-//             if (additionalDefinitions[additionalDefinitionsIt] !== null && !(additionalDefinitions[additionalDefinitionsIt] instanceof adsk.core.CommandDefinition)) { throw new TypeError('additionalDefinitions[additionalDefinitionsIt] must be a adsk.core.CommandDefinition'); }
-//         }
-//         if (typeof showLastUsed !== 'boolean') { throw new TypeError('showLastUsed must be a boolean'); }
-//         if (id === null || (id !== undefined && id.constructor !== String)) { throw new TypeError('id must be a string'); }
-//         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
-//         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
-//         var args = {
-//             defaultDefinition : (defaultDefinition === null ? defaultDefinition : defaultDefinition.handle),
-//             additionalDefinitions : additionalDefinitions,
-//             showLastUsed : showLastUsed
-//         };
-//         if (id !== undefined) {
-//             args.id = id;
-//         }
-//         if (positionID !== undefined) {
-//             args.positionID = positionID;
-//         }
-//         if (isBefore !== undefined) {
-//             args.isBefore = isBefore;
-//         }
-//         var result = this._execute('addSplitButton', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.SplitButtonControl) : null;
-//     };
+    //     // Adds a split button to the controls in a toolbar. A split button has two active areas that the user can click;
+    //     // the main button portion and the drop-down arrow. Clicking the main button, executes the displayed command.
+    //     // Clicking the drop-down displays the drop-down with additional commands.
+    //     // The split button itself does not fire any events, but the buttons within it will fire events to their associated
+    //     // command definitions.
+    //     // defaultDefinition : A command definition that will be used to create the main button. A button will also be created in the drop-down
+    //     // for this definition.
+    //     // additionalDefinitions : A collection of command definitions that will be used to create the buttons on the drop-down.
+    //     // showLastUsed : Specifies if the split button should have the behavior where the command shown on the main button changes
+    //     // to the last executed command.
+    //     // id : Optional unique ID for the control. It must be unique with respect to other controls in this collection.
+    //     // If the default empty string is provided, Fusion will create a unique ID.
+    //     // positionID : Specifies the reference id of the control to position this control relative to.
+    //     // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
+    //     // parameter specifies whether to place the control before or after the reference control.
+    //     // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
+    //     // This argument is ignored is positionID is not specified
+    //     // Returns the newly created SplitButtonControl object or null if the creation fails.
+    //     adsk.core.ToolbarControls.prototype.addSplitButton = function (defaultDefinition, additionalDefinitions, showLastUsed, id, positionID, isBefore) {
+    //         if (defaultDefinition !== null && !(defaultDefinition instanceof adsk.core.CommandDefinition)) { throw new TypeError('defaultDefinition must be a adsk.core.CommandDefinition'); }
+    //         if (!Array.isArray(additionalDefinitions)) { throw new TypeError('additionalDefinitions must be an array'); }
+    //         var additionalDefinitionsLength = additionalDefinitions.length;
+    //         var additionalDefinitionsIt;
+    //         for (additionalDefinitionsIt = 0; additionalDefinitionsIt < additionalDefinitionsLength; ++additionalDefinitionsIt) {
+    //             if (additionalDefinitions[additionalDefinitionsIt] !== null && !(additionalDefinitions[additionalDefinitionsIt] instanceof adsk.core.CommandDefinition)) { throw new TypeError('additionalDefinitions[additionalDefinitionsIt] must be a adsk.core.CommandDefinition'); }
+    //         }
+    //         if (typeof showLastUsed !== 'boolean') { throw new TypeError('showLastUsed must be a boolean'); }
+    //         if (id === null || (id !== undefined && id.constructor !== String)) { throw new TypeError('id must be a string'); }
+    //         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
+    //         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
+    //         var args = {
+    //             defaultDefinition : (defaultDefinition === null ? defaultDefinition : defaultDefinition.handle),
+    //             additionalDefinitions : additionalDefinitions,
+    //             showLastUsed : showLastUsed
+    //         };
+    //         if (id !== undefined) {
+    //             args.id = id;
+    //         }
+    //         if (positionID !== undefined) {
+    //             args.positionID = positionID;
+    //         }
+    //         if (isBefore !== undefined) {
+    //             args.isBefore = isBefore;
+    //         }
+    //         var result = this._execute('addSplitButton', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.SplitButtonControl) : null;
+    //     };
+}
 
-//     //=========== ToolbarPanel ============
-//     // Toolbar panels are the panels shown in the command toolbar.
-//     adsk.core.ToolbarPanel = function ToolbarPanel(handle) {
-//         if (!(this instanceof adsk.core.ToolbarPanel)) {
-//             return adsk.core.ToolbarPanel.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.ToolbarPanel.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.ToolbarPanel.prototype.constructor = adsk.core.ToolbarPanel;
-//     adsk.core.ToolbarPanel.interfaceId = 'adsk.core.ToolbarPanel';
-//     adsk.objectTypes['adsk.core.ToolbarPanel'] = adsk.core.ToolbarPanel;
-//     adsk.core.ToolbarPanel.cast = function (object) {
-//         return object instanceof adsk.core.ToolbarPanel ? object : null;
-//     };
+//=========== ToolbarPanel ============
+// Toolbar panels are the panels shown in the command toolbar.
+interface ToolbarPanel {
+    case(object: Object): ToolbarPanel;
 
-//     // Gets The unique, language independent, ID of this panel.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'id', {
-//         get : function () {
-//             var result = this._execute('id');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets The unique, language independent, ID of this panel.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'id', {
+    //         get : function () {
+    //             var result = this._execute('id');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the position this panel is in within the toolbar.
-//     // The first panel is at position 0. This value is with respect
-//     // to the complete list of panels so this value could be outside
-//     // of the expected range if you have a collection of panels
-//     // associated with a workspace, which is a subset of the entire
-//     // list of panels.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'index', {
-//         get : function () {
-//             var result = this._execute('index');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the position this panel is in within the toolbar.
+    //     // The first panel is at position 0. This value is with respect
+    //     // to the complete list of panels so this value could be outside
+    //     // of the expected range if you have a collection of panels
+    //     // associated with a workspace, which is a subset of the entire
+    //     // list of panels.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'index', {
+    //         get : function () {
+    //             var result = this._execute('index');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets whether this panel is currently being displayed in the user interface.
-//     // Visibility of a panel is controlled by it being associated with the currently
-//     // active workspace.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'isVisible', {
-//         get : function () {
-//             var result = this._execute('isVisible');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets whether this panel is currently being displayed in the user interface.
+    //     // Visibility of a panel is controlled by it being associated with the currently
+    //     // active workspace.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'isVisible', {
+    //         get : function () {
+    //             var result = this._execute('isVisible');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the name of the panel as seen in the user interface.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'name', {
-//         get : function () {
-//             var result = this._execute('name');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the name of the panel as seen in the user interface.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'name', {
+    //         get : function () {
+    //             var result = this._execute('name');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the controls associated with this panel. These are all in the panel's
-//     // drop-down (assuming their visible property is true) and are selectively shown
-//     // within the panel.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'controls', {
-//         get : function () {
-//             var result = this._execute('controls');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControls) : null;
-//         }
-//     });
+    //     // Gets the controls associated with this panel. These are all in the panel's
+    //     // drop-down (assuming their visible property is true) and are selectively shown
+    //     // within the panel.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'controls', {
+    //         get : function () {
+    //             var result = this._execute('controls');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControls) : null;
+    //         }
+    //     });
 
-//     // Gets the parent UserInterface object.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'parentUserInterface', {
-//         get : function () {
-//             var result = this._execute('parentUserInterface');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.UserInterface) : null;
-//         }
-//     });
+    //     // Gets the parent UserInterface object.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'parentUserInterface', {
+    //         get : function () {
+    //             var result = this._execute('parentUserInterface');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.UserInterface) : null;
+    //         }
+    //     });
 
-//     // Gets the controls in the panel that have been promoted. Promoted
-//     // controls are the controls that are displayed within the panel.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'promotedControls', {
-//         get : function () {
-//             var result = this._execute('promotedControls');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControlList) : null;
-//         }
-//     });
+    //     // Gets the controls in the panel that have been promoted. Promoted
+    //     // controls are the controls that are displayed within the panel.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'promotedControls', {
+    //         get : function () {
+    //             var result = this._execute('promotedControls');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControlList) : null;
+    //         }
+    //     });
 
-//     // Gets or sets the set of workspaces that this panel is displayed for.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'relatedWorkspaces', {
-//         get : function () {
-//             var result = this._execute('relatedWorkspaces');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('relatedWorkspaces', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets or sets the set of workspaces that this panel is displayed for.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'relatedWorkspaces', {
+    //         get : function () {
+    //             var result = this._execute('relatedWorkspaces');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('relatedWorkspaces', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the name of the product this toolbar panel is associated with.
-//     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'productType', {
-//         get : function () {
-//             var result = this._execute('productType');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Returns the name of the product this toolbar panel is associated with.
+    //     Object.defineProperty(adsk.core.ToolbarPanel.prototype, 'productType', {
+    //         get : function () {
+    //             var result = this._execute('productType');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Deletes this toolbar panel.
-//     // Returns true if the delete was successful.
-//     adsk.core.ToolbarPanel.prototype.deleteMe = function () {
-//         var result = this._execute('deleteMe');
-//         return result ? result.value : undefined;
-//     };
+    //     // Deletes this toolbar panel.
+    //     // Returns true if the delete was successful.
+    //     adsk.core.ToolbarPanel.prototype.deleteMe = function () {
+    //         var result = this._execute('deleteMe');
+    //         return result ? result.value : undefined;
+    //     };
+}
 
 //     //=========== ToolbarPanelList ============
 //     // A ToolbarPanelList is a list of ToolbarPanel objects.
@@ -3219,133 +3206,128 @@
 //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanel) : null;
 //     };
 
-//     //=========== ToolbarPanels ============
-//     // Provides access to a set of toolbar panels. There exist many toolbar panels and their
-//     // visibility is determined by the active workspace. A panel can be associated with one
-//     // or more workspaces and when the associated workspace is active, the panel is made visible.
-//     adsk.core.ToolbarPanels = function ToolbarPanels(handle) {
-//         if (!(this instanceof adsk.core.ToolbarPanels)) {
-//             return adsk.core.ToolbarPanels.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.ToolbarPanels.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.ToolbarPanels.prototype.constructor = adsk.core.ToolbarPanels;
-//     adsk.core.ToolbarPanels.interfaceId = 'adsk.core.ToolbarPanels';
-//     adsk.objectTypes['adsk.core.ToolbarPanels'] = adsk.core.ToolbarPanels;
-//     adsk.core.ToolbarPanels.cast = function (object) {
-//         return object instanceof adsk.core.ToolbarPanels ? object : null;
-//     };
+//=========== ToolbarPanels ============
+// Provides access to a set of toolbar panels. There exist many toolbar panels and their
+// visibility is determined by the active workspace. A panel can be associated with one
+// or more workspaces and when the associated workspace is active, the panel is made visible.
+interface ToolbarPanels {
+    //         if (!(this instanceof adsk.core.ToolbarPanels)) {
+    //             return adsk.core.ToolbarPanels.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.core.ToolbarPanels.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.core.ToolbarPanels.prototype.constructor = adsk.core.ToolbarPanels;
+    //     adsk.core.ToolbarPanels.interfaceId = 'adsk.core.ToolbarPanels';
+    //     adsk.objectTypes['adsk.core.ToolbarPanels'] = adsk.core.ToolbarPanels;
+    //     adsk.core.ToolbarPanels.cast = function (object) {
+    //         return object instanceof adsk.core.ToolbarPanels ? object : null;
+    //     };
 
-//     // Gets the number of ToolbarPanels.
-//     Object.defineProperty(adsk.core.ToolbarPanels.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the number of ToolbarPanels.
+    //     Object.defineProperty(adsk.core.ToolbarPanels.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Creates a new ToolbarPanel. The panel is initially empty.
-//     // Use the associated ToolbarControls collection to add buttons.
-//     // id : The unique id for this panel. The id must be unique with respect to all of the panels.
-//     // name : The displayed name of this panel. This is the name visible in the user interface.
-//     // positionID : Specifies the id of the panel to position this panel relative to.
-//     // Not setting this value indicates that the panel will be created at the end of all other panels. The isBefore
-//     // parameter specifies whether to place the panel before or after this panel.
-//     // isBefore : Specifies whether to place the panel before or after the panel specified by the positionID argument.
-//     // This argument is ignored is positionID is not specified
-//     // Returns the newly created panel or null in the case the creation failed.
-//     adsk.core.ToolbarPanels.prototype.add = function (id, name, positionID, isBefore) {
-//         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
-//         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
-//         var args = {
-//             id : id,
-//             name : name
-//         };
-//         if (positionID !== undefined) {
-//             args.positionID = positionID;
-//         }
-//         if (isBefore !== undefined) {
-//             args.isBefore = isBefore;
-//         }
-//         var result = this._execute('add', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanel) : null;
-//     };
+    //     // Creates a new ToolbarPanel. The panel is initially empty.
+    //     // Use the associated ToolbarControls collection to add buttons.
+    //     // id : The unique id for this panel. The id must be unique with respect to all of the panels.
+    //     // name : The displayed name of this panel. This is the name visible in the user interface.
+    //     // positionID : Specifies the id of the panel to position this panel relative to.
+    //     // Not setting this value indicates that the panel will be created at the end of all other panels. The isBefore
+    //     // parameter specifies whether to place the panel before or after this panel.
+    //     // isBefore : Specifies whether to place the panel before or after the panel specified by the positionID argument.
+    //     // This argument is ignored is positionID is not specified
+    //     // Returns the newly created panel or null in the case the creation failed.
+    //     adsk.core.ToolbarPanels.prototype.add = function (id, name, positionID, isBefore) {
+    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
+    //         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
+    //         var args = {
+    //             id : id,
+    //             name : name
+    //         };
+    //         if (positionID !== undefined) {
+    //             args.positionID = positionID;
+    //         }
+    //         if (isBefore !== undefined) {
+    //             args.isBefore = isBefore;
+    //         }
+    //         var result = this._execute('add', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanel) : null;
+    //     };
 
-//     // Returns the specified toolbar panel using an index into the collection.
-//     // When iterating by index, the panels are returned in the same order as they are shown in the user interface.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.core.ToolbarPanels.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanel) : null;
-//     };
+    //     // Returns the specified toolbar panel using an index into the collection.
+    //     // When iterating by index, the panels are returned in the same order as they are shown in the user interface.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.core.ToolbarPanels.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanel) : null;
+    //     };
 
-//     // Returns the ToolbarPanel at the specified ID.
-//     // id : The Id of the panel within the collection to return.
-//     // Returns the ToolbarPanel of the specified id or null no panel has the specified id.
-//     adsk.core.ToolbarPanels.prototype.itemById = function (id) {
-//         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-//         var args = {
-//             id : id
-//         };
-//         var result = this._execute('itemById', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanel) : null;
-//     };
+    //     // Returns the ToolbarPanel at the specified ID.
+    //     // id : The Id of the panel within the collection to return.
+    //     // Returns the ToolbarPanel of the specified id or null no panel has the specified id.
+    //     adsk.core.ToolbarPanels.prototype.itemById = function (id) {
+    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
+    //         var args = {
+    //             id : id
+    //         };
+    //         var result = this._execute('itemById', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanel) : null;
+    //     };
+}
 
-//     //=========== Toolbars ============
-//     // Provides access to the toolbars. These are currently the right and left QAT's and the NavBar.
-//     adsk.core.Toolbars = function Toolbars(handle) {
-//         if (!(this instanceof adsk.core.Toolbars)) {
-//             return adsk.core.Toolbars.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.Toolbars.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.Toolbars.prototype.constructor = adsk.core.Toolbars;
-//     adsk.core.Toolbars.interfaceId = 'adsk.core.Toolbars';
-//     adsk.objectTypes['adsk.core.Toolbars'] = adsk.core.Toolbars;
-//     adsk.core.Toolbars.cast = function (object) {
-//         return object instanceof adsk.core.Toolbars ? object : null;
-//     };
+//=========== Toolbars ============
+// Provides access to the toolbars. These are currently the right and left QAT's and the NavBar.
+interface Toolbars {
+    //         if (!(this instanceof adsk.core.Toolbars)) {
+    //             return adsk.core.Toolbars.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.core.Toolbars.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.core.Toolbars.prototype.constructor = adsk.core.Toolbars;
+    //     adsk.core.Toolbars.interfaceId = 'adsk.core.Toolbars';
+    //     adsk.objectTypes['adsk.core.Toolbars'] = adsk.core.Toolbars;
+    //     adsk.core.Toolbars.cast = function (object) {
+    //         return object instanceof adsk.core.Toolbars ? object : null;
+    //     };
 
-//     // Gets the number of Toolbar objects in the collection.
-//     Object.defineProperty(adsk.core.Toolbars.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the number of Toolbar objects in the collection.
+    //     Object.defineProperty(adsk.core.Toolbars.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the specified toolbar using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.core.Toolbars.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Toolbar) : null;
-//     };
+    //     // Returns the specified toolbar using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.core.Toolbars.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Toolbar) : null;
+    //     };
 
-//     // Returns the Toolbar of the specified ID.
-//     // id : The Id of the toolbar to return.
-//     // Returns the toolbar with the specified ID or null if there's not a toolbar with the specified ID.
-//     adsk.core.Toolbars.prototype.itemById = function (id) {
-//         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-//         var args = {
-//             id : id
-//         };
-//         var result = this._execute('itemById', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Toolbar) : null;
-//     };
+    // Returns the Toolbar of the specified ID.
+    // id : The Id of the toolbar to return.
+    // Returns the toolbar with the specified ID or null if there's not a toolbar with the specified ID.
+    itemById(id: string): Toolbar;
+}
 
 //=========== UserInterface ============
 // Provides access to the user-interface related objects and functionality.
@@ -3639,187 +3621,128 @@ interface ValidateInputsEvent {
 //         }
 //     });
 
-//     //=========== Workspace ============
-//     // A Workspace provides access to a set of panels, which contain commands that
-//     // are relevant for that particular workspace. The user can switch from one
-//     // workspace to another in a product (e.g. switch from Model to Sculpt in Fusion).
-//     adsk.core.Workspace = function Workspace(handle) {
-//         if (!(this instanceof adsk.core.Workspace)) {
-//             return adsk.core.Workspace.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.Workspace.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.Workspace.prototype.constructor = adsk.core.Workspace;
-//     adsk.core.Workspace.interfaceId = 'adsk.core.Workspace';
-//     adsk.objectTypes['adsk.core.Workspace'] = adsk.core.Workspace;
-//     adsk.core.Workspace.cast = function (object) {
-//         return object instanceof adsk.core.Workspace ? object : null;
-//     };
+//=========== Workspace ============
+// A Workspace provides access to a set of panels, which contain commands that
+// are relevant for that particular workspace. The user can switch from one
+// workspace to another in a product (e.g. switch from Model to Sculpt in Fusion).
+interface Workspace {
+    cast(object: Object): Workspace;
 
-//     // Gets the unique Id of the workspace that can be used programmatically
-//     // to find a specific workspace. It is not affected by the current
-//     // language.
-//     Object.defineProperty(adsk.core.Workspace.prototype, 'id', {
-//         get : function () {
-//             var result = this._execute('id');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Gets the unique Id of the workspace that can be used programmatically
+    // to find a specific workspace. It is not affected by the current
+    // language.
+    id;
 
-//     // Gets if the workspace is currently active - i.e. displayed
-//     Object.defineProperty(adsk.core.Workspace.prototype, 'isActive', {
-//         get : function () {
-//             var result = this._execute('isActive');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Gets if the workspace is currently active - i.e. displayed
+    isActive: boolean;
 
-//     // Gets if this workspace is native to Fusion or was created via the API.
-//     Object.defineProperty(adsk.core.Workspace.prototype, 'isNative', {
-//         get : function () {
-//             var result = this._execute('isNative');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Gets if this workspace is native to Fusion or was created via the API.
+    isNative: boolean;
 
-//     // Gets the visible name of the workspace as seen in the user interface.
-//     // This is the localized name.
-//     Object.defineProperty(adsk.core.Workspace.prototype, 'name', {
-//         get : function () {
-//             var result = this._execute('name');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Gets the visible name of the workspace as seen in the user interface.
+    // This is the localized name.
+    name: string;
 
-//     // Gets the collection containing the panels associated with this workspace.
-//     // It's through this collection that you can add new toolbar panels.
-//     Object.defineProperty(adsk.core.Workspace.prototype, 'toolbarPanels', {
-//         get : function () {
-//             var result = this._execute('toolbarPanels');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanels) : null;
-//         }
-//     });
+    // Gets the collection containing the panels associated with this workspace.
+    // It's through this collection that you can add new toolbar panels.
+    toolbarPanels: ToolbarPanels;
 
-//     // Gets or sets the resource folder.
-//     Object.defineProperty(adsk.core.Workspace.prototype, 'resourceFolder', {
-//         get : function () {
-//             var result = this._execute('resourceFolder');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('resourceFolder', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
-
-//     // Returns the name of the product this workspace is associated with.
-//     Object.defineProperty(adsk.core.Workspace.prototype, 'productType', {
-//         get : function () {
-//             var result = this._execute('productType');
-//             return result ? result.value : undefined;
-//         }
-//     });
-
-//     // Activate the workspace (assuming it is valid to do so - a SIM workspace can't
-//     // be activated if Fusion is the active product).
-//     // Boolean return that indicates if the activation was successful or not.
-//     adsk.core.Workspace.prototype.activate = function () {
-//         var result = this._execute('activate');
-//         return result ? result.value : undefined;
-//     };
-
-//     // Deletes this workspace. Only a workspace added by the API can be deleted, (IsNative is false).
-//     // Boolean return that indicates if the deletion was successful or not.
-//     adsk.core.Workspace.prototype.deleteMe = function () {
-//         var result = this._execute('deleteMe');
-//         return result ? result.value : undefined;
-//     };
-
-//     //=========== WorkspaceEvent ============
-//     // A WorkspaceEvent represents a workspace related event. For example, workspaceActivate or workspaceDeactivate.
-//     adsk.core.WorkspaceEvent = function WorkspaceEvent(handle) {
-//         if (!(this instanceof adsk.core.WorkspaceEvent)) {
-//             return adsk.core.WorkspaceEvent.cast(handle);
-//         }
-//         adsk.core.Event.call(this, handle);
-//     };
-//     adsk.core.WorkspaceEvent.prototype = Object.create(adsk.core.Event.prototype);
-//     adsk.core.WorkspaceEvent.prototype.constructor = adsk.core.WorkspaceEvent;
-//     adsk.core.WorkspaceEvent.interfaceId = 'adsk.core.WorkspaceEvent';
-//     adsk.objectTypes['adsk.core.WorkspaceEvent'] = adsk.core.WorkspaceEvent;
-//     adsk.core.WorkspaceEvent.cast = function (object) {
-//         return object instanceof adsk.core.WorkspaceEvent ? object : null;
-//     };
-
-//     adsk.core.WorkspaceEvent.prototype.add = function (handler) {
-//         if (typeof handler !== 'function') { throw new TypeError('handler must be a function'); }
-//         return adsk.core.Event.prototype.add.call(this, handler, adsk.core.WorkspaceEventArgs);
-//     };
-
-//     //=========== WorkspaceEventArgs ============
-//     // The WorkspaceEventArgs provides information associated with a workspace event.
-//     adsk.core.WorkspaceEventArgs = function WorkspaceEventArgs(handle) {
-//         if (!(this instanceof adsk.core.WorkspaceEventArgs)) {
-//             return adsk.core.WorkspaceEventArgs.cast(handle);
-//         }
-//         adsk.core.EventArgs.call(this, handle);
-//     };
-//     adsk.core.WorkspaceEventArgs.prototype = Object.create(adsk.core.EventArgs.prototype);
-//     adsk.core.WorkspaceEventArgs.prototype.constructor = adsk.core.WorkspaceEventArgs;
-//     adsk.core.WorkspaceEventArgs.interfaceId = 'adsk.core.WorkspaceEventArgs';
-//     adsk.objectTypes['adsk.core.WorkspaceEventArgs'] = adsk.core.WorkspaceEventArgs;
-//     adsk.core.WorkspaceEventArgs.cast = function (object) {
-//         return object instanceof adsk.core.WorkspaceEventArgs ? object : null;
-//     };
-
-//     // Provides access to the workspace.
-//     Object.defineProperty(adsk.core.WorkspaceEventArgs.prototype, 'workspace', {
-//         get : function () {
-//             var result = this._execute('workspace');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Workspace) : null;
-//         }
-//     });
-
-//=========== WorkspaceList ============
-// A WorkspaceList is a list of Workspaces - e.g. the Workspaces for a given product.
-interface WorkspaceList {
-    //         if (!(this instanceof adsk.core.WorkspaceList)) {
-    //             return adsk.core.WorkspaceList.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.WorkspaceList.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.WorkspaceList.prototype.constructor = adsk.core.WorkspaceList;
-    //     adsk.core.WorkspaceList.interfaceId = 'adsk.core.WorkspaceList';
-    //     adsk.objectTypes['adsk.core.WorkspaceList'] = adsk.core.WorkspaceList;
-    //     adsk.core.WorkspaceList.cast = function (object) {
-    //         return object instanceof adsk.core.WorkspaceList ? object : null;
-    //     };
-
-    //     // Gets the number of workspaces in the collection.
-    //     Object.defineProperty(adsk.core.WorkspaceList.prototype, 'count', {
+    //     // Gets or sets the resource folder.
+    //     Object.defineProperty(adsk.core.Workspace.prototype, 'resourceFolder', {
     //         get : function () {
-    //             var result = this._execute('count');
+    //             var result = this._execute('resourceFolder');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('resourceFolder', args);
     //             return result ? result.value : undefined;
     //         }
     //     });
 
-    //     // Returns the specified work space using an index into the collection.
-    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-    //     // Returns the specified item or null if an invalid index was specified.
-    //     adsk.core.WorkspaceList.prototype.item = function (index) {
-    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-    //         var args = {
-    //             index : Number(index)
-    //         };
-    //         var result = this._execute('item', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Workspace) : null;
+    //     // Returns the name of the product this workspace is associated with.
+    //     Object.defineProperty(adsk.core.Workspace.prototype, 'productType', {
+    //         get : function () {
+    //             var result = this._execute('productType');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
+
+    //     // Activate the workspace (assuming it is valid to do so - a SIM workspace can't
+    //     // be activated if Fusion is the active product).
+    //     // Boolean return that indicates if the activation was successful or not.
+    //     adsk.core.Workspace.prototype.activate = function () {
+    //         var result = this._execute('activate');
+    //         return result ? result.value : undefined;
     //     };
+
+    //     // Deletes this workspace. Only a workspace added by the API can be deleted, (IsNative is false).
+    //     // Boolean return that indicates if the deletion was successful or not.
+    //     adsk.core.Workspace.prototype.deleteMe = function () {
+    //         var result = this._execute('deleteMe');
+    //         return result ? result.value : undefined;
+    //     };
+
+    //     //=========== WorkspaceEvent ============
+    //     // A WorkspaceEvent represents a workspace related event. For example, workspaceActivate or workspaceDeactivate.
+    //     adsk.core.WorkspaceEvent = function WorkspaceEvent(handle) {
+    //         if (!(this instanceof adsk.core.WorkspaceEvent)) {
+    //             return adsk.core.WorkspaceEvent.cast(handle);
+    //         }
+    //         adsk.core.Event.call(this, handle);
+    //     };
+    //     adsk.core.WorkspaceEvent.prototype = Object.create(adsk.core.Event.prototype);
+    //     adsk.core.WorkspaceEvent.prototype.constructor = adsk.core.WorkspaceEvent;
+    //     adsk.core.WorkspaceEvent.interfaceId = 'adsk.core.WorkspaceEvent';
+    //     adsk.objectTypes['adsk.core.WorkspaceEvent'] = adsk.core.WorkspaceEvent;
+    //     adsk.core.WorkspaceEvent.cast = function (object) {
+    //         return object instanceof adsk.core.WorkspaceEvent ? object : null;
+    //     };
+
+    //     adsk.core.WorkspaceEvent.prototype.add = function (handler) {
+    //         if (typeof handler !== 'function') { throw new TypeError('handler must be a function'); }
+    //         return adsk.core.Event.prototype.add.call(this, handler, adsk.core.WorkspaceEventArgs);
+    //     };
+
+    //     //=========== WorkspaceEventArgs ============
+    //     // The WorkspaceEventArgs provides information associated with a workspace event.
+    //     adsk.core.WorkspaceEventArgs = function WorkspaceEventArgs(handle) {
+    //         if (!(this instanceof adsk.core.WorkspaceEventArgs)) {
+    //             return adsk.core.WorkspaceEventArgs.cast(handle);
+    //         }
+    //         adsk.core.EventArgs.call(this, handle);
+    //     };
+    //     adsk.core.WorkspaceEventArgs.prototype = Object.create(adsk.core.EventArgs.prototype);
+    //     adsk.core.WorkspaceEventArgs.prototype.constructor = adsk.core.WorkspaceEventArgs;
+    //     adsk.core.WorkspaceEventArgs.interfaceId = 'adsk.core.WorkspaceEventArgs';
+    //     adsk.objectTypes['adsk.core.WorkspaceEventArgs'] = adsk.core.WorkspaceEventArgs;
+    //     adsk.core.WorkspaceEventArgs.cast = function (object) {
+    //         return object instanceof adsk.core.WorkspaceEventArgs ? object : null;
+    //     };
+
+    //     // Provides access to the workspace.
+    //     Object.defineProperty(adsk.core.WorkspaceEventArgs.prototype, 'workspace', {
+    //         get : function () {
+    //             var result = this._execute('workspace');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Workspace) : null;
+    //         }
+    //     });
+}
+//=========== WorkspaceList ============
+// A WorkspaceList is a list of Workspaces - e.g. the Workspaces for a given product.
+interface WorkspaceList {
+    cast(object: Object): WorkspaceList;
+
+    // Gets the number of workspaces in the collection.
+    count: number;
+
+    // Returns the specified work space using an index into the collection.
+    // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    // Returns the specified item or null if an invalid index was specified.
+    item(index: number): Workspace;
 
     //     // Returns the Workspace of the specified ID.
     //     // id : The ID of the workspace to get.

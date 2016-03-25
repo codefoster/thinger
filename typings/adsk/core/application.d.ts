@@ -310,42 +310,17 @@ interface Application {
     //         }
     //     });
 
-    //     // Returns the User that is currently logged in.
-    //     Object.defineProperty(adsk.core.Application.prototype, 'currentUser', {
-    //         get : function () {
-    //             var result = this._execute('currentUser');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.User) : null;
-    //         }
-    //     });
+    // Returns the User that is currently logged in.
+    currentUser: User;
 
-    //     // Access to the root Application object.
-    //     // Return the root Application object or null if it failed.
-    //     adsk.core.Application.get = function () {
-    //         if (adsk.core.Application.prototype.singleton) {
-    //             return adsk.core.Application.prototype.singleton;
-    //         }
-    //         var result = adsk.core.Base._executeStatic('adsk.core.Application', 'get');
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Application) : null;
-    //     };
+    // Access to the root Application object.
+    // Return the root Application object or null if it failed.
+    get(): Application;
 
-    //     // Returns information about the last error that occurred.
-    //     // description : A description of the last error in English.
-    //     // Returns the number of the specific error.
-    //     adsk.core.Application.prototype.getLastError = function (description) {
-    //         if (description !== undefined && typeof description !== 'object') { throw new TypeError('description must be an object'); }
-    //         var args;
-    //         if (description !== undefined) {
-    //             args = {};
-    //             args.description = null;
-    //         }
-    //         var result = this._execute('getLastError', args);
-    //         if (result && result.outargs) {
-    //             if (description !== undefined) {
-    //                 description.value = (result.outargs.description !== undefined) ? result.outargs.description : undefined;
-    //             }
-    //         }
-    //         return result ? result.value : undefined;
-    //     };
+    // Returns information about the last error that occurred.
+    // description : A description of the last error in English.
+    // Returns the number of the specific error.
+    getLastError(description: Object);
 }
 
 //=========== Camera ============
@@ -2712,55 +2687,24 @@ interface UnitsManager {
     //     };
 }
 
-//     //=========== User ============
-//     // A class that represents a Fusion User
-//     adsk.core.User = function User(handle) {
-//         if (!(this instanceof adsk.core.User)) {
-//             return adsk.core.User.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.User.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.User.prototype.constructor = adsk.core.User;
-//     adsk.core.User.interfaceId = 'adsk.core.User';
-//     adsk.objectTypes['adsk.core.User'] = adsk.core.User;
-//     adsk.core.User.cast = function (object) {
-//         return object instanceof adsk.core.User ? object : null;
-//     };
+//=========== User ============
+// A class that represents a Fusion User
+interface User {
+    cast(object: Object): User;
 
-//     // Returns the Username associated with this user's Autodesk account
-//     Object.defineProperty(adsk.core.User.prototype, 'userName', {
-//         get : function () {
-//             var result = this._execute('userName');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Returns the Username associated with this user's Autodesk account
+    userName: string;
 
-//     // Returns display name of the user. (i.e. the name that shows up in the Fusion UI)
-//     Object.defineProperty(adsk.core.User.prototype, 'displayName', {
-//         get : function () {
-//             var result = this._execute('displayName');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Returns display name of the user. (i.e. the name that shows up in the Fusion UI)
+    displayName: string;
 
-//     // Returns the user's internal Autodesk account name.
-//     // This can be used by applications sold through the Autodesk Exchange Store to verify that the user has in
-//     // fact purchased the product.
-//     Object.defineProperty(adsk.core.User.prototype, 'userId', {
-//         get : function () {
-//             var result = this._execute('userId');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Returns the user's internal Autodesk account name.
+    // This can be used by applications sold through the Autodesk Exchange Store to verify that the user has in
+    // fact purchased the product.
+    userId: string;
 
-//     // Get the email associated with this users Fusion account
-//     Object.defineProperty(adsk.core.User.prototype, 'email', {
-//         get : function () {
-//             var result = this._execute('email');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Get the email associated with this users Fusion account
+    email: string;
 
 //     //=========== UserLanguages ============
 //     // A list of the valid languages.

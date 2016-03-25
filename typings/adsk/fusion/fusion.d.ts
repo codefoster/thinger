@@ -48,204 +48,202 @@
 //         ParameterReferencedByOtherParameterError : 200
 //     };
 
-//     //=========== Design ============
-//     // Object that represents an open Fusion design. This derives from the
-//     // Design base class and adds the Fusion specific functionality.
-//     adsk.fusion.Design = function Design(handle) {
-//         if (!(this instanceof adsk.fusion.Design)) {
-//             return adsk.fusion.Design.cast(handle);
-//         }
-//         adsk.core.Product.call(this, handle);
-//     };
-//     adsk.fusion.Design.prototype = Object.create(adsk.core.Product.prototype);
-//     adsk.fusion.Design.prototype.constructor = adsk.fusion.Design;
-//     adsk.fusion.Design.interfaceId = 'adsk.fusion.Design';
-//     adsk.objectTypes['adsk.fusion.Design'] = adsk.fusion.Design;
-//     adsk.fusion.Design.cast = function (object) {
-//         return object instanceof adsk.fusion.Design ? object : null;
-//     };
+//=========== Design ============
+// Object that represents an open Fusion design. This derives from the
+// Design base class and adds the Fusion specific functionality.
+interface Design {
+    //         if (!(this instanceof adsk.fusion.Design)) {
+    //             return adsk.fusion.Design.cast(handle);
+    //         }
+    //         adsk.core.Product.call(this, handle);
+    //     };
+    //     adsk.fusion.Design.prototype = Object.create(adsk.core.Product.prototype);
+    //     adsk.fusion.Design.prototype.constructor = adsk.fusion.Design;
+    //     adsk.fusion.Design.interfaceId = 'adsk.fusion.Design';
+    //     adsk.objectTypes['adsk.fusion.Design'] = adsk.fusion.Design;
+    cast(object);
 
-//     // Gets and sets the current design type (DirectDesignType or ParametricDesignType)
-//     // Changing an exising design from ParametricDesignType to DirectDesignType will result in the timeline and all design
-//     // history being removed and further operations will not be captured in the timeline.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'designType', {
-//         get : function () {
-//             var result = this._execute('designType');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('designType', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the current design type (DirectDesignType or ParametricDesignType)
+    //     // Changing an exising design from ParametricDesignType to DirectDesignType will result in the timeline and all design
+    //     // history being removed and further operations will not be captured in the timeline.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'designType', {
+    //         get : function () {
+    //             var result = this._execute('designType');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
+    //             var args = {
+    //                 value : Number(value)
+    //             };
+    //             var result = this._execute('designType', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the root Component
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'rootComponent', {
-//         get : function () {
-//             var result = this._execute('rootComponent');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
-//         }
-//     });
+    //     // Returns the root Component
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'rootComponent', {
+    //         get : function () {
+    //             var result = this._execute('rootComponent');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
+    //         }
+    //     });
 
-//     // Returns the Components collection that provides access to existing components
-//     // in a design
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'allComponents', {
-//         get : function () {
-//             var result = this._execute('allComponents');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Components) : null;
-//         }
-//     });
+    //     // Returns the Components collection that provides access to existing components
+    //     // in a design
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'allComponents', {
+    //         get : function () {
+    //             var result = this._execute('allComponents');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Components) : null;
+    //         }
+    //     });
 
-//     // Returns the current edit target as seen in the user interface. This edit target
-//     // is defined as the container object that will be added to if something is created.
-//     // For example, a component can be an edit target so that when new bodies are created they
-//     // are added to that component. A sketch can also be an edit target.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'activeEditObject', {
-//         get : function () {
-//             var result = this._execute('activeEditObject');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-//         }
-//     });
+    //     // Returns the current edit target as seen in the user interface. This edit target
+    //     // is defined as the container object that will be added to if something is created.
+    //     // For example, a component can be an edit target so that when new bodies are created they
+    //     // are added to that component. A sketch can also be an edit target.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'activeEditObject', {
+    //         get : function () {
+    //             var result = this._execute('activeEditObject');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
+    //         }
+    //     });
 
-//     // Returns the component that is current being edited. This can return the root component
-//     // or another component within the design.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'activeComponent', {
-//         get : function () {
-//             var result = this._execute('activeComponent');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
-//         }
-//     });
+    //     // Returns the component that is current being edited. This can return the root component
+    //     // or another component within the design.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'activeComponent', {
+    //         get : function () {
+    //             var result = this._execute('activeComponent');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
+    //         }
+    //     });
 
-//     // Returns the Snapshots object associated with this design which provides access to the
-//     // existing snapshots and the creation of new snapshots.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'snapshots', {
-//         get : function () {
-//             var result = this._execute('snapshots');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Snapshots) : null;
-//         }
-//     });
+    //     // Returns the Snapshots object associated with this design which provides access to the
+    //     // existing snapshots and the creation of new snapshots.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'snapshots', {
+    //         get : function () {
+    //             var result = this._execute('snapshots');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Snapshots) : null;
+    //         }
+    //     });
 
-//     // Returns the timeline associated with this design.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'timeline', {
-//         get : function () {
-//             var result = this._execute('timeline');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Timeline) : null;
-//         }
-//     });
+    //     // Returns the timeline associated with this design.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'timeline', {
+    //         get : function () {
+    //             var result = this._execute('timeline');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Timeline) : null;
+    //         }
+    //     });
 
-//     // Returns the collection of User Parameters in a design
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'userParameters', {
-//         get : function () {
-//             var result = this._execute('userParameters');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.UserParameters) : null;
-//         }
-//     });
+    //     // Returns the collection of User Parameters in a design
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'userParameters', {
+    //         get : function () {
+    //             var result = this._execute('userParameters');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.UserParameters) : null;
+    //         }
+    //     });
 
-//     // Returns a read only list of all parameters in the design. This includes
-//     // the user parameters and model parameters from all components in this design.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'allParameters', {
-//         get : function () {
-//             var result = this._execute('allParameters');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ParameterList) : null;
-//         }
-//     });
+    //     // Returns a read only list of all parameters in the design. This includes
+    //     // the user parameters and model parameters from all components in this design.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'allParameters', {
+    //         get : function () {
+    //             var result = this._execute('allParameters');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ParameterList) : null;
+    //         }
+    //     });
 
-//     // Returns a specialized UnitsManager that can set the default length units and work
-//     // with parameters.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'fusionUnitsManager', {
-//         get : function () {
-//             var result = this._execute('fusionUnitsManager');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.FusionUnitsManager) : null;
-//         }
-//     });
+    //     // Returns a specialized UnitsManager that can set the default length units and work
+    //     // with parameters.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'fusionUnitsManager', {
+    //         get : function () {
+    //             var result = this._execute('fusionUnitsManager');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.FusionUnitsManager) : null;
+    //         }
+    //     });
 
-//     // Returns the ExportManager for this design. You use the ExportManager
-//     // to export the current design in various formats.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'exportManager', {
-//         get : function () {
-//             var result = this._execute('exportManager');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ExportManager) : null;
-//         }
-//     });
+    //     // Returns the ExportManager for this design. You use the ExportManager
+    //     // to export the current design in various formats.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'exportManager', {
+    //         get : function () {
+    //             var result = this._execute('exportManager');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ExportManager) : null;
+    //         }
+    //     });
 
-//     // Gets whether the root component is the active edit target in the user interface.
-//     // This is the same as checking the state of the radio button next to the root compoonent in the browser.
-//     // To activate the root component use the ActivateRootComponent method.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'isRootComponentActive', {
-//         get : function () {
-//             var result = this._execute('isRootComponentActive');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets whether the root component is the active edit target in the user interface.
+    //     // This is the same as checking the state of the radio button next to the root compoonent in the browser.
+    //     // To activate the root component use the ActivateRootComponent method.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'isRootComponentActive', {
+    //         get : function () {
+    //             var result = this._execute('isRootComponentActive');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the materials contained in this document.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'materials', {
-//         get : function () {
-//             var result = this._execute('materials');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Materials) : null;
-//         }
-//     });
+    //     // Returns the materials contained in this document.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'materials', {
+    //         get : function () {
+    //             var result = this._execute('materials');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Materials) : null;
+    //         }
+    //     });
 
-//     // Returns the appearances contained in this document.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'appearances', {
-//         get : function () {
-//             var result = this._execute('appearances');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearances) : null;
-//         }
-//     });
+    //     // Returns the appearances contained in this document.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'appearances', {
+    //         get : function () {
+    //             var result = this._execute('appearances');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearances) : null;
+    //         }
+    //     });
 
-//     // Returns the occurrence that is currently activated, if any. This can return null in the case
-//     // where no occurrence is activated and the root component is active.
-//     Object.defineProperty(adsk.fusion.Design.prototype, 'activeOccurrence', {
-//         get : function () {
-//             var result = this._execute('activeOccurrence');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
-//         }
-//     });
+    //     // Returns the occurrence that is currently activated, if any. This can return null in the case
+    //     // where no occurrence is activated and the root component is active.
+    //     Object.defineProperty(adsk.fusion.Design.prototype, 'activeOccurrence', {
+    //         get : function () {
+    //             var result = this._execute('activeOccurrence');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
+    //         }
+    //     });
 
-//     // Makes the root component the active component in the user interface. This is the same
-//     // as enabling the radio button next to the root component in the browser.
-//     // Returns true if the activation was successful.
-//     adsk.fusion.Design.prototype.activateRootComponent = function () {
-//         var result = this._execute('activateRootComponent');
-//         return result ? result.value : undefined;
-//     };
+    //     // Makes the root component the active component in the user interface. This is the same
+    //     // as enabling the radio button next to the root component in the browser.
+    //     // Returns true if the activation was successful.
+    //     adsk.fusion.Design.prototype.activateRootComponent = function () {
+    //         var result = this._execute('activateRootComponent');
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Creates an InterferenceInput object. This object collects the entities and options that are
-//     // used when calculating interference. To analyze interference you first create an InterferenceInput
-//     // supplying the entities and set any other settings and then provide this object as input to the
-//     // analyzeInterference method.
-//     // entities : An ObjectCollection containing the BRepBody and/or Occurrence entities that will be used in the
-//     // interference calculation. All entities must be in the context of the root component of the top-level design.
-//     // Returns an InterferenceInput object which you can use to set any other interference settings and then
-//     // use as input to the analyzeInterference method to calculate the interference. Returns null if the
-//     // creation failed.
-//     adsk.fusion.Design.prototype.createInterferenceInput = function (entities) {
-//         if (entities !== null && !(entities instanceof adsk.core.ObjectCollection)) { throw new TypeError('entities must be a adsk.core.ObjectCollection'); }
-//         var args = {
-//             entities : (entities === null ? entities : entities.handle)
-//         };
-//         var result = this._execute('createInterferenceInput', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.InterferenceInput) : null;
-//     };
+    //     // Creates an InterferenceInput object. This object collects the entities and options that are
+    //     // used when calculating interference. To analyze interference you first create an InterferenceInput
+    //     // supplying the entities and set any other settings and then provide this object as input to the
+    //     // analyzeInterference method.
+    //     // entities : An ObjectCollection containing the BRepBody and/or Occurrence entities that will be used in the
+    //     // interference calculation. All entities must be in the context of the root component of the top-level design.
+    //     // Returns an InterferenceInput object which you can use to set any other interference settings and then
+    //     // use as input to the analyzeInterference method to calculate the interference. Returns null if the
+    //     // creation failed.
+    //     adsk.fusion.Design.prototype.createInterferenceInput = function (entities) {
+    //         if (entities !== null && !(entities instanceof adsk.core.ObjectCollection)) { throw new TypeError('entities must be a adsk.core.ObjectCollection'); }
+    //         var args = {
+    //             entities : (entities === null ? entities : entities.handle)
+    //         };
+    //         var result = this._execute('createInterferenceInput', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.InterferenceInput) : null;
+    //     };
 
-//     // Calculates the interference between the input bodies and/or occurrences.
-//     // input : An InterferenceInput that defines all of the necessary input needed to calculate the interference.
-//     // An InterferenceInput object is created using the createInterferenceInput method.
-//     // Returns an InterferenceResults object that can be used to examine the interference results.
-//     adsk.fusion.Design.prototype.analyzeInterference = function (input) {
-//         if (input !== null && !(input instanceof adsk.fusion.InterferenceInput)) { throw new TypeError('input must be a adsk.fusion.InterferenceInput'); }
-//         var args = {
-//             input : (input === null ? input : input.handle)
-//         };
-//         var result = this._execute('analyzeInterference', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.InterferenceResults) : null;
-//     };
-
+    //     // Calculates the interference between the input bodies and/or occurrences.
+    //     // input : An InterferenceInput that defines all of the necessary input needed to calculate the interference.
+    //     // An InterferenceInput object is created using the createInterferenceInput method.
+    //     // Returns an InterferenceResults object that can be used to examine the interference results.
+    //     adsk.fusion.Design.prototype.analyzeInterference = function (input) {
+    //         if (input !== null && !(input instanceof adsk.fusion.InterferenceInput)) { throw new TypeError('input must be a adsk.fusion.InterferenceInput'); }
+    //         var args = {
+    //             input : (input === null ? input : input.handle)
+    //         };
+    //         var result = this._execute('analyzeInterference', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.InterferenceResults) : null;
+    //     };
+}
 //     //=========== DesignTypes ============
 //     // Fusion design types
 //     adsk.fusion.DesignTypes = {
