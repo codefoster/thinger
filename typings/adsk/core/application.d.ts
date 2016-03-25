@@ -1957,122 +1957,112 @@ interface NetworkPreferences {
 //         OverrideProxySettings : 3
 //     };
 
-//     //=========== ObjectCollection ============
-//     // Generic collection used to handle lists of any object type.
-//     adsk.core.ObjectCollection = function ObjectCollection(handle) {
-//         if (!(this instanceof adsk.core.ObjectCollection)) {
-//             return adsk.core.ObjectCollection.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.core.ObjectCollection.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.core.ObjectCollection.prototype.constructor = adsk.core.ObjectCollection;
-//     adsk.core.ObjectCollection.interfaceId = 'adsk.core.ObjectCollection';
-//     adsk.objectTypes['adsk.core.ObjectCollection'] = adsk.core.ObjectCollection;
-//     adsk.core.ObjectCollection.cast = function (object) {
-//         return object instanceof adsk.core.ObjectCollection ? object : null;
-//     };
+//=========== ObjectCollection ============
+// Generic collection used to handle lists of any object type.
+interface ObjectCollection {
+    cast(object: Object): ObjectCollection;
 
-//     // Returns the number of occurrences in the collection.
-//     Object.defineProperty(adsk.core.ObjectCollection.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Returns the number of occurrences in the collection.
+    //     Object.defineProperty(adsk.core.ObjectCollection.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified object using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.core.ObjectCollection.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-//     };
+    //     // Function that returns the specified object using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.core.ObjectCollection.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
+    //     };
 
-//     // Adds an object to the end of the collection.
-//     // Duplicates can be added to the collection.
-//     // item : The item to add to the list.
-//     // Returns false if the item was not added.
-//     adsk.core.ObjectCollection.prototype.add = function (item) {
-//         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
-//         var args = {
-//             item : (item === null ? item : item.handle)
-//         };
-//         var result = this._execute('add', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Adds an object to the end of the collection.
+    //     // Duplicates can be added to the collection.
+    //     // item : The item to add to the list.
+    //     // Returns false if the item was not added.
+    //     adsk.core.ObjectCollection.prototype.add = function (item) {
+    //         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
+    //         var args = {
+    //             item : (item === null ? item : item.handle)
+    //         };
+    //         var result = this._execute('add', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Function that removes an item from the collection.
-//     // item : The object to remove from the collection.
-//     // Returns true if the removal was successful.
-//     adsk.core.ObjectCollection.prototype.removeByItem = function (item) {
-//         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
-//         var args = {
-//             item : (item === null ? item : item.handle)
-//         };
-//         var result = this._execute('removeByItem', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Function that removes an item from the collection.
+    //     // item : The object to remove from the collection.
+    //     // Returns true if the removal was successful.
+    //     adsk.core.ObjectCollection.prototype.removeByItem = function (item) {
+    //         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
+    //         var args = {
+    //             item : (item === null ? item : item.handle)
+    //         };
+    //         var result = this._execute('removeByItem', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Function that removes an item from the list.
-//     // Will fail if the list is read only.
-//     // index : The index of the item to remove from the collection. The first item has an index of 0.
-//     // Returns true if the removal was successful.
-//     adsk.core.ObjectCollection.prototype.removeByIndex = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('removeByIndex', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Function that removes an item from the list.
+    //     // Will fail if the list is read only.
+    //     // index : The index of the item to remove from the collection. The first item has an index of 0.
+    //     // Returns true if the removal was successful.
+    //     adsk.core.ObjectCollection.prototype.removeByIndex = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('removeByIndex', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Finds the specified component in the collection.
-//     // item : The item to search for within the collection.
-//     // startIndex : The index to begin the search.
-//     // Returns the index of the found item. If not found, -1 is returned.
-//     adsk.core.ObjectCollection.prototype.find = function (item, startIndex) {
-//         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
-//         if (startIndex === null || (startIndex !== undefined && !isFinite(startIndex))) { throw new TypeError('startIndex must be a number'); }
-//         var args = {
-//             item : (item === null ? item : item.handle)
-//         };
-//         if (startIndex !== undefined) {
-//             args.startIndex = Number(startIndex);
-//         }
-//         var result = this._execute('find', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Finds the specified component in the collection.
+    //     // item : The item to search for within the collection.
+    //     // startIndex : The index to begin the search.
+    //     // Returns the index of the found item. If not found, -1 is returned.
+    //     adsk.core.ObjectCollection.prototype.find = function (item, startIndex) {
+    //         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
+    //         if (startIndex === null || (startIndex !== undefined && !isFinite(startIndex))) { throw new TypeError('startIndex must be a number'); }
+    //         var args = {
+    //             item : (item === null ? item : item.handle)
+    //         };
+    //         if (startIndex !== undefined) {
+    //             args.startIndex = Number(startIndex);
+    //         }
+    //         var result = this._execute('find', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Returns whether the specified object exists within the collection.
-//     // item : The item to look for in the collection.
-//     // Returns true if the specified item is found in the collection.
-//     adsk.core.ObjectCollection.prototype.contains = function (item) {
-//         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
-//         var args = {
-//             item : (item === null ? item : item.handle)
-//         };
-//         var result = this._execute('contains', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Returns whether the specified object exists within the collection.
+    //     // item : The item to look for in the collection.
+    //     // Returns true if the specified item is found in the collection.
+    //     adsk.core.ObjectCollection.prototype.contains = function (item) {
+    //         if (item !== null && !(item instanceof adsk.core.Base)) { throw new TypeError('item must be a adsk.core.Base'); }
+    //         var args = {
+    //             item : (item === null ? item : item.handle)
+    //         };
+    //         var result = this._execute('contains', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Clears the entire contents of the collection.
-//     // Returns true if successful.
-//     adsk.core.ObjectCollection.prototype.clear = function () {
-//         var result = this._execute('clear');
-//         return result ? result.value : undefined;
-//     };
+    //     // Clears the entire contents of the collection.
+    //     // Returns true if successful.
+    //     adsk.core.ObjectCollection.prototype.clear = function () {
+    //         var result = this._execute('clear');
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Creates a new ObjectCollection object.
-//     // Returns the newly created ObjectCollection.
-//     adsk.core.ObjectCollection.create = function () {
-//         var result = adsk.core.Base._executeStatic('adsk.core.ObjectCollection', 'create');
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-//     };
+    //     // Creates a new ObjectCollection object.
+    //     // Returns the newly created ObjectCollection.
+    //     adsk.core.ObjectCollection.create = function () {
+    //         var result = adsk.core.Base._executeStatic('adsk.core.ObjectCollection', 'create');
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
+    //     };
+}
 
 //     //=========== OpenDocumentError ============
 //     // The possible errors when a document is opened.

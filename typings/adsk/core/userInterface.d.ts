@@ -1470,7 +1470,7 @@ declare enum DropDownStyles {
 // Provides access to a file dialog. A file dialog can be used to prompt the user
 // for file names to open or save to.
 interface FileDialog {
-    cast(object:Object):FileDialog;
+    cast(object: Object): FileDialog;
 
     //     // Gets or sets the title displayed on the dialog.
     //     Object.defineProperty(adsk.core.FileDialog.prototype, 'title', {
@@ -1615,7 +1615,7 @@ interface FileDialog {
 //=========== InputChangedEvent ============
 // An event endpoint that supports the connection to client implemented InputChangedEventHandlers.
 interface InputChangedEvent {
-    cast(object:Object):InputChangedEvent;
+    cast(object: Object): InputChangedEvent;
 
     //     adsk.core.InputChangedEvent.prototype.add = function (handler) {
     //         if (typeof handler !== 'function') { throw new TypeError('handler must be a function'); }
@@ -1673,35 +1673,14 @@ interface KeyboardEvent {
 //=========== KeyboardEventArgs ============
 // Provides a set of arguments from a firing KeyboardEvent to a KeyboardEventHandler's notify callback method.
 interface KeyboardEventArgs {
-    //         if (!(this instanceof adsk.core.KeyboardEventArgs)) {
-    //             return adsk.core.KeyboardEventArgs.cast(handle);
-    //         }
-    //         adsk.core.EventArgs.call(this, handle);
-    //     };
-    //     adsk.core.KeyboardEventArgs.prototype = Object.create(adsk.core.EventArgs.prototype);
-    //     adsk.core.KeyboardEventArgs.prototype.constructor = adsk.core.KeyboardEventArgs;
-    //     adsk.core.KeyboardEventArgs.interfaceId = 'adsk.core.KeyboardEventArgs';
-    //     adsk.objectTypes['adsk.core.KeyboardEventArgs'] = adsk.core.KeyboardEventArgs;
-    //     adsk.core.KeyboardEventArgs.cast = function (object) {
-    //         return object instanceof adsk.core.KeyboardEventArgs ? object : null;
-    //     };
+    cast(object: Object): KeyboardEventArgs;
 
-    //     // Gets the set of keyboard modifiers that were active. The value is the Boolean
-    //     // combination of KeyboardModifiers values.
-    //     Object.defineProperty(adsk.core.KeyboardEventArgs.prototype, 'modifierMask', {
-    //         get : function () {
-    //             var result = this._execute('modifierMask');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the set of keyboard modifiers that were active. The value is the Boolean
+    // combination of KeyboardModifiers values.
+    modifierMask;
 
-    //     // Gets the keyboard key.
-    //     Object.defineProperty(adsk.core.KeyboardEventArgs.prototype, 'keyCode', {
-    //         get : function () {
-    //             var result = this._execute('keyCode');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the keyboard key.
+    keyCode;
 }
 
 //     //=========== KeyboardModifiers ============
@@ -1828,190 +1807,75 @@ interface KeyboardEventArgs {
 //=========== ListItem ============
 // Represents a single item in a check box list or a drop-down command input.
 interface ListItem {
-    //         if (!(this instanceof adsk.core.ListItem)) {
-    //             return adsk.core.ListItem.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.ListItem.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.ListItem.prototype.constructor = adsk.core.ListItem;
-    //     adsk.core.ListItem.interfaceId = 'adsk.core.ListItem';
-    //     adsk.objectTypes['adsk.core.ListItem'] = adsk.core.ListItem;
-    //     adsk.core.ListItem.cast = function (object) {
-    //         return object instanceof adsk.core.ListItem ? object : null;
-    //     };
+    cast(object: Object): ListItem;
 
-    //     // Gets or sets the name of this item as displayed in the list. If
-    //     // this control is a separator (isSeparator is true) or it's a button row,
-    //     // setting this property is ignored and getting it will return an empty string.
-    //     Object.defineProperty(adsk.core.ListItem.prototype, 'name', {
-    //         get : function () {
-    //             var result = this._execute('name');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('name', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets or sets the name of this item as displayed in the list. If
+    // this control is a separator (isSeparator is true) or it's a button row,
+    // setting this property is ignored and getting it will return an empty string.
+    name: string;
 
-    //     // Gets or sets the location for the icon file used for this item in the list.
-    //     // This is the path to a directory that contains the image files associated
-    //     // with this item. This is only valid when this is a standard list or button row and is
-    //     // ignored for check box lists, radio control lists, and radio button groups.
-    //     Object.defineProperty(adsk.core.ListItem.prototype, 'icon', {
-    //         get : function () {
-    //             var result = this._execute('icon');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('icon', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets or sets the location for the icon file used for this item in the list.
+    // This is the path to a directory that contains the image files associated
+    // with this item. This is only valid when this is a standard list or button row and is
+    // ignored for check box lists, radio control lists, and radio button groups.
+    icon: string;
 
-    //     // Gets or sets whether this item is selected. If the item is
-    //     // being displayed as a check box, this controls whether it is
-    //     // checked or not. If it's a drop-down list or button row it controls whether
-    //     // this is the single selected item. Setting a drop-down list, button row item, or radio button
-    //     // from a group to be selected will unselect the currently selected item.
-    //     // For a standard list, this will get or set the single item currently
-    //     // selected. For a separator, setting this property is ignored and
-    //     // it will always return false.
-    //     Object.defineProperty(adsk.core.ListItem.prototype, 'isSelected', {
-    //         get : function () {
-    //             var result = this._execute('isSelected');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('isSelected', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets or sets whether this item is selected. If the item is
+    // being displayed as a check box, this controls whether it is
+    // checked or not. If it's a drop-down list or button row it controls whether
+    // this is the single selected item. Setting a drop-down list, button row item, or radio button
+    // from a group to be selected will unselect the currently selected item.
+    // For a standard list, this will get or set the single item currently
+    // selected. For a separator, setting this property is ignored and
+    // it will always return false.
+    isSelected: boolean;
 
-    //     // Gets the index position within the list of this item.
-    //     Object.defineProperty(adsk.core.ListItem.prototype, 'index', {
-    //         get : function () {
-    //             var result = this._execute('index');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the index position within the list of this item.
+    index: number;
 
-    //     // Gets the parent CheckBoxListControlDefinition or object.
-    //     Object.defineProperty(adsk.core.ListItem.prototype, 'parentList', {
-    //         get : function () {
-    //             var result = this._execute('parentList');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-    //         }
-    //     });
+    // Gets the parent CheckBoxListControlDefinition or object.
+    parentList: Base;
 
-    //     // Gets if this control is a separator.
-    //     Object.defineProperty(adsk.core.ListItem.prototype, 'isSeparator', {
-    //         get : function () {
-    //             var result = this._execute('isSeparator');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets if this control is a separator.
+    isSeparator: boolean;
 
-    //     // Deletes this item from the list.
-    //     // Returns true if the delete was successful.
-    //     adsk.core.ListItem.prototype.deleteMe = function () {
-    //         var result = this._execute('deleteMe');
-    //         return result ? result.value : undefined;
-    //     };
+    // Deletes this item from the list.
+    // Returns true if the delete was successful.
+    deleteMe();
 }
 
 //=========== ListItems ============
 // Provides access to the list of items in a check box list. This object supports the ability to add
 // items to the list and iterate through the existing items.
 interface ListItems {
-    //         if (!(this instanceof adsk.core.ListItems)) {
-    //             return adsk.core.ListItems.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.ListItems.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.ListItems.prototype.constructor = adsk.core.ListItems;
-    //     adsk.core.ListItems.interfaceId = 'adsk.core.ListItems';
-    //     adsk.objectTypes['adsk.core.ListItems'] = adsk.core.ListItems;
-    //     adsk.core.ListItems.cast = function (object) {
-    //         return object instanceof adsk.core.ListItems ? object : null;
-    //     };
+    cast(object: Object): ListItems;
 
-    //     // Gets the number of items in the collection.
-    //     Object.defineProperty(adsk.core.ListItems.prototype, 'count', {
-    //         get : function () {
-    //             var result = this._execute('count');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the number of items in the collection.
+    count: number;
 
-    //     // Adds a new item to the list.
-    //     // name : The name of this item as it is displayed in the list.
-    //     // isSelected : Sets whether this item is selected or not. If this list is associated with a control
-    //     // or input that can only have one item selected any other selected items will be unselected
-    //     // and this one will be the only selected item.
-    //     // icon : The path to the icon directory.
-    //     // beforeIndex : The position of the item within the list. This value indicates the index of the current
-    //     // item to insert this new item just before. For example, a value of 0 will insert it before
-    //     // the first item in the list. An index of -1 will position the button at the bottom of the list.
-    //     // Returns the new ListControlItem or null in the case of a failure.
-    //     adsk.core.ListItems.prototype.add = function (name, isSelected, icon, beforeIndex) {
-    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-    //         if (typeof isSelected !== 'boolean') { throw new TypeError('isSelected must be a boolean'); }
-    //         if (icon === null || (icon !== undefined && icon.constructor !== String)) { throw new TypeError('icon must be a string'); }
-    //         if (beforeIndex === null || (beforeIndex !== undefined && !isFinite(beforeIndex))) { throw new TypeError('beforeIndex must be a number'); }
-    //         var args = {
-    //             name : name,
-    //             isSelected : isSelected
-    //         };
-    //         if (icon !== undefined) {
-    //             args.icon = icon;
-    //         }
-    //         if (beforeIndex !== undefined) {
-    //             args.beforeIndex = Number(beforeIndex);
-    //         }
-    //         var result = this._execute('add', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ListItem) : null;
-    //     };
+    // Adds a new item to the list.
+    // name : The name of this item as it is displayed in the list.
+    // isSelected : Sets whether this item is selected or not. If this list is associated with a control
+    // or input that can only have one item selected any other selected items will be unselected
+    // and this one will be the only selected item.
+    // icon : The path to the icon directory.
+    // beforeIndex : The position of the item within the list. This value indicates the index of the current
+    // item to insert this new item just before. For example, a value of 0 will insert it before
+    // the first item in the list. An index of -1 will position the button at the bottom of the list.
+    // Returns the new ListControlItem or null in the case of a failure.
+    add(name: string, isSelected: boolean, icon: string, beforeIndex: number);
 
-    //     // Adds a separator to the list. This is not supported for button rows.
-    //     // beforeIndex : The position of the item within the list. This value indicates the index of the current
-    //     // item to insert this new item just before. For example, a value of 0 will insert it before
-    //     // the first item in the list. An index of -1 will position the button at the bottom of the list.
-    //     // Returns the new ListControlItem or null in the case of a failure.
-    //     adsk.core.ListItems.prototype.addSeparator = function (beforeIndex) {
-    //         if (!isFinite(beforeIndex)) { throw new TypeError('beforeIndex must be a number'); }
-    //         var args = {
-    //             beforeIndex : Number(beforeIndex)
-    //         };
-    //         var result = this._execute('addSeparator', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ListItem) : null;
-    //     };
+    // Adds a separator to the list. This is not supported for button rows.
+    // beforeIndex : The position of the item within the list. This value indicates the index of the current
+    // item to insert this new item just before. For example, a value of 0 will insert it before
+    // the first item in the list. An index of -1 will position the button at the bottom of the list.
+    // Returns the new ListControlItem or null in the case of a failure.
+    addSeparator(beforeIndex: number);
 
-    //     // Returns the specified check box list item using an index into the collection.
-    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-    //     // Returns the specified item or null if an invalid index was specified.
-    //     adsk.core.ListItems.prototype.item = function (index) {
-    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-    //         var args = {
-    //             index : Number(index)
-    //         };
-    //         var result = this._execute('item', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ListItem) : null;
-    //     };
+    // Returns the specified check box list item using an index into the collection.
+    // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    // Returns the specified item or null if an invalid index was specified.
+    item(index: number): ListItem;
 }
 
 //     //=========== MessageBoxButtonTypes ============
@@ -2046,576 +1910,208 @@ interface ListItems {
 //=========== MouseEvent ============
 // An event endpoint that supports the connection to client implemented MouseEventHandlers.
 interface MouseEvent {
-    //         if (!(this instanceof adsk.core.MouseEvent)) {
-    //             return adsk.core.MouseEvent.cast(handle);
-    //         }
-    //         adsk.core.Event.call(this, handle);
-    //     };
-    //     adsk.core.MouseEvent.prototype = Object.create(adsk.core.Event.prototype);
-    //     adsk.core.MouseEvent.prototype.constructor = adsk.core.MouseEvent;
-    //     adsk.core.MouseEvent.interfaceId = 'adsk.core.MouseEvent';
-    //     adsk.objectTypes['adsk.core.MouseEvent'] = adsk.core.MouseEvent;
-    //     adsk.core.MouseEvent.cast = function (object) {
-    //         return object instanceof adsk.core.MouseEvent ? object : null;
-    //     };
+    cast(object: Object): MouseEvent;
 
-    //     adsk.core.MouseEvent.prototype.add = function (handler) {
-    //         if (typeof handler !== 'function') { throw new TypeError('handler must be a function'); }
-    //         return adsk.core.Event.prototype.add.call(this, handler, adsk.core.MouseEventArgs);
-    //     };
+    add(handler: (args: MouseEventArgs) => any);
 }
 
 //=========== MouseEventArgs ============
 // Provides a set of arguments from a firing MouseEvent to a MouseEventHandler's notify callback method.
 interface MouseEventArgs {
-    //         if (!(this instanceof adsk.core.MouseEventArgs)) {
-    //             return adsk.core.MouseEventArgs.cast(handle);
-    //         }
-    //         adsk.core.EventArgs.call(this, handle);
-    //     };
-    //     adsk.core.MouseEventArgs.prototype = Object.create(adsk.core.EventArgs.prototype);
-    //     adsk.core.MouseEventArgs.prototype.constructor = adsk.core.MouseEventArgs;
-    //     adsk.core.MouseEventArgs.interfaceId = 'adsk.core.MouseEventArgs';
-    //     adsk.objectTypes['adsk.core.MouseEventArgs'] = adsk.core.MouseEventArgs;
-    //     adsk.core.MouseEventArgs.cast = function (object) {
-    //         return object instanceof adsk.core.MouseEventArgs ? object : null;
-    //     };
+    cast(object: Object): MouseEventArgs;
 
-    //     // Gets which mouse button(s) are pressed. The returned value
-    //     // is bitwise and can indicate that more than one button is pressed.
-    //     Object.defineProperty(adsk.core.MouseEventArgs.prototype, 'button', {
-    //         get : function () {
-    //             var result = this._execute('button');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets which mouse button(s) are pressed. The returned value
+    // is bitwise and can indicate that more than one button is pressed.
+    button;
 
-    //     // Gets the number of times the button was pressed and released.
-    //     Object.defineProperty(adsk.core.MouseEventArgs.prototype, 'clicks', {
-    //         get : function () {
-    //             var result = this._execute('clicks');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the number of times the button was pressed and released.
+    clicks;
 
-    //     // Gets a signed count of the number of detents the mouse wheel has rotated.
-    //     Object.defineProperty(adsk.core.MouseEventArgs.prototype, 'wheelDelta', {
-    //         get : function () {
-    //             var result = this._execute('wheelDelta');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets a signed count of the number of detents the mouse wheel has rotated.
+    wheelDelta;
 
-    //     // Gets which modifier keys are currently pressed. The returned value
-    //     // is bitwise and can indicate that more than one button is pressed.
-    //     Object.defineProperty(adsk.core.MouseEventArgs.prototype, 'keyboardModifiers', {
-    //         get : function () {
-    //             var result = this._execute('keyboardModifiers');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets which modifier keys are currently pressed. The returned value
+    // is bitwise and can indicate that more than one button is pressed.
+    keyboardModifiers;
 
-    //     // Gets the coordinate of the mouse in screen space.
-    //     Object.defineProperty(adsk.core.MouseEventArgs.prototype, 'position', {
-    //         get : function () {
-    //             var result = this._execute('position');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Point2D) : null;
-    //         }
-    //     });
+    // Gets the coordinate of the mouse in screen space.
+    position: Point2D;
 }
 
 //=========== ProgressDialog ============
 // Provides access to the progress dialog.
 interface ProgressDialog {
-    //         if (!(this instanceof adsk.core.ProgressDialog)) {
-    //             return adsk.core.ProgressDialog.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.ProgressDialog.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.ProgressDialog.prototype.constructor = adsk.core.ProgressDialog;
-    //     adsk.core.ProgressDialog.interfaceId = 'adsk.core.ProgressDialog';
-    //     adsk.objectTypes['adsk.core.ProgressDialog'] = adsk.core.ProgressDialog;
-    //     adsk.core.ProgressDialog.cast = function (object) {
-    //         return object instanceof adsk.core.ProgressDialog ? object : null;
-    //     };
+    cast(object: Object): ProgressDialog;
 
-    //     // Gets and sets the title of the progress dialog
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'title', {
-    //         get : function () {
-    //             var result = this._execute('title');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('title', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets the title of the progress dialog
+    title: string;
 
-    //     // Gets and sets the message to display along with the progress bar. The following symbols can be used
-    //     // to display values. "%p" is replaced by the percentage completed. "%v" is replaced
-    //     // by the current value. %m is replaced by the total number of steps. For example, the
-    //     // message "Processing section %v of %m." will result in the message "Processing section
-    //     // 1 of 10." to be displayed if the maximum value is 10 and the current value is 1.
-    //     // Specify an empty string ("") for no message to appear along with the progress panel.
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'message', {
-    //         get : function () {
-    //             var result = this._execute('message');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('message', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets the message to display along with the progress bar. The following symbols can be used
+    // to display values. "%p" is replaced by the percentage completed. "%v" is replaced
+    // by the current value. %m is replaced by the total number of steps. For example, the
+    // message "Processing section %v of %m." will result in the message "Processing section
+    // 1 of 10." to be displayed if the maximum value is 10 and the current value is 1.
+    // Specify an empty string ("") for no message to appear along with the progress panel.
+    message: string;
 
-    //     // The minimum value of the progress bar. This is used along with the maximum value and the
-    //     // progress value to compute the current percentage complete. This is also the initial
-    //     // progress value when the progress bar is first displayed.
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'minimumValue', {
-    //         get : function () {
-    //             var result = this._execute('minimumValue');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-    //             var args = {
-    //                 value : Number(value)
-    //             };
-    //             var result = this._execute('minimumValue', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // The minimum value of the progress bar. This is used along with the maximum value and the
+    // progress value to compute the current percentage complete. This is also the initial
+    // progress value when the progress bar is first displayed.
+    minimumValue: number;
 
-    //     // The maximum value of the progress bar. This is used along with the minimum value and the
-    //     // progress value to compute the current percentage complete.
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'maximumValue', {
-    //         get : function () {
-    //             var result = this._execute('maximumValue');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-    //             var args = {
-    //                 value : Number(value)
-    //             };
-    //             var result = this._execute('maximumValue', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // The maximum value of the progress bar. This is used along with the minimum value and the
+    // progress value to compute the current percentage complete.
+    maximumValue: number;
 
-    //     // Gets and sets the current progress bar value. Progress is determined based on this value relative to
-    //     // the minimum and maximum values. This will update the values displayed
-    //     // in the message string.
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'progressValue', {
-    //         get : function () {
-    //             var result = this._execute('progressValue');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-    //             var args = {
-    //                 value : Number(value)
-    //             };
-    //             var result = this._execute('progressValue', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets the current progress bar value. Progress is determined based on this value relative to
+    // the minimum and maximum values. This will update the values displayed
+    // in the message string.
+    progressValue: number;
 
-    //     // Gets and sets if the cancel button is included in the dialog. This is false by default.
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'isCancelButtonShown', {
-    //         get : function () {
-    //             var result = this._execute('isCancelButtonShown');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('isCancelButtonShown', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets if the cancel button is included in the dialog. This is false by default.
+    isCancelButtonShown: boolean;
 
-    //     // Indicates if the cancel button was selected the last time the Progress Dialog was shown.
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'wasCancelled', {
-    //         get : function () {
-    //             var result = this._execute('wasCancelled');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Indicates if the cancel button was selected the last time the Progress Dialog was shown.
+    wasCancelled: boolean;
 
-    //     // Sets the text label on the Cancel button. The default text label is "Cancel".
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'cancelButtonText', {
-    //         get : function () {
-    //             var result = this._execute('cancelButtonText');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('cancelButtonText', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Sets the text label on the Cancel button. The default text label is "Cancel".
+    cancelButtonText: string;
 
-    //     // Gets and sets if the dialog background is translucent. This is false by default
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'isBackgroundTranslucent', {
-    //         get : function () {
-    //             var result = this._execute('isBackgroundTranslucent');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('isBackgroundTranslucent', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets if the dialog background is translucent. This is false by default
+    isBackgroundTranslucent: boolean;
 
-    //     // Gets if the Progress Dialog is currently being displayed
-    //     Object.defineProperty(adsk.core.ProgressDialog.prototype, 'isShowing', {
-    //         get : function () {
-    //             var result = this._execute('isShowing');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets if the Progress Dialog is currently being displayed
+    isShowing: boolean;
 
-    //     // Displays the progress dialog that includes a progress bar that can be used to display a continually updated
-    //     // message indicating the progress of a process that will take more than a few seconds.
-    //     // The progress is determined by comparing the current progress value with the minimum and maximum values.
-    //     // title : Sets the title for the progress dialog
-    //     // message : The message to display along with the progress bar. The following symbols can be used
-    //     // to display values. "%p" is replaced by the percentage completed. "%v" is replaced
-    //     // by the current value. %m is replaced by the total number of steps. For example, the
-    //     // message "Processing section %v of %m." will result in the message "Processing section
-    //     // 1 of 10." to be displayed if the maximum value is 10 and the current value is 1.
-    //     // minimumValue : The minimum value of the progress bar. This is used along with the maximum value and the
-    //     // progress value to compute the current percentage complete. This is also the initial
-    //     // progress value when the progress bar is first displayed.
-    //     // maximumValue : The maximum value of the progress bar. This is used along with the minimum value and the
-    //     // progress value to compute the current percentage complete.
-    //     // delay : Specifies the time interval in seconds to delay displaying the Progress Dialog. This provides a way to hide
-    //     // the progress dialog before it actually gets displayed, which is useful for cases where the progress of the
-    //     // operation being tracked completes quickly and there is no need to indicate progress to the user.
-    //     // Returns true if successful.
-    //     adsk.core.ProgressDialog.prototype.show = function (title, message, minimumValue, maximumValue, delay) {
-    //         if (title === undefined || title === null || title.constructor !== String) { throw new TypeError('title must be a string'); }
-    //         if (message === undefined || message === null || message.constructor !== String) { throw new TypeError('message must be a string'); }
-    //         if (!isFinite(minimumValue)) { throw new TypeError('minimumValue must be a number'); }
-    //         if (!isFinite(maximumValue)) { throw new TypeError('maximumValue must be a number'); }
-    //         if (delay === null || (delay !== undefined && !isFinite(delay))) { throw new TypeError('delay must be a number'); }
-    //         var args = {
-    //             title : title,
-    //             message : message,
-    //             minimumValue : Number(minimumValue),
-    //             maximumValue : Number(maximumValue)
-    //         };
-    //         if (delay !== undefined) {
-    //             args.delay = Number(delay);
-    //         }
-    //         var result = this._execute('show', args);
-    //         return result ? result.value : undefined;
-    //     };
+    // Displays the progress dialog that includes a progress bar that can be used to display a continually updated
+    // message indicating the progress of a process that will take more than a few seconds.
+    // The progress is determined by comparing the current progress value with the minimum and maximum values.
+    // title : Sets the title for the progress dialog
+    // message : The message to display along with the progress bar. The following symbols can be used
+    // to display values. "%p" is replaced by the percentage completed. "%v" is replaced
+    // by the current value. %m is replaced by the total number of steps. For example, the
+    // message "Processing section %v of %m." will result in the message "Processing section
+    // 1 of 10." to be displayed if the maximum value is 10 and the current value is 1.
+    // minimumValue : The minimum value of the progress bar. This is used along with the maximum value and the
+    // progress value to compute the current percentage complete. This is also the initial
+    // progress value when the progress bar is first displayed.
+    // maximumValue : The maximum value of the progress bar. This is used along with the minimum value and the
+    // progress value to compute the current percentage complete.
+    // delay : Specifies the time interval in seconds to delay displaying the Progress Dialog. This provides a way to hide
+    // the progress dialog before it actually gets displayed, which is useful for cases where the progress of the
+    // operation being tracked completes quickly and there is no need to indicate progress to the user.
+    // Returns true if successful.
+    show(title: string, message: string, minimumValue: number, maximumValue: number, delay: number): boolean;
 
-    //     // Hides the progress dialog. This should be used when the process has completed.
-    //     // Returns true if successful.
-    //     adsk.core.ProgressDialog.prototype.hide = function () {
-    //         var result = this._execute('hide');
-    //         return result ? result.value : undefined;
-    //     };
+    // Hides the progress dialog. This should be used when the process has completed.
+    // Returns true if successful.
+    hide(): boolean;
 
-    //     // Method that resets the progress bar. The progress bar "rewinds" and shows no progress.
-    //     // This is the same as setting the progress value to the minimum value.
-    //     // Returns true if successful
-    //     adsk.core.ProgressDialog.prototype.reset = function () {
-    //         var result = this._execute('reset');
-    //         return result ? result.value : undefined;
-    //     };
+    // Method that resets the progress bar. The progress bar "rewinds" and shows no progress.
+    // This is the same as setting the progress value to the minimum value.
+    // Returns true if successful
+    reset(): boolean;
 }
 
 //=========== Selection ============
 // Provides access to a selection of an entity in the user interface.
 interface Selection {
-    //         if (!(this instanceof adsk.core.Selection)) {
-    //             return adsk.core.Selection.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.Selection.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.Selection.prototype.constructor = adsk.core.Selection;
-    //     adsk.core.Selection.interfaceId = 'adsk.core.Selection';
-    //     adsk.objectTypes['adsk.core.Selection'] = adsk.core.Selection;
-    //     adsk.core.Selection.cast = function (object) {
-    //         return object instanceof adsk.core.Selection ? object : null;
-    //     };
+    cast(object: Object): Selection;
 
-    //     // Gets the selected entity.
-    //     Object.defineProperty(adsk.core.Selection.prototype, 'entity', {
-    //         get : function () {
-    //             var result = this._execute('entity');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-    //         }
-    //     });
+    // Gets the selected entity.
+    entity: Base;
 
-    //     // Gets the selection point on the object.
-    //     Object.defineProperty(adsk.core.Selection.prototype, 'point', {
-    //         get : function () {
-    //             var result = this._execute('point');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Point3D) : null;
-    //         }
-    //     });
+    // Gets the selection point on the object.
+    point: Point3D;
 }
 
 //=========== SelectionEvent ============
 // An event endpoint that supports the connection to client implemented SelectionEventHandlers.
 interface SelectionEvent {
-    //         if (!(this instanceof adsk.core.SelectionEvent)) {
-    //             return adsk.core.SelectionEvent.cast(handle);
-    //         }
-    //         adsk.core.Event.call(this, handle);
-    //     };
-    //     adsk.core.SelectionEvent.prototype = Object.create(adsk.core.Event.prototype);
-    //     adsk.core.SelectionEvent.prototype.constructor = adsk.core.SelectionEvent;
-    //     adsk.core.SelectionEvent.interfaceId = 'adsk.core.SelectionEvent';
-    //     adsk.objectTypes['adsk.core.SelectionEvent'] = adsk.core.SelectionEvent;
-    //     adsk.core.SelectionEvent.cast = function (object) {
-    //         return object instanceof adsk.core.SelectionEvent ? object : null;
-    //     };
+    cast(object: Object): SelectionEvent;
 
-    //     // Returns the SelectionCommandInput that is currently active in the command dialog and
-    //     // that the user is selecting entities for. This can be used to determine which set of
-    //     // rules you want to apply to determine if the current entity is selectable or not.
-    //     Object.defineProperty(adsk.core.SelectionEvent.prototype, 'activeInput', {
-    //         get : function () {
-    //             var result = this._execute('activeInput');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.SelectionCommandInput) : null;
-    //         }
-    //     });
+    // Returns the SelectionCommandInput that is currently active in the command dialog and
+    // that the user is selecting entities for. This can be used to determine which set of
+    // rules you want to apply to determine if the current entity is selectable or not.
+    activeInput: SelectionCommandInput;
 
-    //     adsk.core.SelectionEvent.prototype.add = function (handler) {
-    //         if (typeof handler !== 'function') { throw new TypeError('handler must be a function'); }
-    //         return adsk.core.Event.prototype.add.call(this, handler, adsk.core.SelectionEventArgs);
-    //     };
+    add(handler: (args: SelectionEventArgs) => any);
 }
 
 //=========== SelectionEventArgs ============
 // Provides a set of arguments from a firing SelectionEvent to a SelectionEventHandler's notify callback method.
 interface SelectionEventArgs {
-    //         if (!(this instanceof adsk.core.SelectionEventArgs)) {
-    //             return adsk.core.SelectionEventArgs.cast(handle);
-    //         }
-    //         adsk.core.EventArgs.call(this, handle);
-    //     };
-    //     adsk.core.SelectionEventArgs.prototype = Object.create(adsk.core.EventArgs.prototype);
-    //     adsk.core.SelectionEventArgs.prototype.constructor = adsk.core.SelectionEventArgs;
-    //     adsk.core.SelectionEventArgs.interfaceId = 'adsk.core.SelectionEventArgs';
-    //     adsk.objectTypes['adsk.core.SelectionEventArgs'] = adsk.core.SelectionEventArgs;
-    //     adsk.core.SelectionEventArgs.cast = function (object) {
-    //         return object instanceof adsk.core.SelectionEventArgs ? object : null;
-    //     };
+    cast(object: Object): SelectionEventArgs;
 
-    //     // Gets the entity that is valid for selection.
-    //     Object.defineProperty(adsk.core.SelectionEventArgs.prototype, 'selection', {
-    //         get : function () {
-    //             var result = this._execute('selection');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Selection) : null;
-    //         }
-    //     });
+    // Gets the entity that is valid for selection.
+    selection: Selection;
 
-    //     // Gets or sets whether this entity should be made available to be selected.
-    //     // The value is initialized to true, so doing nothing will result
-    //     // in the entity being selectable.
-    //     Object.defineProperty(adsk.core.SelectionEventArgs.prototype, 'isSelectable', {
-    //         get : function () {
-    //             var result = this._execute('isSelectable');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('isSelectable', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets or sets whether this entity should be made available to be selected.
+    // The value is initialized to true, so doing nothing will result
+    // in the entity being selectable.
+    isSelectable: boolean;
 
-    //     // Gets or sets any additional entities that should be pre-highlighted
-    //     // and selected if this entity is selected. An example of use is that
-    //     // the mouse passes over an edge of a body and all tangentially connected
-    //     // edges are highlighted with that edge so they can be selected as a set.
-    //     // The additional entities should all be valid based on the current selection filter.
-    //     Object.defineProperty(adsk.core.SelectionEventArgs.prototype, 'additionalEntities', {
-    //         get : function () {
-    //             var result = this._execute('additionalEntities');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-    //         },
-    //         set : function (value) {
-    //             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('additionalEntities', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets or sets any additional entities that should be pre-highlighted
+    // and selected if this entity is selected. An example of use is that
+    // the mouse passes over an edge of a body and all tangentially connected
+    // edges are highlighted with that edge so they can be selected as a set.
+    // The additional entities should all be valid based on the current selection filter.
+    additionalEntities: ObjectCollection;
 }
 
 //=========== Selections ============
 // Provides access to and control over the set of selected entities in the user interface.
 interface Selections {
-    //         if (!(this instanceof adsk.core.Selections)) {
-    //             return adsk.core.Selections.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.Selections.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.Selections.prototype.constructor = adsk.core.Selections;
-    //     adsk.core.Selections.interfaceId = 'adsk.core.Selections';
-    //     adsk.objectTypes['adsk.core.Selections'] = adsk.core.Selections;
-    //     adsk.core.Selections.cast = function (object) {
-    //         return object instanceof adsk.core.Selections ? object : null;
-    //     };
+    cast(object: Object): Selections;
 
-    //     // Gets the number of entities currently selected.
-    //     Object.defineProperty(adsk.core.Selections.prototype, 'count', {
-    //         get : function () {
-    //             var result = this._execute('count');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the number of entities currently selected.
+    count: number;
 
-    //     // Gets or sets all entities currently selected.
-    //     Object.defineProperty(adsk.core.Selections.prototype, 'all', {
-    //         get : function () {
-    //             var result = this._execute('all');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-    //         },
-    //         set : function (value) {
-    //             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('all', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets or sets all entities currently selected.
+    all: ObjectCollection;
 
-    //     // Returns the specified selection using an index into the collection.
-    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-    //     // Returns the specified item or null if an invalid index was specified.
-    //     adsk.core.Selections.prototype.item = function (index) {
-    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-    //         var args = {
-    //             index : Number(index)
-    //         };
-    //         var result = this._execute('item', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Selection) : null;
-    //     };
+    // Returns the specified selection using an index into the collection.
+    // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    // Returns the specified item or null if an invalid index was specified.
+    item(index: number): Selection;
 
-    //     // Adds the entity to the set of currently selected entities.
-    //     // The user will see the entity become selected in the user interface.
-    //     // entity : The entity to select and add to this selection set.
-    //     // Returns true if successful.
-    //     adsk.core.Selections.prototype.add = function (entity) {
-    //         if (entity !== null && !(entity instanceof adsk.core.Base)) { throw new TypeError('entity must be a adsk.core.Base'); }
-    //         var args = {
-    //             entity : (entity === null ? entity : entity.handle)
-    //         };
-    //         var result = this._execute('add', args);
-    //         return result ? result.value : undefined;
-    //     };
+    // Adds the entity to the set of currently selected entities.
+    // The user will see the entity become selected in the user interface.
+    // entity : The entity to select and add to this selection set.
+    // Returns true if successful.
+    add(entity: Base);
 
-    //     // Clears the selection set so no entities are currently selected.
-    //     // Returns true if successful.
-    //     adsk.core.Selections.prototype.clear = function () {
-    //         var result = this._execute('clear');
-    //         return result ? result.value : undefined;
-    //     };
+    // Clears the selection set so no entities are currently selected.
+    // Returns true if successful.
+    clear();
 
-    //     // Removes the specified selection from the set of selected entities.
-    //     // selection : The selection to remove.
-    //     // Returns true if the item was removed or not currently selected.
-    //     adsk.core.Selections.prototype.removeBySelection = function (selection) {
-    //         if (selection !== null && !(selection instanceof adsk.core.Selection)) { throw new TypeError('selection must be a adsk.core.Selection'); }
-    //         var args = {
-    //             selection : (selection === null ? selection : selection.handle)
-    //         };
-    //         var result = this._execute('removeBySelection', args);
-    //         return result ? result.value : undefined;
-    //     };
+    // Removes the specified selection from the set of selected entities.
+    // selection : The selection to remove.
+    // Returns true if the item was removed or not currently selected.
+    removeBySelection(selection: Selection);
 
-    //     // Removes the selections that are associated with the specified entity from the set of selected entities.
-    //     // entity : The entity to remove selections of.
-    //     // Returns true if the item was removed or not currently selected.
-    //     adsk.core.Selections.prototype.removeByEntity = function (entity) {
-    //         if (entity !== null && !(entity instanceof adsk.core.Base)) { throw new TypeError('entity must be a adsk.core.Base'); }
-    //         var args = {
-    //             entity : (entity === null ? entity : entity.handle)
-    //         };
-    //         var result = this._execute('removeByEntity', args);
-    //         return result ? result.value : undefined;
-    //     };
+    // Removes the selections that are associated with the specified entity from the set of selected entities.
+    // entity : The entity to remove selections of.
+    // Returns true if the item was removed or not currently selected.
+    removeByEntity(entity: Base);
 
-    //     // Removes an item from the set of selected entities.
-    //     // index : The index of the selection to remove.
-    //     // Returns true if the item was removed successfully.
-    //     adsk.core.Selections.prototype.removeByIndex = function (index) {
-    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-    //         var args = {
-    //             index : Number(index)
-    //         };
-    //         var result = this._execute('removeByIndex', args);
-    //         return result ? result.value : undefined;
-    //     };
+    // Removes an item from the set of selected entities.
+    // index : The index of the selection to remove.
+    // Returns true if the item was removed successfully.
+    removeByIndex(index: number);
 }
 
 //=========== Toolbar ============
 // Provides access to a toolbar in the user interface. A toolbar is a collection of toolbar controls.
 interface Toolbar {
-    //         if (!(this instanceof adsk.core.Toolbar)) {
-    //             return adsk.core.Toolbar.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.Toolbar.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.Toolbar.prototype.constructor = adsk.core.Toolbar;
-    //     adsk.core.Toolbar.interfaceId = 'adsk.core.Toolbar';
-    //     adsk.objectTypes['adsk.core.Toolbar'] = adsk.core.Toolbar;
-    //     adsk.core.Toolbar.cast = function (object) {
-    //         return object instanceof adsk.core.Toolbar ? object : null;
-    //     };
+    cast(object: Object): Toolbar;
 
-    //     // Gets the unique ID of the toolbar that can be used programmatically
-    //     // to find a specific toolbar.
-    //     Object.defineProperty(adsk.core.Toolbar.prototype, 'id', {
-    //         get : function () {
-    //             var result = this._execute('id');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the unique ID of the toolbar that can be used programmatically
+    // to find a specific toolbar.
+    id;
 
-    //     // Gets the owning UserInterface object.
-    //     Object.defineProperty(adsk.core.Toolbar.prototype, 'parentUserInterface', {
-    //         get : function () {
-    //             var result = this._execute('parentUserInterface');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.UserInterface) : null;
-    //         }
-    //     });
+    // Gets the owning UserInterface object.
+    parentUserInterface: UserInterface;
 
     // Gets the controls in this toolbar.
     controls: ToolbarControls;
@@ -2649,53 +2145,23 @@ interface ToolbarControl {
 //=========== ToolbarControlList ============
 // Provides access to a list of toolbar controls.
 interface ToolbarControlList {
-    //         if (!(this instanceof adsk.core.ToolbarControlList)) {
-    //             return adsk.core.ToolbarControlList.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.ToolbarControlList.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.ToolbarControlList.prototype.constructor = adsk.core.ToolbarControlList;
-    //     adsk.core.ToolbarControlList.interfaceId = 'adsk.core.ToolbarControlList';
-    //     adsk.objectTypes['adsk.core.ToolbarControlList'] = adsk.core.ToolbarControlList;
-    //     adsk.core.ToolbarControlList.cast = function (object) {
-    //         return object instanceof adsk.core.ToolbarControlList ? object : null;
-    //     };
+    cast(object: Object): ToolbarControlList;
 
-    //     // Gets the number of toolbar controls.
-    //     Object.defineProperty(adsk.core.ToolbarControlList.prototype, 'count', {
-    //         get : function () {
-    //             var result = this._execute('count');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the number of toolbar controls.
+    count: number;
 
-    //     // Returns the ToolbarControl at the specified index.
-    //     // When iterating by index, the controls are returned
-    //     // in the same order as they are shown in the user interface.
-    //     // index : The index of the control within the collection to return. The first item in the
-    //     // collection has in index of 0.
-    //     // Returns the ToolbarControl at the specified index or null if an invalid index was specified.
-    //     adsk.core.ToolbarControlList.prototype.item = function (index) {
-    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-    //         var args = {
-    //             index : Number(index)
-    //         };
-    //         var result = this._execute('item', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
-    //     };
+    // Returns the ToolbarControl at the specified index.
+    // When iterating by index, the controls are returned
+    // in the same order as they are shown in the user interface.
+    // index : The index of the control within the collection to return. The first item in the
+    // collection has in index of 0.
+    // Returns the ToolbarControl at the specified index or null if an invalid index was specified.
+    item(index: number): ToolbarControl;
 
-    //     // Returns the ToolbarControl at the specified ID.
-    //     // id : The ID of the control within the collection to return.
-    //     // Returns the ToolbarControl with the specified ID or null if no control has this ID.
-    //     adsk.core.ToolbarControlList.prototype.itemById = function (id) {
-    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-    //         var args = {
-    //             id : id
-    //         };
-    //         var result = this._execute('itemById', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
-    //     };
+    // Returns the ToolbarControl at the specified ID.
+    // id : The ID of the control within the collection to return.
+    // Returns the ToolbarControl with the specified ID or null if no control has this ID.
+    itemById(id: string): ToolbarControl;
 }
 
 //=========== ToolbarControls ============
