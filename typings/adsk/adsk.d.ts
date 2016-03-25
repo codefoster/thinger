@@ -15,3 +15,5 @@ interface Core {
 interface Fusion {
     Design:Design;
 }
+
+//TODO: bring all enums (defined in the individual files) into here inside of the Core and Fusion interfaces
