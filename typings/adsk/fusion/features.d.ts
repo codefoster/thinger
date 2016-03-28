@@ -1,587 +1,568 @@
-// /*global console*/
-// /*global define*/
-// /*global window*/
-// /*jslint vars: true, nomen: true, plusplus: true*/
+//=========== BaseFeatures ============
+// The BaseFeature class represents a direct edit feature within a parametric design.
+interface BaseFeatures {
+    //         if (!(this instanceof adsk.fusion.BaseFeatures)) {
+    //             return adsk.fusion.BaseFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.BaseFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.BaseFeatures.prototype.constructor = adsk.fusion.BaseFeatures;
+    //     adsk.fusion.BaseFeatures.interfaceId = 'adsk.fusion.BaseFeatures';
+    //     adsk.objectTypes['adsk.fusion.BaseFeatures'] = adsk.fusion.BaseFeatures;
+    //     adsk.fusion.BaseFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.BaseFeatures ? object : null;
+    //     };
 
-// (function (root, factory) {
+    //     // The number of base features in the collection.
+    //     Object.defineProperty(adsk.fusion.BaseFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     'use strict';
+    //     // Function that returns the specified base feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.BaseFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BaseFeature) : null;
+    //     };
 
-//     if (typeof define === 'function' && define.amd) {
-//         // using require.js
-//         define(['./application.js'], factory);
-//     } else {
-//         root.adsk = factory(root.adsk);
-//     }
-// }(this, function (adsk) {
+    //     // Function that returns the specified base feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.BaseFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BaseFeature) : null;
+    //     };
+}
 
-//     'use strict';
+//=========== BoundaryFillFeatureInput ============
+// This class defines the methods and properties that pertain to the definition of a BoundaryFillFeatureInput.
+interface BoundaryFillFeatureInput {
+    //         if (!(this instanceof adsk.fusion.BoundaryFillFeatureInput)) {
+    //             return adsk.fusion.BoundaryFillFeatureInput.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.BoundaryFillFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.BoundaryFillFeatureInput.prototype.constructor = adsk.fusion.BoundaryFillFeatureInput;
+    //     adsk.fusion.BoundaryFillFeatureInput.interfaceId = 'adsk.fusion.BoundaryFillFeatureInput';
+    //     adsk.objectTypes['adsk.fusion.BoundaryFillFeatureInput'] = adsk.fusion.BoundaryFillFeatureInput;
+    //     adsk.fusion.BoundaryFillFeatureInput.cast = function (object) {
+    //         return object instanceof adsk.fusion.BoundaryFillFeatureInput ? object : null;
+    //     };
 
-//     if (adsk === undefined) {
-//         adsk = {
-//             objectTypes: {}
-//         };
-//     }
-//     if (adsk.fusion === undefined) {
-//         adsk.fusion = {};
-//     }
+    //     // Returns the collection of the valid cells that have been calculated based on the set of input tools.
+    //     // You use this collection to specify which cells you want included in the output.
+    //     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'bRepCells', {
+    //         get : function () {
+    //             var result = this._execute('bRepCells');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepCells) : null;
+    //         }
+    //     });
 
-//     //=========== BaseFeatures ============
-//     // The BaseFeature class represents a direct edit feature within a parametric design.
-//     adsk.fusion.BaseFeatures = function BaseFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.BaseFeatures)) {
-//             return adsk.fusion.BaseFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.BaseFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.BaseFeatures.prototype.constructor = adsk.fusion.BaseFeatures;
-//     adsk.fusion.BaseFeatures.interfaceId = 'adsk.fusion.BaseFeatures';
-//     adsk.objectTypes['adsk.fusion.BaseFeatures'] = adsk.fusion.BaseFeatures;
-//     adsk.fusion.BaseFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.BaseFeatures ? object : null;
-//     };
+    //     // Gets and sets the type of operation performed by the boundary fill feature.
+    //     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'operation', {
+    //         get : function () {
+    //             var result = this._execute('operation');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
+    //             var args = {
+    //                 value : Number(value)
+    //             };
+    //             var result = this._execute('operation', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // The number of base features in the collection.
-//     Object.defineProperty(adsk.fusion.BaseFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // In order for geometry to be transformed correctly, an Occurrence for creation needs to be
+    //     // specified when the Boundary Fill is created based on geometry (e.g. a profile and/or face(s))
+    //     // in another component AND (the Boundary Fill) is not in the root component.
+    //     // The CreationOccurrence is analogous to the active occurrence in the UI
+    //     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'creationOccurrence', {
+    //         get : function () {
+    //             var result = this._execute('creationOccurrence');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.fusion.Occurrence)) { throw new TypeError('value must be a adsk.fusion.Occurrence'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('creationOccurrence', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified base feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.BaseFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BaseFeature) : null;
-//     };
+    //     // Gets and sets the collection of one or more construction planes and open or closed
+    //     // BRepBody objects that are used in calculating the possible closed boundaries.
+    //     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'tools', {
+    //         get : function () {
+    //             var result = this._execute('tools');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('tools', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
+}
 
-//     // Function that returns the specified base feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.BaseFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BaseFeature) : null;
-//     };
+//=========== BoundaryFillFeatures ============
+// Collection that provides access to all of the existing boundary fill features in a component
+// and supports the ability to create new boundary fill features.
+interface BoundaryFillFeatures {
+    //         if (!(this instanceof adsk.fusion.BoundaryFillFeatures)) {
+    //             return adsk.fusion.BoundaryFillFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.BoundaryFillFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.BoundaryFillFeatures.prototype.constructor = adsk.fusion.BoundaryFillFeatures;
+    //     adsk.fusion.BoundaryFillFeatures.interfaceId = 'adsk.fusion.BoundaryFillFeatures';
+    //     adsk.objectTypes['adsk.fusion.BoundaryFillFeatures'] = adsk.fusion.BoundaryFillFeatures;
+    //     adsk.fusion.BoundaryFillFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.BoundaryFillFeatures ? object : null;
+    //     };
 
-//     //=========== BoundaryFillFeatureInput ============
-//     // This class defines the methods and properties that pertain to the definition of a BoundaryFillFeatureInput.
-//     adsk.fusion.BoundaryFillFeatureInput = function BoundaryFillFeatureInput(handle) {
-//         if (!(this instanceof adsk.fusion.BoundaryFillFeatureInput)) {
-//             return adsk.fusion.BoundaryFillFeatureInput.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.BoundaryFillFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.BoundaryFillFeatureInput.prototype.constructor = adsk.fusion.BoundaryFillFeatureInput;
-//     adsk.fusion.BoundaryFillFeatureInput.interfaceId = 'adsk.fusion.BoundaryFillFeatureInput';
-//     adsk.objectTypes['adsk.fusion.BoundaryFillFeatureInput'] = adsk.fusion.BoundaryFillFeatureInput;
-//     adsk.fusion.BoundaryFillFeatureInput.cast = function (object) {
-//         return object instanceof adsk.fusion.BoundaryFillFeatureInput ? object : null;
-//     };
+    //     // The number of boundary fill features in the collection.
+    //     Object.defineProperty(adsk.fusion.BoundaryFillFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the collection of the valid cells that have been calculated based on the set of input tools.
-//     // You use this collection to specify which cells you want included in the output.
-//     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'bRepCells', {
-//         get : function () {
-//             var result = this._execute('bRepCells');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepCells) : null;
-//         }
-//     });
+    //     // Function that returns the specified boundary fill feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.BoundaryFillFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeature) : null;
+    //     };
 
-//     // Gets and sets the type of operation performed by the boundary fill feature.
-//     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'operation', {
-//         get : function () {
-//             var result = this._execute('operation');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('operation', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Creates a BoundaryFillFeatureInput object. Use properties and methods on this object
+    //     // to define the boundary fill you want to create and then use the Add method, passing in
+    //     // the BoundaryFillFeatureInput object.
+    //     // tools : A collection of one or more construction planes and open or closed BRepBody objects that will be
+    //     // used in calculating the possible closed boundaries.
+    //     // operation : The operation type to perform.
+    //     // Returns the newly created BoundaryFillFeatureInput object or null if the creation failed.
+    //     adsk.fusion.BoundaryFillFeatures.prototype.createInput = function (tools, operation) {
+    //         if (tools !== null && !(tools instanceof adsk.core.ObjectCollection)) { throw new TypeError('tools must be a adsk.core.ObjectCollection'); }
+    //         if (!isFinite(operation)) { throw new TypeError('operation must be a number'); }
+    //         var args = {
+    //             tools : (tools === null ? tools : tools.handle),
+    //             operation : Number(operation)
+    //         };
+    //         var result = this._execute('createInput', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeatureInput) : null;
+    //     };
 
-//     // In order for geometry to be transformed correctly, an Occurrence for creation needs to be
-//     // specified when the Boundary Fill is created based on geometry (e.g. a profile and/or face(s))
-//     // in another component AND (the Boundary Fill) is not in the root component.
-//     // The CreationOccurrence is analogous to the active occurrence in the UI
-//     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'creationOccurrence', {
-//         get : function () {
-//             var result = this._execute('creationOccurrence');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.fusion.Occurrence)) { throw new TypeError('value must be a adsk.fusion.Occurrence'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('creationOccurrence', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Creates a new boundary fill feature.
+    //     // input : A BoundaryFillFeatureInput object that defines the desired boundary fill feature. Use the createInput
+    //     // method to create a new BoundaryFillFeatureInput object and then use methods on it
+    //     // (the BoundaryFillFeatureInput object) to define the boundary fill feature.
+    //     // Returns the newly created BoundaryFillFeature object or null if the creation failed.
+    //     adsk.fusion.BoundaryFillFeatures.prototype.add = function (input) {
+    //         if (input !== null && !(input instanceof adsk.fusion.BoundaryFillFeatureInput)) { throw new TypeError('input must be a adsk.fusion.BoundaryFillFeatureInput'); }
+    //         var args = {
+    //             input : (input === null ? input : input.handle)
+    //         };
+    //         var result = this._execute('add', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeature) : null;
+    //     };
 
-//     // Gets and sets the collection of one or more construction planes and open or closed
-//     // BRepBody objects that are used in calculating the possible closed boundaries.
-//     Object.defineProperty(adsk.fusion.BoundaryFillFeatureInput.prototype, 'tools', {
-//         get : function () {
-//             var result = this._execute('tools');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('tools', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Function that returns the specified boundary fill feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.BoundaryFillFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeature) : null;
+    //     };
+}
 
-//     //=========== BoundaryFillFeatures ============
-//     // Collection that provides access to all of the existing boundary fill features in a component
-//     // and supports the ability to create new boundary fill features.
-//     adsk.fusion.BoundaryFillFeatures = function BoundaryFillFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.BoundaryFillFeatures)) {
-//             return adsk.fusion.BoundaryFillFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.BoundaryFillFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.BoundaryFillFeatures.prototype.constructor = adsk.fusion.BoundaryFillFeatures;
-//     adsk.fusion.BoundaryFillFeatures.interfaceId = 'adsk.fusion.BoundaryFillFeatures';
-//     adsk.objectTypes['adsk.fusion.BoundaryFillFeatures'] = adsk.fusion.BoundaryFillFeatures;
-//     adsk.fusion.BoundaryFillFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.BoundaryFillFeatures ? object : null;
-//     };
+//=========== BoxFeatures ============
+// Collection that provides access to all of the existing box features in a design.
+interface BoxFeatures {
+    //         if (!(this instanceof adsk.fusion.BoxFeatures)) {
+    //             return adsk.fusion.BoxFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.BoxFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.BoxFeatures.prototype.constructor = adsk.fusion.BoxFeatures;
+    //     adsk.fusion.BoxFeatures.interfaceId = 'adsk.fusion.BoxFeatures';
+    //     adsk.objectTypes['adsk.fusion.BoxFeatures'] = adsk.fusion.BoxFeatures;
+    //     adsk.fusion.BoxFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.BoxFeatures ? object : null;
+    //     };
 
-//     // The number of boundary fill features in the collection.
-//     Object.defineProperty(adsk.fusion.BoundaryFillFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of box features in the collection.
+    //     Object.defineProperty(adsk.fusion.BoxFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified boundary fill feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.BoundaryFillFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeature) : null;
-//     };
+    //     // Function that returns the specified box feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.BoxFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoxFeature) : null;
+    //     };
 
-//     // Creates a BoundaryFillFeatureInput object. Use properties and methods on this object
-//     // to define the boundary fill you want to create and then use the Add method, passing in
-//     // the BoundaryFillFeatureInput object.
-//     // tools : A collection of one or more construction planes and open or closed BRepBody objects that will be
-//     // used in calculating the possible closed boundaries.
-//     // operation : The operation type to perform.
-//     // Returns the newly created BoundaryFillFeatureInput object or null if the creation failed.
-//     adsk.fusion.BoundaryFillFeatures.prototype.createInput = function (tools, operation) {
-//         if (tools !== null && !(tools instanceof adsk.core.ObjectCollection)) { throw new TypeError('tools must be a adsk.core.ObjectCollection'); }
-//         if (!isFinite(operation)) { throw new TypeError('operation must be a number'); }
-//         var args = {
-//             tools : (tools === null ? tools : tools.handle),
-//             operation : Number(operation)
-//         };
-//         var result = this._execute('createInput', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeatureInput) : null;
-//     };
+    //     // Function that returns the specified box feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.BoxFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoxFeature) : null;
+    //     };
+}
 
-//     // Creates a new boundary fill feature.
-//     // input : A BoundaryFillFeatureInput object that defines the desired boundary fill feature. Use the createInput
-//     // method to create a new BoundaryFillFeatureInput object and then use methods on it
-//     // (the BoundaryFillFeatureInput object) to define the boundary fill feature.
-//     // Returns the newly created BoundaryFillFeature object or null if the creation failed.
-//     adsk.fusion.BoundaryFillFeatures.prototype.add = function (input) {
-//         if (input !== null && !(input instanceof adsk.fusion.BoundaryFillFeatureInput)) { throw new TypeError('input must be a adsk.fusion.BoundaryFillFeatureInput'); }
-//         var args = {
-//             input : (input === null ? input : input.handle)
-//         };
-//         var result = this._execute('add', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeature) : null;
-//     };
+//=========== BRepCell ============
+// Object that represents an existing BRepCell.
+interface BRepCell {
+    //         if (!(this instanceof adsk.fusion.BRepCell)) {
+    //             return adsk.fusion.BRepCell.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.BRepCell.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.BRepCell.prototype.constructor = adsk.fusion.BRepCell;
+    //     adsk.fusion.BRepCell.interfaceId = 'adsk.fusion.BRepCell';
+    //     adsk.objectTypes['adsk.fusion.BRepCell'] = adsk.fusion.BRepCell;
+    //     adsk.fusion.BRepCell.cast = function (object) {
+    //         return object instanceof adsk.fusion.BRepCell ? object : null;
+    //     };
 
-//     // Function that returns the specified boundary fill feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.BoundaryFillFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoundaryFillFeature) : null;
-//     };
+    //     // Gets and sets whether the cell is selected. For a Trim feature a selected cell is removed,
+    //     // whereas for a boundary fill feature, a selected cell is kept and used in the feature operation.
+    //     Object.defineProperty(adsk.fusion.BRepCell.prototype, 'isSelected', {
+    //         get : function () {
+    //             var result = this._execute('isSelected');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isSelected', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     //=========== BoxFeatures ============
-//     // Collection that provides access to all of the existing box features in a design.
-//     adsk.fusion.BoxFeatures = function BoxFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.BoxFeatures)) {
-//             return adsk.fusion.BoxFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.BoxFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.BoxFeatures.prototype.constructor = adsk.fusion.BoxFeatures;
-//     adsk.fusion.BoxFeatures.interfaceId = 'adsk.fusion.BoxFeatures';
-//     adsk.objectTypes['adsk.fusion.BoxFeatures'] = adsk.fusion.BoxFeatures;
-//     adsk.fusion.BoxFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.BoxFeatures ? object : null;
-//     };
+    //     // Returns the tools that we're using in the definition of this cell.
+    //     Object.defineProperty(adsk.fusion.BRepCell.prototype, 'sourceTools', {
+    //         get : function () {
+    //             var result = this._execute('sourceTools');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
+    //         }
+    //     });
 
-//     // The number of box features in the collection.
-//     Object.defineProperty(adsk.fusion.BoxFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Returns a BRepBody that represents this cell. This is a transient B-Rep body.
+    //     Object.defineProperty(adsk.fusion.BRepCell.prototype, 'cellBody', {
+    //         get : function () {
+    //             var result = this._execute('cellBody');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepBody) : null;
+    //         }
+    //     });
+}
 
-//     // Function that returns the specified box feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.BoxFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoxFeature) : null;
-//     };
+//=========== BRepCells ============
+// Collection that provides access to all of the existing BRepCells defined by a BoundaryFillFeatureInput
+interface BRepCells {
+    //         if (!(this instanceof adsk.fusion.BRepCells)) {
+    //             return adsk.fusion.BRepCells.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.BRepCells.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.BRepCells.prototype.constructor = adsk.fusion.BRepCells;
+    //     adsk.fusion.BRepCells.interfaceId = 'adsk.fusion.BRepCells';
+    //     adsk.objectTypes['adsk.fusion.BRepCells'] = adsk.fusion.BRepCells;
+    //     adsk.fusion.BRepCells.cast = function (object) {
+    //         return object instanceof adsk.fusion.BRepCells ? object : null;
+    //     };
 
-//     // Function that returns the specified box feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.BoxFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BoxFeature) : null;
-//     };
+    //     // The number of BRepCells in the collection.
+    //     Object.defineProperty(adsk.fusion.BRepCells.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     //=========== BRepCell ============
-//     // Object that represents an existing BRepCell.
-//     adsk.fusion.BRepCell = function BRepCell(handle) {
-//         if (!(this instanceof adsk.fusion.BRepCell)) {
-//             return adsk.fusion.BRepCell.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.BRepCell.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.BRepCell.prototype.constructor = adsk.fusion.BRepCell;
-//     adsk.fusion.BRepCell.interfaceId = 'adsk.fusion.BRepCell';
-//     adsk.objectTypes['adsk.fusion.BRepCell'] = adsk.fusion.BRepCell;
-//     adsk.fusion.BRepCell.cast = function (object) {
-//         return object instanceof adsk.fusion.BRepCell ? object : null;
-//     };
+    //     // Function that returns the specified BRepCell using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.BRepCells.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepCell) : null;
+    //     };
+}
 
-//     // Gets and sets whether the cell is selected. For a Trim feature a selected cell is removed,
-//     // whereas for a boundary fill feature, a selected cell is kept and used in the feature operation.
-//     Object.defineProperty(adsk.fusion.BRepCell.prototype, 'isSelected', {
-//         get : function () {
-//             var result = this._execute('isSelected');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isSelected', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+//=========== ChamferFeatureInput ============
+// This class defines the methods and properties that pertain to the definition of a chamfer
+// feature.
+interface ChamferFeatureInput {
+    //         if (!(this instanceof adsk.fusion.ChamferFeatureInput)) {
+    //             return adsk.fusion.ChamferFeatureInput.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.ChamferFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.ChamferFeatureInput.prototype.constructor = adsk.fusion.ChamferFeatureInput;
+    //     adsk.fusion.ChamferFeatureInput.interfaceId = 'adsk.fusion.ChamferFeatureInput';
+    //     adsk.objectTypes['adsk.fusion.ChamferFeatureInput'] = adsk.fusion.ChamferFeatureInput;
+    //     adsk.fusion.ChamferFeatureInput.cast = function (object) {
+    //         return object instanceof adsk.fusion.ChamferFeatureInput ? object : null;
+    //     };
 
-//     // Returns the tools that we're using in the definition of this cell.
-//     Object.defineProperty(adsk.fusion.BRepCell.prototype, 'sourceTools', {
-//         get : function () {
-//             var result = this._execute('sourceTools');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-//         }
-//     });
+    //     // Gets and sets the collection of edges that will be chamfered. In order to access (get) the input edges
+    //     // of a chamfer, you must roll the timeline back to just before the chamfer feature
+    //     // whose edges you want to access.
+    //     Object.defineProperty(adsk.fusion.ChamferFeatureInput.prototype, 'edges', {
+    //         get : function () {
+    //             var result = this._execute('edges');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('edges', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns a BRepBody that represents this cell. This is a transient B-Rep body.
-//     Object.defineProperty(adsk.fusion.BRepCell.prototype, 'cellBody', {
-//         get : function () {
-//             var result = this._execute('cellBody');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepBody) : null;
-//         }
-//     });
+    //     // Gets and sets if any edges that are tangentially connected to any of chamfered
+    //     // edges will also be included in the chamfer.
+    //     Object.defineProperty(adsk.fusion.ChamferFeatureInput.prototype, 'isTangentChain', {
+    //         get : function () {
+    //             var result = this._execute('isTangentChain');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isTangentChain', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     //=========== BRepCells ============
-//     // Collection that provides access to all of the existing BRepCells defined by a BoundaryFillFeatureInput
-//     adsk.fusion.BRepCells = function BRepCells(handle) {
-//         if (!(this instanceof adsk.fusion.BRepCells)) {
-//             return adsk.fusion.BRepCells.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.BRepCells.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.BRepCells.prototype.constructor = adsk.fusion.BRepCells;
-//     adsk.fusion.BRepCells.interfaceId = 'adsk.fusion.BRepCells';
-//     adsk.objectTypes['adsk.fusion.BRepCells'] = adsk.fusion.BRepCells;
-//     adsk.fusion.BRepCells.cast = function (object) {
-//         return object instanceof adsk.fusion.BRepCells ? object : null;
-//     };
+    //     // Adds a set of edges to this input.
+    //     // distance : A ValueInput object that defines the size of the chamfer. If the ValueInput uses
+    //     // a real then it is interpreted as centimeters. If it is a string then the units
+    //     // can be defined as part of the string (i.e. "2 in"). If no units are specified
+    //     // it is interpreted using the current default units for length.
+    //     // Returns true if the set of edges was successfully added to the ChamferFeatureInput.
+    //     adsk.fusion.ChamferFeatureInput.prototype.setToEqualDistance = function (distance) {
+    //         if (distance !== null && !(distance instanceof adsk.core.ValueInput)) { throw new TypeError('distance must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             distance : (distance === null ? distance : distance.handle)
+    //         };
+    //         var result = this._execute('setToEqualDistance', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // The number of BRepCells in the collection.
-//     Object.defineProperty(adsk.fusion.BRepCells.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Adds a set of edges to this input.
+    //     // distanceOne : A ValueInput object that defines the distanceOne of the chamfer. This distance
+    //     // is along the face which is on the left of the selected edge.
+    //     // If the ValueInput uses a real then it is interpreted as centimeters.
+    //     // If it is a string then the units can be defined as part of the string (i.e. "2 in").
+    //     // If no units are specified it is interpreted using the current default units for length.
+    //     // distanceTwo : A ValueInput object that defines the distanceTwo of the chamfer. This distance
+    //     // is along the face which is on the right of the selected edge.
+    //     // If the ValueInput uses a real then it is interpreted as centimeters.
+    //     // If it is a string then the units can be defined as part of the string (i.e. "2 in").
+    //     // If no units are specified it is interpreted using the current default units for length.
+    //     // Returns true if successful.
+    //     adsk.fusion.ChamferFeatureInput.prototype.setToTwoDistances = function (distanceOne, distanceTwo) {
+    //         if (distanceOne !== null && !(distanceOne instanceof adsk.core.ValueInput)) { throw new TypeError('distanceOne must be a adsk.core.ValueInput'); }
+    //         if (distanceTwo !== null && !(distanceTwo instanceof adsk.core.ValueInput)) { throw new TypeError('distanceTwo must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             distanceOne : (distanceOne === null ? distanceOne : distanceOne.handle),
+    //             distanceTwo : (distanceTwo === null ? distanceTwo : distanceTwo.handle)
+    //         };
+    //         var result = this._execute('setToTwoDistances', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Function that returns the specified BRepCell using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.BRepCells.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepCell) : null;
-//     };
+    //     // Adds a set of edges to this input.
+    //     // distance : A ValueInput object that defines the distance of the chamfer. This distance
+    //     // is along the face which is on the right of the selected edge.
+    //     // If the ValueInput uses a real then it is interpreted as centimeters.
+    //     // If it is a string then the units can be defined as part of the string (i.e. "2 in").
+    //     // If no units are specified it is interpreted using the current default units for length.
+    //     // angle : A valueInput object that defines the angle. The direction will be towards to the face
+    //     // which is on the left of the selected edge. This can be a string or a value.
+    //     // If it's a string it is interpreted using the current document units and can include
+    //     // equations. For example all of the following are valid as long as they result in
+    //     // angle units; "45", "45 deg", "a1 / 2". If a value is input it is interpreted
+    //     // as radians. It cannot be negative.
+    //     // Returns true if successful.
+    //     adsk.fusion.ChamferFeatureInput.prototype.setToDistanceAndAngle = function (distance, angle) {
+    //         if (distance !== null && !(distance instanceof adsk.core.ValueInput)) { throw new TypeError('distance must be a adsk.core.ValueInput'); }
+    //         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             distance : (distance === null ? distance : distance.handle),
+    //             angle : (angle === null ? angle : angle.handle)
+    //         };
+    //         var result = this._execute('setToDistanceAndAngle', args);
+    //         return result ? result.value : undefined;
+    //     };
+}
 
-//     //=========== ChamferFeatureInput ============
-//     // This class defines the methods and properties that pertain to the definition of a chamfer
-//     // feature.
-//     adsk.fusion.ChamferFeatureInput = function ChamferFeatureInput(handle) {
-//         if (!(this instanceof adsk.fusion.ChamferFeatureInput)) {
-//             return adsk.fusion.ChamferFeatureInput.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.ChamferFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.ChamferFeatureInput.prototype.constructor = adsk.fusion.ChamferFeatureInput;
-//     adsk.fusion.ChamferFeatureInput.interfaceId = 'adsk.fusion.ChamferFeatureInput';
-//     adsk.objectTypes['adsk.fusion.ChamferFeatureInput'] = adsk.fusion.ChamferFeatureInput;
-//     adsk.fusion.ChamferFeatureInput.cast = function (object) {
-//         return object instanceof adsk.fusion.ChamferFeatureInput ? object : null;
-//     };
+//=========== ChamferFeatures ============
+// Collection that provides access to all of the existing chamfer features in a component
+// and supports the ability to create new chamfer features.
+interface ChamferFeatures {
+    //         if (!(this instanceof adsk.fusion.ChamferFeatures)) {
+    //             return adsk.fusion.ChamferFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.ChamferFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.ChamferFeatures.prototype.constructor = adsk.fusion.ChamferFeatures;
+    //     adsk.fusion.ChamferFeatures.interfaceId = 'adsk.fusion.ChamferFeatures';
+    //     adsk.objectTypes['adsk.fusion.ChamferFeatures'] = adsk.fusion.ChamferFeatures;
+    //     adsk.fusion.ChamferFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.ChamferFeatures ? object : null;
+    //     };
 
-//     // Gets and sets the collection of edges that will be chamfered. In order to access (get) the input edges
-//     // of a chamfer, you must roll the timeline back to just before the chamfer feature
-//     // whose edges you want to access.
-//     Object.defineProperty(adsk.fusion.ChamferFeatureInput.prototype, 'edges', {
-//         get : function () {
-//             var result = this._execute('edges');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('edges', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of chamfer features in the collection.
+    //     Object.defineProperty(adsk.fusion.ChamferFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets if any edges that are tangentially connected to any of chamfered
-//     // edges will also be included in the chamfer.
-//     Object.defineProperty(adsk.fusion.ChamferFeatureInput.prototype, 'isTangentChain', {
-//         get : function () {
-//             var result = this._execute('isTangentChain');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isTangentChain', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Function that returns the specified chamfer feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.ChamferFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
+    //     };
 
-//     // Adds a set of edges to this input.
-//     // distance : A ValueInput object that defines the size of the chamfer. If the ValueInput uses
-//     // a real then it is interpreted as centimeters. If it is a string then the units
-//     // can be defined as part of the string (i.e. "2 in"). If no units are specified
-//     // it is interpreted using the current default units for length.
-//     // Returns true if the set of edges was successfully added to the ChamferFeatureInput.
-//     adsk.fusion.ChamferFeatureInput.prototype.setToEqualDistance = function (distance) {
-//         if (distance !== null && !(distance instanceof adsk.core.ValueInput)) { throw new TypeError('distance must be a adsk.core.ValueInput'); }
-//         var args = {
-//             distance : (distance === null ? distance : distance.handle)
-//         };
-//         var result = this._execute('setToEqualDistance', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Creates a ChamferFeatureInput object. Use properties and methods on this object
+    //     // to define the chamfer you want to create and then use the Add method, passing in
+    //     // the ChamferFeatureInput object.
+    //     // edges : The collection of edges that will be chamfered.
+    //     // isTangentChain : Boolean indicating if all edges that are tangentially connected to any of the input edges should be included in the chamfer or not.
+    //     // Returns the newly created ChamferFeatureInput object or null if the creation failed.
+    //     adsk.fusion.ChamferFeatures.prototype.createInput = function (edges, isTangentChain) {
+    //         if (edges !== null && !(edges instanceof adsk.core.ObjectCollection)) { throw new TypeError('edges must be a adsk.core.ObjectCollection'); }
+    //         if (typeof isTangentChain !== 'boolean') { throw new TypeError('isTangentChain must be a boolean'); }
+    //         var args = {
+    //             edges : (edges === null ? edges : edges.handle),
+    //             isTangentChain : isTangentChain
+    //         };
+    //         var result = this._execute('createInput', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeatureInput) : null;
+    //     };
 
-//     // Adds a set of edges to this input.
-//     // distanceOne : A ValueInput object that defines the distanceOne of the chamfer. This distance
-//     // is along the face which is on the left of the selected edge.
-//     // If the ValueInput uses a real then it is interpreted as centimeters.
-//     // If it is a string then the units can be defined as part of the string (i.e. "2 in").
-//     // If no units are specified it is interpreted using the current default units for length.
-//     // distanceTwo : A ValueInput object that defines the distanceTwo of the chamfer. This distance
-//     // is along the face which is on the right of the selected edge.
-//     // If the ValueInput uses a real then it is interpreted as centimeters.
-//     // If it is a string then the units can be defined as part of the string (i.e. "2 in").
-//     // If no units are specified it is interpreted using the current default units for length.
-//     // Returns true if successful.
-//     adsk.fusion.ChamferFeatureInput.prototype.setToTwoDistances = function (distanceOne, distanceTwo) {
-//         if (distanceOne !== null && !(distanceOne instanceof adsk.core.ValueInput)) { throw new TypeError('distanceOne must be a adsk.core.ValueInput'); }
-//         if (distanceTwo !== null && !(distanceTwo instanceof adsk.core.ValueInput)) { throw new TypeError('distanceTwo must be a adsk.core.ValueInput'); }
-//         var args = {
-//             distanceOne : (distanceOne === null ? distanceOne : distanceOne.handle),
-//             distanceTwo : (distanceTwo === null ? distanceTwo : distanceTwo.handle)
-//         };
-//         var result = this._execute('setToTwoDistances', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Creates a new chamfer feature.
+    //     // input : A ChamferFeatureInput object that defines the desired chamfer. Use the createInput
+    //     // method to create a new ChamferFeatureInput object and then use methods on it
+    //     // (the ChamferFeatureInput object) to define the chamfer.
+    //     // Returns the newly created ChamferFeature object or null if the creation failed.
+    //     adsk.fusion.ChamferFeatures.prototype.add = function (input) {
+    //         if (input !== null && !(input instanceof adsk.fusion.ChamferFeatureInput)) { throw new TypeError('input must be a adsk.fusion.ChamferFeatureInput'); }
+    //         var args = {
+    //             input : (input === null ? input : input.handle)
+    //         };
+    //         var result = this._execute('add', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
+    //     };
 
-//     // Adds a set of edges to this input.
-//     // distance : A ValueInput object that defines the distance of the chamfer. This distance
-//     // is along the face which is on the right of the selected edge.
-//     // If the ValueInput uses a real then it is interpreted as centimeters.
-//     // If it is a string then the units can be defined as part of the string (i.e. "2 in").
-//     // If no units are specified it is interpreted using the current default units for length.
-//     // angle : A valueInput object that defines the angle. The direction will be towards to the face
-//     // which is on the left of the selected edge. This can be a string or a value.
-//     // If it's a string it is interpreted using the current document units and can include
-//     // equations. For example all of the following are valid as long as they result in
-//     // angle units; "45", "45 deg", "a1 / 2". If a value is input it is interpreted
-//     // as radians. It cannot be negative.
-//     // Returns true if successful.
-//     adsk.fusion.ChamferFeatureInput.prototype.setToDistanceAndAngle = function (distance, angle) {
-//         if (distance !== null && !(distance instanceof adsk.core.ValueInput)) { throw new TypeError('distance must be a adsk.core.ValueInput'); }
-//         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
-//         var args = {
-//             distance : (distance === null ? distance : distance.handle),
-//             angle : (angle === null ? angle : angle.handle)
-//         };
-//         var result = this._execute('setToDistanceAndAngle', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Function that returns the specified chamfer feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.ChamferFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
+    //     };
+}
 
-//     //=========== ChamferFeatures ============
-//     // Collection that provides access to all of the existing chamfer features in a component
-//     // and supports the ability to create new chamfer features.
-//     adsk.fusion.ChamferFeatures = function ChamferFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.ChamferFeatures)) {
-//             return adsk.fusion.ChamferFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.ChamferFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.ChamferFeatures.prototype.constructor = adsk.fusion.ChamferFeatures;
-//     adsk.fusion.ChamferFeatures.interfaceId = 'adsk.fusion.ChamferFeatures';
-//     adsk.objectTypes['adsk.fusion.ChamferFeatures'] = adsk.fusion.ChamferFeatures;
-//     adsk.fusion.ChamferFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.ChamferFeatures ? object : null;
-//     };
+//=========== ChamferTypeDefinition ============
+// The base class for the classes that define how a chamfer can be defined.
+interface ChamferTypeDefinition {
+    //         if (!(this instanceof adsk.fusion.ChamferTypeDefinition)) {
+    //             return adsk.fusion.ChamferTypeDefinition.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.ChamferTypeDefinition.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.ChamferTypeDefinition.prototype.constructor = adsk.fusion.ChamferTypeDefinition;
+    //     adsk.fusion.ChamferTypeDefinition.interfaceId = 'adsk.fusion.ChamferTypeDefinition';
+    //     adsk.objectTypes['adsk.fusion.ChamferTypeDefinition'] = adsk.fusion.ChamferTypeDefinition;
+    //     adsk.fusion.ChamferTypeDefinition.cast = function (object) {
+    //         return object instanceof adsk.fusion.ChamferTypeDefinition ? object : null;
+    //     };
 
-//     // The number of chamfer features in the collection.
-//     Object.defineProperty(adsk.fusion.ChamferFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
-
-//     // Function that returns the specified chamfer feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.ChamferFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
-//     };
-
-//     // Creates a ChamferFeatureInput object. Use properties and methods on this object
-//     // to define the chamfer you want to create and then use the Add method, passing in
-//     // the ChamferFeatureInput object.
-//     // edges : The collection of edges that will be chamfered.
-//     // isTangentChain : Boolean indicating if all edges that are tangentially connected to any of the input edges should be included in the chamfer or not.
-//     // Returns the newly created ChamferFeatureInput object or null if the creation failed.
-//     adsk.fusion.ChamferFeatures.prototype.createInput = function (edges, isTangentChain) {
-//         if (edges !== null && !(edges instanceof adsk.core.ObjectCollection)) { throw new TypeError('edges must be a adsk.core.ObjectCollection'); }
-//         if (typeof isTangentChain !== 'boolean') { throw new TypeError('isTangentChain must be a boolean'); }
-//         var args = {
-//             edges : (edges === null ? edges : edges.handle),
-//             isTangentChain : isTangentChain
-//         };
-//         var result = this._execute('createInput', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeatureInput) : null;
-//     };
-
-//     // Creates a new chamfer feature.
-//     // input : A ChamferFeatureInput object that defines the desired chamfer. Use the createInput
-//     // method to create a new ChamferFeatureInput object and then use methods on it
-//     // (the ChamferFeatureInput object) to define the chamfer.
-//     // Returns the newly created ChamferFeature object or null if the creation failed.
-//     adsk.fusion.ChamferFeatures.prototype.add = function (input) {
-//         if (input !== null && !(input instanceof adsk.fusion.ChamferFeatureInput)) { throw new TypeError('input must be a adsk.fusion.ChamferFeatureInput'); }
-//         var args = {
-//             input : (input === null ? input : input.handle)
-//         };
-//         var result = this._execute('add', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
-//     };
-
-//     // Function that returns the specified chamfer feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.ChamferFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
-//     };
-
-//     //=========== ChamferTypeDefinition ============
-//     // The base class for the classes that define how a chamfer can be defined.
-//     adsk.fusion.ChamferTypeDefinition = function ChamferTypeDefinition(handle) {
-//         if (!(this instanceof adsk.fusion.ChamferTypeDefinition)) {
-//             return adsk.fusion.ChamferTypeDefinition.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.ChamferTypeDefinition.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.ChamferTypeDefinition.prototype.constructor = adsk.fusion.ChamferTypeDefinition;
-//     adsk.fusion.ChamferTypeDefinition.interfaceId = 'adsk.fusion.ChamferTypeDefinition';
-//     adsk.objectTypes['adsk.fusion.ChamferTypeDefinition'] = adsk.fusion.ChamferTypeDefinition;
-//     adsk.fusion.ChamferTypeDefinition.cast = function (object) {
-//         return object instanceof adsk.fusion.ChamferTypeDefinition ? object : null;
-//     };
-
-//     // Returns the feature that owns this chamfer type definition
-//     Object.defineProperty(adsk.fusion.ChamferTypeDefinition.prototype, 'parentFeature', {
-//         get : function () {
-//             var result = this._execute('parentFeature');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
-//         }
-//     });
+    //     // Returns the feature that owns this chamfer type definition
+    //     Object.defineProperty(adsk.fusion.ChamferTypeDefinition.prototype, 'parentFeature', {
+    //         get : function () {
+    //             var result = this._execute('parentFeature');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ChamferFeature) : null;
+    //         }
+    //     });
+}
 
 //     //=========== ChamferTypes ============
 //     // List of the different ways a chamfer can be defined.
@@ -591,513 +572,517 @@
 //         DistanceAndAngleChamferType : 2
 //     };
 
-//     //=========== CircularPatternFeatureInput ============
-//     // This class defines the methods and properties that pertain to the definition of a circular pattern
-//     // feature.
-//     adsk.fusion.CircularPatternFeatureInput = function CircularPatternFeatureInput(handle) {
-//         if (!(this instanceof adsk.fusion.CircularPatternFeatureInput)) {
-//             return adsk.fusion.CircularPatternFeatureInput.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.CircularPatternFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.CircularPatternFeatureInput.prototype.constructor = adsk.fusion.CircularPatternFeatureInput;
-//     adsk.fusion.CircularPatternFeatureInput.interfaceId = 'adsk.fusion.CircularPatternFeatureInput';
-//     adsk.objectTypes['adsk.fusion.CircularPatternFeatureInput'] = adsk.fusion.CircularPatternFeatureInput;
-//     adsk.fusion.CircularPatternFeatureInput.cast = function (object) {
-//         return object instanceof adsk.fusion.CircularPatternFeatureInput ? object : null;
-//     };
+//=========== CircularPatternFeatureInput ============
+// This class defines the methods and properties that pertain to the definition of a circular pattern
+// feature.
+interface CircularPatternFeatureInput {
+    //         if (!(this instanceof adsk.fusion.CircularPatternFeatureInput)) {
+    //             return adsk.fusion.CircularPatternFeatureInput.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.CircularPatternFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.CircularPatternFeatureInput.prototype.constructor = adsk.fusion.CircularPatternFeatureInput;
+    //     adsk.fusion.CircularPatternFeatureInput.interfaceId = 'adsk.fusion.CircularPatternFeatureInput';
+    //     adsk.objectTypes['adsk.fusion.CircularPatternFeatureInput'] = adsk.fusion.CircularPatternFeatureInput;
+    //     adsk.fusion.CircularPatternFeatureInput.cast = function (object) {
+    //         return object instanceof adsk.fusion.CircularPatternFeatureInput ? object : null;
+    //     };
 
-//     // Gets and sets the input entities. The collection can contain faces, features, bodies or occurrences.
-//     // All of the entities must be of a single type. For example, it can't contain features and occurrences
-//     // but only features or occurrences.
-//     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'inputEntities', {
-//         get : function () {
-//             var result = this._execute('inputEntities');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('inputEntities', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the input entities. The collection can contain faces, features, bodies or occurrences.
+    //     // All of the entities must be of a single type. For example, it can't contain features and occurrences
+    //     // but only features or occurrences.
+    //     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'inputEntities', {
+    //         get : function () {
+    //             var result = this._execute('inputEntities');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('inputEntities', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the axis of circular pattern. This can be a sketch line, linear edge,
-//     // construction axis, an edge/sketch curve that defines an axis (circle, etc.) or a face that defines an axis (cylinder, cone, torus, etc.).
-//     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'axis', {
-//         get : function () {
-//             var result = this._execute('axis');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('axis', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the axis of circular pattern. This can be a sketch line, linear edge,
+    //     // construction axis, an edge/sketch curve that defines an axis (circle, etc.) or a face that defines an axis (cylinder, cone, torus, etc.).
+    //     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'axis', {
+    //         get : function () {
+    //             var result = this._execute('axis');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('axis', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets quantity of the elements.
-//     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'quantity', {
-//         get : function () {
-//             var result = this._execute('quantity');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('quantity', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets quantity of the elements.
+    //     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'quantity', {
+    //         get : function () {
+    //             var result = this._execute('quantity');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('quantity', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets total angle. A negative angle can be used to reverse the direction.
-//     // An angle of 360 degrees or 2 pi radians will create a full circular pattern.
-//     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'totalAngle', {
-//         get : function () {
-//             var result = this._execute('totalAngle');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('totalAngle', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets total angle. A negative angle can be used to reverse the direction.
+    //     // An angle of 360 degrees or 2 pi radians will create a full circular pattern.
+    //     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'totalAngle', {
+    //         get : function () {
+    //             var result = this._execute('totalAngle');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('totalAngle', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets if the angle extent is in one direction or symmetric.
-//     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'isSymmetric', {
-//         get : function () {
-//             var result = this._execute('isSymmetric');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isSymmetric', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets if the angle extent is in one direction or symmetric.
+    //     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'isSymmetric', {
+    //         get : function () {
+    //             var result = this._execute('isSymmetric');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isSymmetric', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the compute option when patterning features. The default value for this is AdjustPatternCompute.
-//     // This property only applies when patterning features and is ignored in the direct modeling environment.
-//     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'patternComputeOption', {
-//         get : function () {
-//             var result = this._execute('patternComputeOption');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('patternComputeOption', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the compute option when patterning features. The default value for this is AdjustPatternCompute.
+    //     // This property only applies when patterning features and is ignored in the direct modeling environment.
+    //     Object.defineProperty(adsk.fusion.CircularPatternFeatureInput.prototype, 'patternComputeOption', {
+    //         get : function () {
+    //             var result = this._execute('patternComputeOption');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
+    //             var args = {
+    //                 value : Number(value)
+    //             };
+    //             var result = this._execute('patternComputeOption', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
+}
 
-//     //=========== CircularPatternFeatures ============
-//     // Collection that provides access to all of the existing circular pattern features in a component
-//     // and supports the ability to create new circular pattern features.
-//     adsk.fusion.CircularPatternFeatures = function CircularPatternFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.CircularPatternFeatures)) {
-//             return adsk.fusion.CircularPatternFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.CircularPatternFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.CircularPatternFeatures.prototype.constructor = adsk.fusion.CircularPatternFeatures;
-//     adsk.fusion.CircularPatternFeatures.interfaceId = 'adsk.fusion.CircularPatternFeatures';
-//     adsk.objectTypes['adsk.fusion.CircularPatternFeatures'] = adsk.fusion.CircularPatternFeatures;
-//     adsk.fusion.CircularPatternFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.CircularPatternFeatures ? object : null;
-//     };
+//=========== CircularPatternFeatures ============
+// Collection that provides access to all of the existing circular pattern features in a component
+// and supports the ability to create new circular pattern features.
+interface CircularPatternFeatures {
+    //         if (!(this instanceof adsk.fusion.CircularPatternFeatures)) {
+    //             return adsk.fusion.CircularPatternFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.CircularPatternFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.CircularPatternFeatures.prototype.constructor = adsk.fusion.CircularPatternFeatures;
+    //     adsk.fusion.CircularPatternFeatures.interfaceId = 'adsk.fusion.CircularPatternFeatures';
+    //     adsk.objectTypes['adsk.fusion.CircularPatternFeatures'] = adsk.fusion.CircularPatternFeatures;
+    //     adsk.fusion.CircularPatternFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.CircularPatternFeatures ? object : null;
+    //     };
 
-//     // The number of circular pattern features in the collection.
-//     Object.defineProperty(adsk.fusion.CircularPatternFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of circular pattern features in the collection.
+    //     Object.defineProperty(adsk.fusion.CircularPatternFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified circular pattern feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.CircularPatternFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeature) : null;
-//     };
+    //     // Function that returns the specified circular pattern feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.CircularPatternFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeature) : null;
+    //     };
 
-//     // Creates a CircularPatternFeatureInput object. Use properties and methods on this object
-//     // to define the circular pattern you want to create and then use the Add method, passing in
-//     // the CircularPatternFeatureInput object.
-//     // inputEntities : The collection can contain faces, features, bodies or occurrences.
-//     // All of the entities must be of a single type. For example, it can't contain features and occurrences
-//     // but only features or occurrences.
-//     // axis : Input linear entity or the entity has axis that defines axis of circular pattern. This can be a sketch line, linear edge,
-//     // construction axis, an edge/sketch curve that defines an axis (circle, etc.) or a face that defines an axis (cylinder, cone, torus, etc.).
-//     // Returns the newly created CircularPatternFeatureInput object or null if the creation failed.
-//     adsk.fusion.CircularPatternFeatures.prototype.createInput = function (inputEntities, axis) {
-//         if (inputEntities !== null && !(inputEntities instanceof adsk.core.ObjectCollection)) { throw new TypeError('inputEntities must be a adsk.core.ObjectCollection'); }
-//         if (axis !== null && !(axis instanceof adsk.core.Base)) { throw new TypeError('axis must be a adsk.core.Base'); }
-//         var args = {
-//             inputEntities : (inputEntities === null ? inputEntities : inputEntities.handle),
-//             axis : (axis === null ? axis : axis.handle)
-//         };
-//         var result = this._execute('createInput', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeatureInput) : null;
-//     };
+    //     // Creates a CircularPatternFeatureInput object. Use properties and methods on this object
+    //     // to define the circular pattern you want to create and then use the Add method, passing in
+    //     // the CircularPatternFeatureInput object.
+    //     // inputEntities : The collection can contain faces, features, bodies or occurrences.
+    //     // All of the entities must be of a single type. For example, it can't contain features and occurrences
+    //     // but only features or occurrences.
+    //     // axis : Input linear entity or the entity has axis that defines axis of circular pattern. This can be a sketch line, linear edge,
+    //     // construction axis, an edge/sketch curve that defines an axis (circle, etc.) or a face that defines an axis (cylinder, cone, torus, etc.).
+    //     // Returns the newly created CircularPatternFeatureInput object or null if the creation failed.
+    //     adsk.fusion.CircularPatternFeatures.prototype.createInput = function (inputEntities, axis) {
+    //         if (inputEntities !== null && !(inputEntities instanceof adsk.core.ObjectCollection)) { throw new TypeError('inputEntities must be a adsk.core.ObjectCollection'); }
+    //         if (axis !== null && !(axis instanceof adsk.core.Base)) { throw new TypeError('axis must be a adsk.core.Base'); }
+    //         var args = {
+    //             inputEntities : (inputEntities === null ? inputEntities : inputEntities.handle),
+    //             axis : (axis === null ? axis : axis.handle)
+    //         };
+    //         var result = this._execute('createInput', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeatureInput) : null;
+    //     };
 
-//     // Creates a new circular pattern feature.
-//     // input : A CircularPatternFeatureInput object that defines the desired circular pattern. Use the createInput
-//     // method to create a new CircularPatternFeatureInput object and then use methods on it
-//     // (the CircularPatternFeatureInput object) to define the circular pattern.
-//     // Returns the newly created CircularPatternFeature object or null if the creation failed.
-//     adsk.fusion.CircularPatternFeatures.prototype.add = function (input) {
-//         if (input !== null && !(input instanceof adsk.fusion.CircularPatternFeatureInput)) { throw new TypeError('input must be a adsk.fusion.CircularPatternFeatureInput'); }
-//         var args = {
-//             input : (input === null ? input : input.handle)
-//         };
-//         var result = this._execute('add', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeature) : null;
-//     };
+    //     // Creates a new circular pattern feature.
+    //     // input : A CircularPatternFeatureInput object that defines the desired circular pattern. Use the createInput
+    //     // method to create a new CircularPatternFeatureInput object and then use methods on it
+    //     // (the CircularPatternFeatureInput object) to define the circular pattern.
+    //     // Returns the newly created CircularPatternFeature object or null if the creation failed.
+    //     adsk.fusion.CircularPatternFeatures.prototype.add = function (input) {
+    //         if (input !== null && !(input instanceof adsk.fusion.CircularPatternFeatureInput)) { throw new TypeError('input must be a adsk.fusion.CircularPatternFeatureInput'); }
+    //         var args = {
+    //             input : (input === null ? input : input.handle)
+    //         };
+    //         var result = this._execute('add', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeature) : null;
+    //     };
 
-//     // Function that returns the specified circular pattern feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.CircularPatternFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeature) : null;
-//     };
+    //     // Function that returns the specified circular pattern feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.CircularPatternFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CircularPatternFeature) : null;
+    //     };
+}
 
-//     //=========== CoilFeatureInput ============
-//     // This class defines the methods and properties that pertain to the definition of a coil feature.
-//     adsk.fusion.CoilFeatureInput = function CoilFeatureInput(handle) {
-//         if (!(this instanceof adsk.fusion.CoilFeatureInput)) {
-//             return adsk.fusion.CoilFeatureInput.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.CoilFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.CoilFeatureInput.prototype.constructor = adsk.fusion.CoilFeatureInput;
-//     adsk.fusion.CoilFeatureInput.interfaceId = 'adsk.fusion.CoilFeatureInput';
-//     adsk.objectTypes['adsk.fusion.CoilFeatureInput'] = adsk.fusion.CoilFeatureInput;
-//     adsk.fusion.CoilFeatureInput.cast = function (object) {
-//         return object instanceof adsk.fusion.CoilFeatureInput ? object : null;
-//     };
+//=========== CoilFeatureInput ============
+// This class defines the methods and properties that pertain to the definition of a coil feature.
+interface CoilFeatureInput {
+    //         if (!(this instanceof adsk.fusion.CoilFeatureInput)) {
+    //             return adsk.fusion.CoilFeatureInput.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.CoilFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.CoilFeatureInput.prototype.constructor = adsk.fusion.CoilFeatureInput;
+    //     adsk.fusion.CoilFeatureInput.interfaceId = 'adsk.fusion.CoilFeatureInput';
+    //     adsk.objectTypes['adsk.fusion.CoilFeatureInput'] = adsk.fusion.CoilFeatureInput;
+    //     adsk.fusion.CoilFeatureInput.cast = function (object) {
+    //         return object instanceof adsk.fusion.CoilFeatureInput ? object : null;
+    //     };
 
-//     // Specifies if the coil should be created as a solid or surface. This is
-//     // initialized to true so a solid will be created if it's not changed.
-//     // It only can be set to false in non-parametric modeling.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'isSolid', {
-//         get : function () {
-//             var result = this._execute('isSolid');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isSolid', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Specifies if the coil should be created as a solid or surface. This is
+    //     // initialized to true so a solid will be created if it's not changed.
+    //     // It only can be set to false in non-parametric modeling.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'isSolid', {
+    //         get : function () {
+    //             var result = this._execute('isSolid');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isSolid', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the revolutions number. Returns null in the case where the coilType property returns HeightAndPitchCoilType.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'revolutions', {
-//         get : function () {
-//             var result = this._execute('revolutions');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         }
-//     });
+    //     // Gets the revolutions number. Returns null in the case where the coilType property returns HeightAndPitchCoilType.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'revolutions', {
+    //         get : function () {
+    //             var result = this._execute('revolutions');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         }
+    //     });
 
-//     // Gets the height. Returns null in the case where the coilType property returns RevolutionsAndPitchCoilType.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'height', {
-//         get : function () {
-//             var result = this._execute('height');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         }
-//     });
+    //     // Gets the height. Returns null in the case where the coilType property returns RevolutionsAndPitchCoilType.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'height', {
+    //         get : function () {
+    //             var result = this._execute('height');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         }
+    //     });
 
-//     // Gets the pitch. Returns null in the case where the coilType property returns RevolutionsAndHeightCoilType or SpiralCoilType.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'pitch', {
-//         get : function () {
-//             var result = this._execute('pitch');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         }
-//     });
+    //     // Gets the pitch. Returns null in the case where the coilType property returns RevolutionsAndHeightCoilType or SpiralCoilType.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'pitch', {
+    //         get : function () {
+    //             var result = this._execute('pitch');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         }
+    //     });
 
-//     // Gets the angle. Returns null in the case where the coilType property returns SpiralCoilType.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'angle', {
-//         get : function () {
-//             var result = this._execute('angle');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         }
-//     });
+    //     // Gets the angle. Returns null in the case where the coilType property returns SpiralCoilType.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'angle', {
+    //         get : function () {
+    //             var result = this._execute('angle');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         }
+    //     });
 
-//     // Gets the type of the coil.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'coilType', {
-//         get : function () {
-//             var result = this._execute('coilType');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the type of the coil.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'coilType', {
+    //         get : function () {
+    //             var result = this._execute('coilType');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the type of operation performed by the coil.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'operation', {
-//         get : function () {
-//             var result = this._execute('operation');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('operation', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the type of operation performed by the coil.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'operation', {
+    //         get : function () {
+    //             var result = this._execute('operation');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
+    //             var args = {
+    //                 value : Number(value)
+    //             };
+    //             var result = this._execute('operation', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the base plane.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'basePlane', {
-//         get : function () {
-//             var result = this._execute('basePlane');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('basePlane', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the base plane.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'basePlane', {
+    //         get : function () {
+    //             var result = this._execute('basePlane');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('basePlane', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets whether the rotation is clockwise or counter-clockwise. A value of true indicates clockwise rotation.
-//     // It defaults to true.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'isClockwiseRotation', {
-//         get : function () {
-//             var result = this._execute('isClockwiseRotation');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isClockwiseRotation', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets whether the rotation is clockwise or counter-clockwise. A value of true indicates clockwise rotation.
+    //     // It defaults to true.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'isClockwiseRotation', {
+    //         get : function () {
+    //             var result = this._execute('isClockwiseRotation');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isClockwiseRotation', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the diameter.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'diameter', {
-//         get : function () {
-//             var result = this._execute('diameter');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('diameter', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the diameter.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'diameter', {
+    //         get : function () {
+    //             var result = this._execute('diameter');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('diameter', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the section type of the coil.
-//     // It defaults to CircularCoilSectionType.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'coilSectionType', {
-//         get : function () {
-//             var result = this._execute('coilSectionType');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('coilSectionType', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the section type of the coil.
+    //     // It defaults to CircularCoilSectionType.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'coilSectionType', {
+    //         get : function () {
+    //             var result = this._execute('coilSectionType');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
+    //             var args = {
+    //                 value : Number(value)
+    //             };
+    //             var result = this._execute('coilSectionType', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the section position of the coil.
-//     // It defaults to InsideCoilSectionPosition.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'coilSectionPosition', {
-//         get : function () {
-//             var result = this._execute('coilSectionPosition');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('coilSectionPosition', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets the section position of the coil.
+    //     // It defaults to InsideCoilSectionPosition.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'coilSectionPosition', {
+    //         get : function () {
+    //             var result = this._execute('coilSectionPosition');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
+    //             var args = {
+    //                 value : Number(value)
+    //             };
+    //             var result = this._execute('coilSectionPosition', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the section size.
-//     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'sectionSize', {
-//         get : function () {
-//             var result = this._execute('sectionSize');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('sectionSize', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the section size.
+    //     Object.defineProperty(adsk.fusion.CoilFeatureInput.prototype, 'sectionSize', {
+    //         get : function () {
+    //             var result = this._execute('sectionSize');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ValueInput)) { throw new TypeError('value must be a adsk.core.ValueInput'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('sectionSize', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Sets the coil type to RevolutionsAndHeightCoilType.
-//     // revolutions : A ValueInput object that defines the number of revolutions.
-//     // height : A ValueInput object that defines the height.
-//     // angle : A ValueInput object that defines angle.
-//     // Returns true if successful.
-//     adsk.fusion.CoilFeatureInput.prototype.setToRevolutionAndHeight = function (revolutions, height, angle) {
-//         if (revolutions !== null && !(revolutions instanceof adsk.core.ValueInput)) { throw new TypeError('revolutions must be a adsk.core.ValueInput'); }
-//         if (height !== null && !(height instanceof adsk.core.ValueInput)) { throw new TypeError('height must be a adsk.core.ValueInput'); }
-//         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
-//         var args = {
-//             revolutions : (revolutions === null ? revolutions : revolutions.handle),
-//             height : (height === null ? height : height.handle),
-//             angle : (angle === null ? angle : angle.handle)
-//         };
-//         var result = this._execute('setToRevolutionAndHeight', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Sets the coil type to RevolutionsAndHeightCoilType.
+    //     // revolutions : A ValueInput object that defines the number of revolutions.
+    //     // height : A ValueInput object that defines the height.
+    //     // angle : A ValueInput object that defines angle.
+    //     // Returns true if successful.
+    //     adsk.fusion.CoilFeatureInput.prototype.setToRevolutionAndHeight = function (revolutions, height, angle) {
+    //         if (revolutions !== null && !(revolutions instanceof adsk.core.ValueInput)) { throw new TypeError('revolutions must be a adsk.core.ValueInput'); }
+    //         if (height !== null && !(height instanceof adsk.core.ValueInput)) { throw new TypeError('height must be a adsk.core.ValueInput'); }
+    //         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             revolutions : (revolutions === null ? revolutions : revolutions.handle),
+    //             height : (height === null ? height : height.handle),
+    //             angle : (angle === null ? angle : angle.handle)
+    //         };
+    //         var result = this._execute('setToRevolutionAndHeight', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Sets the coil type to RevolutionsAndPitchCoilType.
-//     // revolutions : A ValueInput object that defines the number of revolutions.
-//     // pitch : A ValueInput object that defines the pitch.
-//     // angle : A ValueInput object that defines angle.
-//     // Returns true if successful.
-//     adsk.fusion.CoilFeatureInput.prototype.setToRevolutionsAndPitch = function (revolutions, pitch, angle) {
-//         if (revolutions !== null && !(revolutions instanceof adsk.core.ValueInput)) { throw new TypeError('revolutions must be a adsk.core.ValueInput'); }
-//         if (pitch !== null && !(pitch instanceof adsk.core.ValueInput)) { throw new TypeError('pitch must be a adsk.core.ValueInput'); }
-//         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
-//         var args = {
-//             revolutions : (revolutions === null ? revolutions : revolutions.handle),
-//             pitch : (pitch === null ? pitch : pitch.handle),
-//             angle : (angle === null ? angle : angle.handle)
-//         };
-//         var result = this._execute('setToRevolutionsAndPitch', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Sets the coil type to RevolutionsAndPitchCoilType.
+    //     // revolutions : A ValueInput object that defines the number of revolutions.
+    //     // pitch : A ValueInput object that defines the pitch.
+    //     // angle : A ValueInput object that defines angle.
+    //     // Returns true if successful.
+    //     adsk.fusion.CoilFeatureInput.prototype.setToRevolutionsAndPitch = function (revolutions, pitch, angle) {
+    //         if (revolutions !== null && !(revolutions instanceof adsk.core.ValueInput)) { throw new TypeError('revolutions must be a adsk.core.ValueInput'); }
+    //         if (pitch !== null && !(pitch instanceof adsk.core.ValueInput)) { throw new TypeError('pitch must be a adsk.core.ValueInput'); }
+    //         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             revolutions : (revolutions === null ? revolutions : revolutions.handle),
+    //             pitch : (pitch === null ? pitch : pitch.handle),
+    //             angle : (angle === null ? angle : angle.handle)
+    //         };
+    //         var result = this._execute('setToRevolutionsAndPitch', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Sets the coil type to HeightAndPitchCoilType.
-//     // height : A ValueInput object that defines the height.
-//     // pitch : A ValueInput object that defines the pitch.
-//     // angle : A ValueInput object that defines angle.
-//     // Returns true if successful.
-//     adsk.fusion.CoilFeatureInput.prototype.setToHeightAndPitchCoil = function (height, pitch, angle) {
-//         if (height !== null && !(height instanceof adsk.core.ValueInput)) { throw new TypeError('height must be a adsk.core.ValueInput'); }
-//         if (pitch !== null && !(pitch instanceof adsk.core.ValueInput)) { throw new TypeError('pitch must be a adsk.core.ValueInput'); }
-//         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
-//         var args = {
-//             height : (height === null ? height : height.handle),
-//             pitch : (pitch === null ? pitch : pitch.handle),
-//             angle : (angle === null ? angle : angle.handle)
-//         };
-//         var result = this._execute('setToHeightAndPitchCoil', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Sets the coil type to HeightAndPitchCoilType.
+    //     // height : A ValueInput object that defines the height.
+    //     // pitch : A ValueInput object that defines the pitch.
+    //     // angle : A ValueInput object that defines angle.
+    //     // Returns true if successful.
+    //     adsk.fusion.CoilFeatureInput.prototype.setToHeightAndPitchCoil = function (height, pitch, angle) {
+    //         if (height !== null && !(height instanceof adsk.core.ValueInput)) { throw new TypeError('height must be a adsk.core.ValueInput'); }
+    //         if (pitch !== null && !(pitch instanceof adsk.core.ValueInput)) { throw new TypeError('pitch must be a adsk.core.ValueInput'); }
+    //         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             height : (height === null ? height : height.handle),
+    //             pitch : (pitch === null ? pitch : pitch.handle),
+    //             angle : (angle === null ? angle : angle.handle)
+    //         };
+    //         var result = this._execute('setToHeightAndPitchCoil', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Sets the coil type to SpiralCoilType.
-//     // revolutions : A ValueInput object that defines the number of revolutions.
-//     // pitch : A ValueInput object that defines the pitch.
-//     // Returns true if successful.
-//     adsk.fusion.CoilFeatureInput.prototype.setToSpiral = function (revolutions, pitch) {
-//         if (revolutions !== null && !(revolutions instanceof adsk.core.ValueInput)) { throw new TypeError('revolutions must be a adsk.core.ValueInput'); }
-//         if (pitch !== null && !(pitch instanceof adsk.core.ValueInput)) { throw new TypeError('pitch must be a adsk.core.ValueInput'); }
-//         var args = {
-//             revolutions : (revolutions === null ? revolutions : revolutions.handle),
-//             pitch : (pitch === null ? pitch : pitch.handle)
-//         };
-//         var result = this._execute('setToSpiral', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Sets the coil type to SpiralCoilType.
+    //     // revolutions : A ValueInput object that defines the number of revolutions.
+    //     // pitch : A ValueInput object that defines the pitch.
+    //     // Returns true if successful.
+    //     adsk.fusion.CoilFeatureInput.prototype.setToSpiral = function (revolutions, pitch) {
+    //         if (revolutions !== null && !(revolutions instanceof adsk.core.ValueInput)) { throw new TypeError('revolutions must be a adsk.core.ValueInput'); }
+    //         if (pitch !== null && !(pitch instanceof adsk.core.ValueInput)) { throw new TypeError('pitch must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             revolutions : (revolutions === null ? revolutions : revolutions.handle),
+    //             pitch : (pitch === null ? pitch : pitch.handle)
+    //         };
+    //         var result = this._execute('setToSpiral', args);
+    //         return result ? result.value : undefined;
+    //     };
+}
 
-//     //=========== CoilFeatures ============
-//     // Collection that provides access to all of the existing coil features in a design
-//     // and supports the ability to create new coil features.
-//     adsk.fusion.CoilFeatures = function CoilFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.CoilFeatures)) {
-//             return adsk.fusion.CoilFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.CoilFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.CoilFeatures.prototype.constructor = adsk.fusion.CoilFeatures;
-//     adsk.fusion.CoilFeatures.interfaceId = 'adsk.fusion.CoilFeatures';
-//     adsk.objectTypes['adsk.fusion.CoilFeatures'] = adsk.fusion.CoilFeatures;
-//     adsk.fusion.CoilFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.CoilFeatures ? object : null;
-//     };
+//=========== CoilFeatures ============
+// Collection that provides access to all of the existing coil features in a design
+// and supports the ability to create new coil features.
+interface CoilFeatures {
+    //         if (!(this instanceof adsk.fusion.CoilFeatures)) {
+    //             return adsk.fusion.CoilFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.CoilFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.CoilFeatures.prototype.constructor = adsk.fusion.CoilFeatures;
+    //     adsk.fusion.CoilFeatures.interfaceId = 'adsk.fusion.CoilFeatures';
+    //     adsk.objectTypes['adsk.fusion.CoilFeatures'] = adsk.fusion.CoilFeatures;
+    //     adsk.fusion.CoilFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.CoilFeatures ? object : null;
+    //     };
 
-//     // The number of coil features in the collection.
-//     Object.defineProperty(adsk.fusion.CoilFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of coil features in the collection.
+    //     Object.defineProperty(adsk.fusion.CoilFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified coil feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.CoilFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CoilFeature) : null;
-//     };
+    //     // Function that returns the specified coil feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.CoilFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CoilFeature) : null;
+    //     };
 
-//     // Function that returns the specified coil feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.CoilFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CoilFeature) : null;
-//     };
+    //     // Function that returns the specified coil feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.CoilFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CoilFeature) : null;
+    //     };
+}
 
 //     //=========== CoilFeatureSectionPositions ============
 //     // List of the section positions of coil feature.
@@ -1125,485 +1110,489 @@
 //         SpiralCoilFeatureType : 3
 //     };
 
-//     //=========== CombineFeatureInput ============
-//     // This class defines the methods and properties that pertain to the definition of a combine
-//     // feature.
-//     adsk.fusion.CombineFeatureInput = function CombineFeatureInput(handle) {
-//         if (!(this instanceof adsk.fusion.CombineFeatureInput)) {
-//             return adsk.fusion.CombineFeatureInput.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.CombineFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.CombineFeatureInput.prototype.constructor = adsk.fusion.CombineFeatureInput;
-//     adsk.fusion.CombineFeatureInput.interfaceId = 'adsk.fusion.CombineFeatureInput';
-//     adsk.objectTypes['adsk.fusion.CombineFeatureInput'] = adsk.fusion.CombineFeatureInput;
-//     adsk.fusion.CombineFeatureInput.cast = function (object) {
-//         return object instanceof adsk.fusion.CombineFeatureInput ? object : null;
-//     };
+//=========== CombineFeatureInput ============
+// This class defines the methods and properties that pertain to the definition of a combine
+// feature.
+interface CombineFeatureInput {
+    //         if (!(this instanceof adsk.fusion.CombineFeatureInput)) {
+    //             return adsk.fusion.CombineFeatureInput.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.CombineFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.CombineFeatureInput.prototype.constructor = adsk.fusion.CombineFeatureInput;
+    //     adsk.fusion.CombineFeatureInput.interfaceId = 'adsk.fusion.CombineFeatureInput';
+    //     adsk.objectTypes['adsk.fusion.CombineFeatureInput'] = adsk.fusion.CombineFeatureInput;
+    //     adsk.fusion.CombineFeatureInput.cast = function (object) {
+    //         return object instanceof adsk.fusion.CombineFeatureInput ? object : null;
+    //     };
 
-//     // Gets and sets the BRep Body object that represents the blank body.
-//     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'targetBody', {
-//         get : function () {
-//             var result = this._execute('targetBody');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepBody) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.fusion.BRepBody)) { throw new TypeError('value must be a adsk.fusion.BRepBody'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('targetBody', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the BRep Body object that represents the blank body.
+    //     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'targetBody', {
+    //         get : function () {
+    //             var result = this._execute('targetBody');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.BRepBody) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.fusion.BRepBody)) { throw new TypeError('value must be a adsk.fusion.BRepBody'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('targetBody', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the BRep Body objects that represent the tool bodies.
-//     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'toolBodies', {
-//         get : function () {
-//             var result = this._execute('toolBodies');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('toolBodies', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the BRep Body objects that represent the tool bodies.
+    //     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'toolBodies', {
+    //         get : function () {
+    //             var result = this._execute('toolBodies');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ObjectCollection) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.ObjectCollection)) { throw new TypeError('value must be a adsk.core.ObjectCollection'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('toolBodies', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the type of operation performed by the combine.
-//     // The valid values are JoinFeatureOperation, CutFeatureOperation and IntersectFeatureOperation.
-//     // The default value is JoinFeatureOperation.
-//     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'operation', {
-//         get : function () {
-//             var result = this._execute('operation');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('operation', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the type of operation performed by the combine.
+    //     // The valid values are JoinFeatureOperation, CutFeatureOperation and IntersectFeatureOperation.
+    //     // The default value is JoinFeatureOperation.
+    //     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'operation', {
+    //         get : function () {
+    //             var result = this._execute('operation');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
+    //             var args = {
+    //                 value : Number(value)
+    //             };
+    //             var result = this._execute('operation', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets a boolean value for whether or not a new component will be created with the results. The default value is false.
-//     // In Base feature environment NewComponent does not work.
-//     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'isNewComponent', {
-//         get : function () {
-//             var result = this._execute('isNewComponent');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isNewComponent', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets a boolean value for whether or not a new component will be created with the results. The default value is false.
+    //     // In Base feature environment NewComponent does not work.
+    //     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'isNewComponent', {
+    //         get : function () {
+    //             var result = this._execute('isNewComponent');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isNewComponent', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets a boolean value for whether or not the tool bodies are retrained after the combine results. The default value is false.
-//     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'isKeepToolBodies', {
-//         get : function () {
-//             var result = this._execute('isKeepToolBodies');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isKeepToolBodies', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets a boolean value for whether or not the tool bodies are retrained after the combine results. The default value is false.
+    //     Object.defineProperty(adsk.fusion.CombineFeatureInput.prototype, 'isKeepToolBodies', {
+    //         get : function () {
+    //             var result = this._execute('isKeepToolBodies');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isKeepToolBodies', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
+}
 
-//     //=========== CombineFeatures ============
-//     // Collection that provides access to all of the existing Combine features in a component
-//     // and supports the ability to create new Combine features.
-//     adsk.fusion.CombineFeatures = function CombineFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.CombineFeatures)) {
-//             return adsk.fusion.CombineFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.CombineFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.CombineFeatures.prototype.constructor = adsk.fusion.CombineFeatures;
-//     adsk.fusion.CombineFeatures.interfaceId = 'adsk.fusion.CombineFeatures';
-//     adsk.objectTypes['adsk.fusion.CombineFeatures'] = adsk.fusion.CombineFeatures;
-//     adsk.fusion.CombineFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.CombineFeatures ? object : null;
-//     };
+//=========== CombineFeatures ============
+// Collection that provides access to all of the existing Combine features in a component
+// and supports the ability to create new Combine features.
+interface CombineFeatures {
+    //         if (!(this instanceof adsk.fusion.CombineFeatures)) {
+    //             return adsk.fusion.CombineFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.CombineFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.CombineFeatures.prototype.constructor = adsk.fusion.CombineFeatures;
+    //     adsk.fusion.CombineFeatures.interfaceId = 'adsk.fusion.CombineFeatures';
+    //     adsk.objectTypes['adsk.fusion.CombineFeatures'] = adsk.fusion.CombineFeatures;
+    //     adsk.fusion.CombineFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.CombineFeatures ? object : null;
+    //     };
 
-//     // The number of combine features in the collection.
-//     // This property returns nothing in the case where the feature is non-parametric.
-//     Object.defineProperty(adsk.fusion.CombineFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of combine features in the collection.
+    //     // This property returns nothing in the case where the feature is non-parametric.
+    //     Object.defineProperty(adsk.fusion.CombineFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified combine feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     // This property returns nothing in the case where the feature is non-parametric.
-//     adsk.fusion.CombineFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeature) : null;
-//     };
+    //     // Function that returns the specified combine feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     // This property returns nothing in the case where the feature is non-parametric.
+    //     adsk.fusion.CombineFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeature) : null;
+    //     };
 
-//     // Creates a CombineFeatureInput object. Use properties and methods on this object
-//     // to define the combine you want to create and then use the Add method, passing in
-//     // the CombineFeatureInput object.
-//     // targetBody : A BRep body that represents the blank body.
-//     // toolBodies : An ObjectCollection containing one or more BRep bodies that represent tool bodies.
-//     // Returns the newly created CombineFeatureInput object or null if the creation failed.
-//     adsk.fusion.CombineFeatures.prototype.createInput = function (targetBody, toolBodies) {
-//         if (targetBody !== null && !(targetBody instanceof adsk.fusion.BRepBody)) { throw new TypeError('targetBody must be a adsk.fusion.BRepBody'); }
-//         if (toolBodies !== null && !(toolBodies instanceof adsk.core.ObjectCollection)) { throw new TypeError('toolBodies must be a adsk.core.ObjectCollection'); }
-//         var args = {
-//             targetBody : (targetBody === null ? targetBody : targetBody.handle),
-//             toolBodies : (toolBodies === null ? toolBodies : toolBodies.handle)
-//         };
-//         var result = this._execute('createInput', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeatureInput) : null;
-//     };
+    //     // Creates a CombineFeatureInput object. Use properties and methods on this object
+    //     // to define the combine you want to create and then use the Add method, passing in
+    //     // the CombineFeatureInput object.
+    //     // targetBody : A BRep body that represents the blank body.
+    //     // toolBodies : An ObjectCollection containing one or more BRep bodies that represent tool bodies.
+    //     // Returns the newly created CombineFeatureInput object or null if the creation failed.
+    //     adsk.fusion.CombineFeatures.prototype.createInput = function (targetBody, toolBodies) {
+    //         if (targetBody !== null && !(targetBody instanceof adsk.fusion.BRepBody)) { throw new TypeError('targetBody must be a adsk.fusion.BRepBody'); }
+    //         if (toolBodies !== null && !(toolBodies instanceof adsk.core.ObjectCollection)) { throw new TypeError('toolBodies must be a adsk.core.ObjectCollection'); }
+    //         var args = {
+    //             targetBody : (targetBody === null ? targetBody : targetBody.handle),
+    //             toolBodies : (toolBodies === null ? toolBodies : toolBodies.handle)
+    //         };
+    //         var result = this._execute('createInput', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeatureInput) : null;
+    //     };
 
-//     // Creates a new combine feature.
-//     // input : A CombineFeatureInput object that defines the desired combine. Use the createInput
-//     // method to create a new CombineFeatureInput object and then use methods on it
-//     // (the CombineFeatureInput object) to define the combine.
-//     // Returns the newly created CombineFeature object or null if the creation failed.
-//     // This function returns nothing in the case where the feature is non-parametric.
-//     adsk.fusion.CombineFeatures.prototype.add = function (input) {
-//         if (input !== null && !(input instanceof adsk.fusion.CombineFeatureInput)) { throw new TypeError('input must be a adsk.fusion.CombineFeatureInput'); }
-//         var args = {
-//             input : (input === null ? input : input.handle)
-//         };
-//         var result = this._execute('add', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeature) : null;
-//     };
+    //     // Creates a new combine feature.
+    //     // input : A CombineFeatureInput object that defines the desired combine. Use the createInput
+    //     // method to create a new CombineFeatureInput object and then use methods on it
+    //     // (the CombineFeatureInput object) to define the combine.
+    //     // Returns the newly created CombineFeature object or null if the creation failed.
+    //     // This function returns nothing in the case where the feature is non-parametric.
+    //     adsk.fusion.CombineFeatures.prototype.add = function (input) {
+    //         if (input !== null && !(input instanceof adsk.fusion.CombineFeatureInput)) { throw new TypeError('input must be a adsk.fusion.CombineFeatureInput'); }
+    //         var args = {
+    //             input : (input === null ? input : input.handle)
+    //         };
+    //         var result = this._execute('add', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeature) : null;
+    //     };
 
-//     // Function that returns the specified combine feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.CombineFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeature) : null;
-//     };
+    //     // Function that returns the specified combine feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.CombineFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CombineFeature) : null;
+    //     };
+}
 
-//     //=========== CylinderFeatures ============
-//     // Collection that provides access to all of the existing cylinder features in a design.
-//     adsk.fusion.CylinderFeatures = function CylinderFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.CylinderFeatures)) {
-//             return adsk.fusion.CylinderFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.CylinderFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.CylinderFeatures.prototype.constructor = adsk.fusion.CylinderFeatures;
-//     adsk.fusion.CylinderFeatures.interfaceId = 'adsk.fusion.CylinderFeatures';
-//     adsk.objectTypes['adsk.fusion.CylinderFeatures'] = adsk.fusion.CylinderFeatures;
-//     adsk.fusion.CylinderFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.CylinderFeatures ? object : null;
-//     };
+//=========== CylinderFeatures ============
+// Collection that provides access to all of the existing cylinder features in a design.
+interface CylinderFeatures {
+    //         if (!(this instanceof adsk.fusion.CylinderFeatures)) {
+    //             return adsk.fusion.CylinderFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.CylinderFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.CylinderFeatures.prototype.constructor = adsk.fusion.CylinderFeatures;
+    //     adsk.fusion.CylinderFeatures.interfaceId = 'adsk.fusion.CylinderFeatures';
+    //     adsk.objectTypes['adsk.fusion.CylinderFeatures'] = adsk.fusion.CylinderFeatures;
+    //     adsk.fusion.CylinderFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.CylinderFeatures ? object : null;
+    //     };
 
-//     // The number of cylinder features in the collection.
-//     Object.defineProperty(adsk.fusion.CylinderFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of cylinder features in the collection.
+    //     Object.defineProperty(adsk.fusion.CylinderFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified cylinder feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.CylinderFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CylinderFeature) : null;
-//     };
+    //     // Function that returns the specified cylinder feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.CylinderFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CylinderFeature) : null;
+    //     };
 
-//     // Function that returns the specified cylinder feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.CylinderFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CylinderFeature) : null;
-//     };
+    //     // Function that returns the specified cylinder feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.CylinderFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.CylinderFeature) : null;
+    //     };
+}
 
-//     //=========== DraftFeatureInput ============
-//     // This class defines the methods and properties that pertain to the definition of a draft
-//     // feature.
-//     adsk.fusion.DraftFeatureInput = function DraftFeatureInput(handle) {
-//         if (!(this instanceof adsk.fusion.DraftFeatureInput)) {
-//             return adsk.fusion.DraftFeatureInput.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.DraftFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.DraftFeatureInput.prototype.constructor = adsk.fusion.DraftFeatureInput;
-//     adsk.fusion.DraftFeatureInput.interfaceId = 'adsk.fusion.DraftFeatureInput';
-//     adsk.objectTypes['adsk.fusion.DraftFeatureInput'] = adsk.fusion.DraftFeatureInput;
-//     adsk.fusion.DraftFeatureInput.cast = function (object) {
-//         return object instanceof adsk.fusion.DraftFeatureInput ? object : null;
-//     };
+//=========== DraftFeatureInput ============
+// This class defines the methods and properties that pertain to the definition of a draft
+// feature.
+interface DraftFeatureInput {
+    //         if (!(this instanceof adsk.fusion.DraftFeatureInput)) {
+    //             return adsk.fusion.DraftFeatureInput.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.DraftFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.DraftFeatureInput.prototype.constructor = adsk.fusion.DraftFeatureInput;
+    //     adsk.fusion.DraftFeatureInput.interfaceId = 'adsk.fusion.DraftFeatureInput';
+    //     adsk.objectTypes['adsk.fusion.DraftFeatureInput'] = adsk.fusion.DraftFeatureInput;
+    //     adsk.fusion.DraftFeatureInput.cast = function (object) {
+    //         return object instanceof adsk.fusion.DraftFeatureInput ? object : null;
+    //     };
 
-//     // Gets and sets the input faces.
-//     // If IsTangentChain is true, all the faces that are tangentially connected to the input faces (if any) will also be included.
-//     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'inputFaces', {
-//         get : function () {
-//             var result = this._execute('inputFaces');
-//             if (!result || !Array.isArray(result.value)) {
-//                 return undefined
-//             }
-//             var resultIter;
-//             var resultValue = [];
-//             for (resultIter = 0; resultIter < result.value.length; ++resultIter) {
-//                 resultValue[resultIter] = (result.value[resultIter] !== undefined) ? adsk.createObject(result.value[resultIter], adsk.fusion.BRepFace) : null;
-//             }
-//             return resultValue
-//         },
-//         set : function (value) {
-//             if (!Array.isArray(value)) { throw new TypeError('value must be an array'); }
-//             var valueLength = value.length;
-//             var valueIt;
-//             for (valueIt = 0; valueIt < valueLength; ++valueIt) {
-//                 if (value[valueIt] !== null && !(value[valueIt] instanceof adsk.fusion.BRepFace)) { throw new TypeError('value[valueIt] must be a adsk.fusion.BRepFace'); }
-//             }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('inputFaces', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the input faces.
+    //     // If IsTangentChain is true, all the faces that are tangentially connected to the input faces (if any) will also be included.
+    //     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'inputFaces', {
+    //         get : function () {
+    //             var result = this._execute('inputFaces');
+    //             if (!result || !Array.isArray(result.value)) {
+    //                 return undefined
+    //             }
+    //             var resultIter;
+    //             var resultValue = [];
+    //             for (resultIter = 0; resultIter < result.value.length; ++resultIter) {
+    //                 resultValue[resultIter] = (result.value[resultIter] !== undefined) ? adsk.createObject(result.value[resultIter], adsk.fusion.BRepFace) : null;
+    //             }
+    //             return resultValue
+    //         },
+    //         set : function (value) {
+    //             if (!Array.isArray(value)) { throw new TypeError('value must be an array'); }
+    //             var valueLength = value.length;
+    //             var valueIt;
+    //             for (valueIt = 0; valueIt < valueLength; ++valueIt) {
+    //                 if (value[valueIt] !== null && !(value[valueIt] instanceof adsk.fusion.BRepFace)) { throw new TypeError('value[valueIt] must be a adsk.fusion.BRepFace'); }
+    //             }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('inputFaces', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the plane that defines the direction in which the draft is applied. This can be a planar BrepFace, or a ConstructionPlane.
-//     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'plane', {
-//         get : function () {
-//             var result = this._execute('plane');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('plane', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the plane that defines the direction in which the draft is applied. This can be a planar BrepFace, or a ConstructionPlane.
+    //     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'plane', {
+    //         get : function () {
+    //             var result = this._execute('plane');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('plane', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets if any faces that are tangentially connected to any of
-//     // the input faces will also be included in setting InputEntities. It defaults to true.
-//     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'isTangentChain', {
-//         get : function () {
-//             var result = this._execute('isTangentChain');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isTangentChain', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets if any faces that are tangentially connected to any of
+    //     // the input faces will also be included in setting InputEntities. It defaults to true.
+    //     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'isTangentChain', {
+    //         get : function () {
+    //             var result = this._execute('isTangentChain');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isTangentChain', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets if the direction of the draft is flipped.
-//     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'isDirectionFlipped', {
-//         get : function () {
-//             var result = this._execute('isDirectionFlipped');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isDirectionFlipped', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets if the direction of the draft is flipped.
+    //     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'isDirectionFlipped', {
+    //         get : function () {
+    //             var result = this._execute('isDirectionFlipped');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isDirectionFlipped', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets the first, or the only angle in the case of a single angle definition.
-//     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'angleOne', {
-//         get : function () {
-//             var result = this._execute('angleOne');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         }
-//     });
+    //     // Gets the first, or the only angle in the case of a single angle definition.
+    //     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'angleOne', {
+    //         get : function () {
+    //             var result = this._execute('angleOne');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         }
+    //     });
 
-//     // Gets the second angle. This can be null in the case where a single angle definition is used.
-//     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'angleTwo', {
-//         get : function () {
-//             var result = this._execute('angleTwo');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
-//         }
-//     });
+    //     // Gets the second angle. This can be null in the case where a single angle definition is used.
+    //     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'angleTwo', {
+    //         get : function () {
+    //             var result = this._execute('angleTwo');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ValueInput) : null;
+    //         }
+    //     });
 
-//     // Gets if the draft is symmetric from the draft plane. This only applies in the case where two
-//     // angles have been specified and should be ignored otherwise.
-//     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'isSymmetric', {
-//         get : function () {
-//             var result = this._execute('isSymmetric');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets if the draft is symmetric from the draft plane. This only applies in the case where two
+    //     // angles have been specified and should be ignored otherwise.
+    //     Object.defineProperty(adsk.fusion.DraftFeatureInput.prototype, 'isSymmetric', {
+    //         get : function () {
+    //             var result = this._execute('isSymmetric');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Defines the draft to be defined so that a single angle is used for all drafts.
-//     // If the isSymmetric is true then the faces are split along the parting plane and drafted
-//     // independently using the same angle.
-//     // isSymmetric : Set to 'true' if the faces are to be split along the plane and drafted symmetrically. This
-//     // will have the side effect of setting the isSymmetric property to the same value.
-//     // angle : The ValueInput object that defines the angle of the draft. This can be a positive or negative
-//     // value which will affect the direction of the draft along with the isDirectionFlipped property.
-//     // Returns true if successful
-//     adsk.fusion.DraftFeatureInput.prototype.setSingleAngle = function (isSymmetric, angle) {
-//         if (typeof isSymmetric !== 'boolean') { throw new TypeError('isSymmetric must be a boolean'); }
-//         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
-//         var args = {
-//             isSymmetric : isSymmetric,
-//             angle : (angle === null ? angle : angle.handle)
-//         };
-//         var result = this._execute('setSingleAngle', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Defines the draft to be defined so that a single angle is used for all drafts.
+    //     // If the isSymmetric is true then the faces are split along the parting plane and drafted
+    //     // independently using the same angle.
+    //     // isSymmetric : Set to 'true' if the faces are to be split along the plane and drafted symmetrically. This
+    //     // will have the side effect of setting the isSymmetric property to the same value.
+    //     // angle : The ValueInput object that defines the angle of the draft. This can be a positive or negative
+    //     // value which will affect the direction of the draft along with the isDirectionFlipped property.
+    //     // Returns true if successful
+    //     adsk.fusion.DraftFeatureInput.prototype.setSingleAngle = function (isSymmetric, angle) {
+    //         if (typeof isSymmetric !== 'boolean') { throw new TypeError('isSymmetric must be a boolean'); }
+    //         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             isSymmetric : isSymmetric,
+    //             angle : (angle === null ? angle : angle.handle)
+    //         };
+    //         var result = this._execute('setSingleAngle', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Defines both angles to use when the surfaces are split along the draft plane and
-//     // the faces on each side of the plane are drafted independently from the other side.
-//     // angleOne : The ValueInput object that defines the angle for the faces on the first side of the draft plane.
-//     // angleTwo : The ValueInput object that defines the angle for the faces on the second side of the draft plane.
-//     // Returns true if successful
-//     adsk.fusion.DraftFeatureInput.prototype.setTwoAngles = function (angleOne, angleTwo) {
-//         if (angleOne !== null && !(angleOne instanceof adsk.core.ValueInput)) { throw new TypeError('angleOne must be a adsk.core.ValueInput'); }
-//         if (angleTwo !== null && !(angleTwo instanceof adsk.core.ValueInput)) { throw new TypeError('angleTwo must be a adsk.core.ValueInput'); }
-//         var args = {
-//             angleOne : (angleOne === null ? angleOne : angleOne.handle),
-//             angleTwo : (angleTwo === null ? angleTwo : angleTwo.handle)
-//         };
-//         var result = this._execute('setTwoAngles', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Defines both angles to use when the surfaces are split along the draft plane and
+    //     // the faces on each side of the plane are drafted independently from the other side.
+    //     // angleOne : The ValueInput object that defines the angle for the faces on the first side of the draft plane.
+    //     // angleTwo : The ValueInput object that defines the angle for the faces on the second side of the draft plane.
+    //     // Returns true if successful
+    //     adsk.fusion.DraftFeatureInput.prototype.setTwoAngles = function (angleOne, angleTwo) {
+    //         if (angleOne !== null && !(angleOne instanceof adsk.core.ValueInput)) { throw new TypeError('angleOne must be a adsk.core.ValueInput'); }
+    //         if (angleTwo !== null && !(angleTwo instanceof adsk.core.ValueInput)) { throw new TypeError('angleTwo must be a adsk.core.ValueInput'); }
+    //         var args = {
+    //             angleOne : (angleOne === null ? angleOne : angleOne.handle),
+    //             angleTwo : (angleTwo === null ? angleTwo : angleTwo.handle)
+    //         };
+    //         var result = this._execute('setTwoAngles', args);
+    //         return result ? result.value : undefined;
+    //     };
+}
 
-//     //=========== DraftFeatures ============
-//     // Collection that provides access to all of the existing draft features in a component
-//     // and supports the ability to create new draft features.
-//     adsk.fusion.DraftFeatures = function DraftFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.DraftFeatures)) {
-//             return adsk.fusion.DraftFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.DraftFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.DraftFeatures.prototype.constructor = adsk.fusion.DraftFeatures;
-//     adsk.fusion.DraftFeatures.interfaceId = 'adsk.fusion.DraftFeatures';
-//     adsk.objectTypes['adsk.fusion.DraftFeatures'] = adsk.fusion.DraftFeatures;
-//     adsk.fusion.DraftFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.DraftFeatures ? object : null;
-//     };
+//=========== DraftFeatures ============
+// Collection that provides access to all of the existing draft features in a component
+// and supports the ability to create new draft features.
+interface DraftFeatures {
+    //         if (!(this instanceof adsk.fusion.DraftFeatures)) {
+    //             return adsk.fusion.DraftFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.DraftFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.DraftFeatures.prototype.constructor = adsk.fusion.DraftFeatures;
+    //     adsk.fusion.DraftFeatures.interfaceId = 'adsk.fusion.DraftFeatures';
+    //     adsk.objectTypes['adsk.fusion.DraftFeatures'] = adsk.fusion.DraftFeatures;
+    //     adsk.fusion.DraftFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.DraftFeatures ? object : null;
+    //     };
 
-//     // The number of draft features in the collection.
-//     Object.defineProperty(adsk.fusion.DraftFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of draft features in the collection.
+    //     Object.defineProperty(adsk.fusion.DraftFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified draft feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.DraftFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeature) : null;
-//     };
+    //     // Function that returns the specified draft feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.DraftFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeature) : null;
+    //     };
 
-//     // Creates a DraftFeatureInput object. Use properties and methods on this object
-//     // to define the draft you want to create and then use the Add method, passing in
-//     // the DraftFeatureInput object.
-//     // inputFaces : BRepFace array that contains the faces to which draft will be applied.
-//     // The picked point on face is always the point returned from pointOnFace property of the first BRepFace in this collection.
-//     // plane : Input object that defines the direction in which the draft is applied. This can be a planar BrepFace, or a ConstructionPlane.
-//     // isTangentChain : A boolean value for setting whether or not faces that are tangentially connected to
-//     // any of the input faces (if any) will also be included. It defaults to true.
-//     // Returns the newly created DraftFeatureInput object or null if the creation failed.
-//     adsk.fusion.DraftFeatures.prototype.createInput = function (inputFaces, plane, isTangentChain) {
-//         if (!Array.isArray(inputFaces)) { throw new TypeError('inputFaces must be an array'); }
-//         var inputFacesLength = inputFaces.length;
-//         var inputFacesIt;
-//         for (inputFacesIt = 0; inputFacesIt < inputFacesLength; ++inputFacesIt) {
-//             if (inputFaces[inputFacesIt] !== null && !(inputFaces[inputFacesIt] instanceof adsk.fusion.BRepFace)) { throw new TypeError('inputFaces[inputFacesIt] must be a adsk.fusion.BRepFace'); }
-//         }
-//         if (plane !== null && !(plane instanceof adsk.core.Base)) { throw new TypeError('plane must be a adsk.core.Base'); }
-//         if (isTangentChain === null || (isTangentChain !== undefined && typeof isTangentChain !== 'boolean')) { throw new TypeError('isTangentChain must be a boolean'); }
-//         var args = {
-//             inputFaces : inputFaces,
-//             plane : (plane === null ? plane : plane.handle)
-//         };
-//         if (isTangentChain !== undefined) {
-//             args.isTangentChain = isTangentChain;
-//         }
-//         var result = this._execute('createInput', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeatureInput) : null;
-//     };
+    //     // Creates a DraftFeatureInput object. Use properties and methods on this object
+    //     // to define the draft you want to create and then use the Add method, passing in
+    //     // the DraftFeatureInput object.
+    //     // inputFaces : BRepFace array that contains the faces to which draft will be applied.
+    //     // The picked point on face is always the point returned from pointOnFace property of the first BRepFace in this collection.
+    //     // plane : Input object that defines the direction in which the draft is applied. This can be a planar BrepFace, or a ConstructionPlane.
+    //     // isTangentChain : A boolean value for setting whether or not faces that are tangentially connected to
+    //     // any of the input faces (if any) will also be included. It defaults to true.
+    //     // Returns the newly created DraftFeatureInput object or null if the creation failed.
+    //     adsk.fusion.DraftFeatures.prototype.createInput = function (inputFaces, plane, isTangentChain) {
+    //         if (!Array.isArray(inputFaces)) { throw new TypeError('inputFaces must be an array'); }
+    //         var inputFacesLength = inputFaces.length;
+    //         var inputFacesIt;
+    //         for (inputFacesIt = 0; inputFacesIt < inputFacesLength; ++inputFacesIt) {
+    //             if (inputFaces[inputFacesIt] !== null && !(inputFaces[inputFacesIt] instanceof adsk.fusion.BRepFace)) { throw new TypeError('inputFaces[inputFacesIt] must be a adsk.fusion.BRepFace'); }
+    //         }
+    //         if (plane !== null && !(plane instanceof adsk.core.Base)) { throw new TypeError('plane must be a adsk.core.Base'); }
+    //         if (isTangentChain === null || (isTangentChain !== undefined && typeof isTangentChain !== 'boolean')) { throw new TypeError('isTangentChain must be a boolean'); }
+    //         var args = {
+    //             inputFaces : inputFaces,
+    //             plane : (plane === null ? plane : plane.handle)
+    //         };
+    //         if (isTangentChain !== undefined) {
+    //             args.isTangentChain = isTangentChain;
+    //         }
+    //         var result = this._execute('createInput', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeatureInput) : null;
+    //     };
 
-//     // Creates a new draft feature.
-//     // input : A DraftFeatureInput object that defines the desired draft. Use the createInput
-//     // method to create a new DraftFeatureInput object and then use methods on it
-//     // (the DraftFeatureInput object) to define the draft.
-//     // Returns the newly created DraftFeature object or null if the creation failed.
-//     adsk.fusion.DraftFeatures.prototype.add = function (input) {
-//         if (input !== null && !(input instanceof adsk.fusion.DraftFeatureInput)) { throw new TypeError('input must be a adsk.fusion.DraftFeatureInput'); }
-//         var args = {
-//             input : (input === null ? input : input.handle)
-//         };
-//         var result = this._execute('add', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeature) : null;
-//     };
+    //     // Creates a new draft feature.
+    //     // input : A DraftFeatureInput object that defines the desired draft. Use the createInput
+    //     // method to create a new DraftFeatureInput object and then use methods on it
+    //     // (the DraftFeatureInput object) to define the draft.
+    //     // Returns the newly created DraftFeature object or null if the creation failed.
+    //     adsk.fusion.DraftFeatures.prototype.add = function (input) {
+    //         if (input !== null && !(input instanceof adsk.fusion.DraftFeatureInput)) { throw new TypeError('input must be a adsk.fusion.DraftFeatureInput'); }
+    //         var args = {
+    //             input : (input === null ? input : input.handle)
+    //         };
+    //         var result = this._execute('add', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeature) : null;
+    //     };
 
-//     // Function that returns the specified draft feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.DraftFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeature) : null;
-//     };
-
+    //     // Function that returns the specified draft feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.DraftFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.DraftFeature) : null;
+    //     };
+}
 //     //=========== ExtendFeatureInput ============
 //     // This class defines the methods and properties that pertain to the definition of a extend feature.
 //     adsk.fusion.ExtendFeatureInput = function ExtendFeatureInput(handle) {

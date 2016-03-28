@@ -57,37 +57,21 @@ interface Appearances {
     // a reliable way of accessing a specific appearance because appearances are not required to be unique.
     // name : The name of the appearance to return,.
     // Returns the specified appearance or null if there isn't a matching name.
-    itemByName(name:string):Appearance;
+    itemByName(name: string): Appearance;
 
-    //     // Returns the Appearance by it's internal unique ID.
-    //     // id : The ID of the appearance to return.
-    //     // Returns the specified appearance or null if there isn't a matching ID.
-    //     adsk.core.Appearances.prototype.itemById = function (id) {
-    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-    //         var args = {
-    //             id : id
-    //         };
-    //         var result = this._execute('itemById', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
-    //     };
+    // Returns the Appearance by it's internal unique ID.
+    // id : The ID of the appearance to return.
+    // Returns the specified appearance or null if there isn't a matching ID.
+    itemById(id: string): Appearance;
 
-    //     // Add an Appearance to a Design by copying an existing Appearance from Favorites, a Library or from the
-    //     // appearances stored in the Design. This method currently only applies to the Appearances collection from a Design and
-    //     // cannot be used to copy an Appearance to a library.
-    //     // appearanceToCopy : The Appearance you want to copy. The Appearance to copy can be from Favorites, a Library or from the
-    //     // appearances stored in the Design.
-    //     // name : The Appearnce name to apply to the copy.
-    //     // Returns the newly created Appearance or null if the copy operation failed.
-    //     adsk.core.Appearances.prototype.addByCopy = function (appearanceToCopy, name) {
-    //         if (appearanceToCopy !== null && !(appearanceToCopy instanceof adsk.core.Appearance)) { throw new TypeError('appearanceToCopy must be a adsk.core.Appearance'); }
-    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-    //         var args = {
-    //             appearanceToCopy : (appearanceToCopy === null ? appearanceToCopy : appearanceToCopy.handle),
-    //             name : name
-    //         };
-    //         var result = this._execute('addByCopy', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
-    //     };
+    // Add an Appearance to a Design by copying an existing Appearance from Favorites, a Library or from the
+    // appearances stored in the Design. This method currently only applies to the Appearances collection from a Design and
+    // cannot be used to copy an Appearance to a library.
+    // appearanceToCopy : The Appearance you want to copy. The Appearance to copy can be from Favorites, a Library or from the
+    // appearances stored in the Design.
+    // name : The Appearnce name to apply to the copy.
+    // Returns the newly created Appearance or null if the copy operation failed.
+    addByCopy(appearanceToCopy: Appearance, name: string): Appearance;
 }
 
 //=========== AppearanceSourceTypes ============
@@ -103,197 +87,78 @@ declare enum AppearanceSourceTypes {
 //=========== AppearanceTexture ============
 // Provides access to a list of properties that define a texture.
 interface AppearanceTexture {
-    //     adsk.core.AppearanceTexture = function AppearanceTexture(handle) {
-    //         if (!(this instanceof adsk.core.AppearanceTexture)) {
-    //             return adsk.core.AppearanceTexture.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.AppearanceTexture.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.AppearanceTexture.prototype.constructor = adsk.core.AppearanceTexture;
-    //     adsk.core.AppearanceTexture.interfaceId = 'adsk.core.AppearanceTexture';
-    //     adsk.objectTypes['adsk.core.AppearanceTexture'] = adsk.core.AppearanceTexture;
-    //     adsk.core.AppearanceTexture.cast = function (object) {
-    //         return object instanceof adsk.core.AppearanceTexture ? object : null;
-    //     };
+    cast(object: Object): AppearanceTexture;
 
-    //     // Returns a collection of the properties associated with this texture.
-    //     Object.defineProperty(adsk.core.AppearanceTexture.prototype, 'properties', {
-    //         get : function () {
-    //             var result = this._execute('properties');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Properties) : null;
-    //         }
-    //     });
+    // Returns a collection of the properties associated with this texture.
+    properties: Properties;
 
-    //     // Gets the type of texture this appearance currently is.
-    //     Object.defineProperty(adsk.core.AppearanceTexture.prototype, 'textureType', {
-    //         get : function () {
-    //             var result = this._execute('textureType');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the type of texture this appearance currently is.
+    textureType;
 
-    //     // Changes the image of this texture.
-    //     // imageFilename : Input String specifying the full filename of the texture file to use.
-    //     // Returns true if the change was successful.
-    //     adsk.core.AppearanceTexture.prototype.changeTextureImage = function (imageFilename) {
-    //         if (imageFilename === undefined || imageFilename === null || imageFilename.constructor !== String) { throw new TypeError('imageFilename must be a string'); }
-    //         var args = {
-    //             imageFilename : imageFilename
-    //         };
-    //         var result = this._execute('changeTextureImage', args);
-    //         return result ? result.value : undefined;
-    //     };
+    // Changes the image of this texture.
+    // imageFilename : Input String specifying the full filename of the texture file to use.
+    // Returns true if the change was successful.
+    changeTextureImage(imageFilename: string): boolean;
 }
 
 //=========== FavoriteAppearances ============
 // Collection of the favorite appearances.
 interface FavoriteAppearances {
-    //     adsk.core.FavoriteAppearances = function FavoriteAppearances(handle) {
-    //         if (!(this instanceof adsk.core.FavoriteAppearances)) {
-    //             return adsk.core.FavoriteAppearances.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.FavoriteAppearances.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.FavoriteAppearances.prototype.constructor = adsk.core.FavoriteAppearances;
-    //     adsk.core.FavoriteAppearances.interfaceId = 'adsk.core.FavoriteAppearances';
-    //     adsk.objectTypes['adsk.core.FavoriteAppearances'] = adsk.core.FavoriteAppearances;
-    //     adsk.core.FavoriteAppearances.cast = function (object) {
-    //         return object instanceof adsk.core.FavoriteAppearances ? object : null;
-    //     };
+    cast(object: Object): FavoriteAppearances;
 
-    //     // The number of Appearances in the collection.
-    //     Object.defineProperty(adsk.core.FavoriteAppearances.prototype, 'count', {
-    //         get : function () {
-    //             var result = this._execute('count');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // The number of Appearances in the collection.
+    count: number;
 
-    //     // Returns the specified Appearance using an index into the collection.
-    //     // index : The index of the appearance to return where the first item in the collection is 0.
-    //     // Returns the specified appearance or null if an invalid index is specified.
-    //     adsk.core.FavoriteAppearances.prototype.item = function (index) {
-    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-    //         var args = {
-    //             index : Number(index)
-    //         };
-    //         var result = this._execute('item', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
-    //     };
+    // Returns the specified Appearance using an index into the collection.
+    // index : The index of the appearance to return where the first item in the collection is 0.
+    // Returns the specified appearance or null if an invalid index is specified.
+    item(index: number): Appearance;
 
-    //     // Returns the specified appearance using the name as seen in the user interface. This often isn't
-    //     // a reliable way of accessing a specific appearance because appearances are not required to be unique.
-    //     // name : The name of the appearance to return,.
-    //     // Returns the specified appearance or null if there isn't a matching name.
-    //     adsk.core.FavoriteAppearances.prototype.itemByName = function (name) {
-    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-    //         var args = {
-    //             name : name
-    //         };
-    //         var result = this._execute('itemByName', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
-    //     };
+    // Returns the specified appearance using the name as seen in the user interface. This often isn't
+    // a reliable way of accessing a specific appearance because appearances are not required to be unique.
+    // name : The name of the appearance to return,.
+    // Returns the specified appearance or null if there isn't a matching name.
+    itemByName(name: string): Appearance;
 
-    //     // Returns the Appearance by it's internal unique ID.
-    //     // id : The ID of the appearance to return.
-    //     // Returns the specified appearance or null if there isn't a matching ID.
-    //     adsk.core.FavoriteAppearances.prototype.itemById = function (id) {
-    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-    //         var args = {
-    //             id : id
-    //         };
-    //         var result = this._execute('itemById', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
-    //     };
+    // Returns the Appearance by it's internal unique ID.
+    // id : The ID of the appearance to return.
+    // Returns the specified appearance or null if there isn't a matching ID.
+    itemById(id: string): Appearance;
 
-    //     // Adds an existing appearance to the Favorites list
-    //     // appearance : The appearance to be added to the favorites list. This can come from a Library or from a Design.
-    //     // Returns the Appearance added to the favorites list or null if the operation failed.
-    //     adsk.core.FavoriteAppearances.prototype.add = function (appearance) {
-    //         if (appearance !== null && !(appearance instanceof adsk.core.Appearance)) { throw new TypeError('appearance must be a adsk.core.Appearance'); }
-    //         var args = {
-    //             appearance : (appearance === null ? appearance : appearance.handle)
-    //         };
-    //         var result = this._execute('add', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
-    //     };
+    // Adds an existing appearance to the Favorites list
+    // appearance : The appearance to be added to the favorites list. This can come from a Library or from a Design.
+    // Returns the Appearance added to the favorites list or null if the operation failed.
+    add(appearance: Appearance): Appearance;
 }
 
 //=========== FavoriteMaterials ============
 // Collection of the favorite materials.
 interface FavoriteMaterials {
-    //     adsk.core.FavoriteMaterials = function FavoriteMaterials(handle) {
-    //         if (!(this instanceof adsk.core.FavoriteMaterials)) {
-    //             return adsk.core.FavoriteMaterials.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.FavoriteMaterials.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.FavoriteMaterials.prototype.constructor = adsk.core.FavoriteMaterials;
-    //     adsk.core.FavoriteMaterials.interfaceId = 'adsk.core.FavoriteMaterials';
-    //     adsk.objectTypes['adsk.core.FavoriteMaterials'] = adsk.core.FavoriteMaterials;
-    //     adsk.core.FavoriteMaterials.cast = function (object) {
-    //         return object instanceof adsk.core.FavoriteMaterials ? object : null;
-    //     };
+    cast(object: Object): FavoriteMaterials;
 
-    //     // The number of Materials in the collection.
-    //     Object.defineProperty(adsk.core.FavoriteMaterials.prototype, 'count', {
-    //         get : function () {
-    //             var result = this._execute('count');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // The number of Materials in the collection.
+    count: number;
 
-    //     // Returns the specified Material using an index into the collection.
-    //     // index : The index of the material to return where the first item in the collection is 0.
-    //     // Returns the specified material or null if an invalid index is specified.
-    //     adsk.core.FavoriteMaterials.prototype.item = function (index) {
-    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-    //         var args = {
-    //             index : Number(index)
-    //         };
-    //         var result = this._execute('item', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Material) : null;
-    //     };
+    // Returns the specified Material using an index into the collection.
+    // index : The index of the material to return where the first item in the collection is 0.
+    // Returns the specified material or null if an invalid index is specified.
+    item(index: number): Material;
 
-    //     // Returns the specified Material using the name as seen in the user interface. This often isn't
-    //     // a reliable way of accessing a specific material because materials are not required to be unique.
-    //     // name : The name of the material to return,.
-    //     // Returns the specified material or null if there isn't a matching name.
-    //     adsk.core.FavoriteMaterials.prototype.itemByName = function (name) {
-    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-    //         var args = {
-    //             name : name
-    //         };
-    //         var result = this._execute('itemByName', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Material) : null;
-    //     };
+    // Returns the specified Material using the name as seen in the user interface. This often isn't
+    // a reliable way of accessing a specific material because materials are not required to be unique.
+    // name : The name of the material to return,.
+    // Returns the specified material or null if there isn't a matching name.
+    itemByName(name: string): Material;
 
-    //     // Returns the Material by it's internal unique ID.
-    //     // id : The ID of the material to return.
-    //     // Returns the specified material or null if there isn't a matching ID.
-    //     adsk.core.FavoriteMaterials.prototype.itemById = function (id) {
-    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-    //         var args = {
-    //             id : id
-    //         };
-    //         var result = this._execute('itemById', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Material) : null;
-    //     };
+    // Returns the Material by it's internal unique ID.
+    // id : The ID of the material to return.
+    // Returns the specified material or null if there isn't a matching ID.
+    itemById(id: string): Material;
 
-    //     // Adds an existing material to the Favorites list
-    //     // material : The material to be added to the favorites list. This can come from a Library or from a Design.
-    //     // Returns the Material added to the favorites list or null if the operation failed.
-    //     adsk.core.FavoriteMaterials.prototype.add = function (material) {
-    //         if (material !== null && !(material instanceof adsk.core.Material)) { throw new TypeError('material must be a adsk.core.Material'); }
-    //         var args = {
-    //             material : (material === null ? material : material.handle)
-    //         };
-    //         var result = this._execute('add', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Material) : null;
-    //     };
+    // Adds an existing material to the Favorites list
+    // material : The material to be added to the favorites list. This can come from a Library or from a Design.
+    // Returns the Material added to the favorites list or null if the operation failed.
+    add(material: Material): Material;
 }
 
 //=========== Material ============
@@ -1021,289 +886,89 @@ interface FilenameProperty {
 //=========== FloatProperty ============
 // A float or real value property associated with a material or appearance.
 interface FloatProperty {
-    //     adsk.core.FloatProperty = function FloatProperty(handle) {
-    //         if (!(this instanceof adsk.core.FloatProperty)) {
-    //             return adsk.core.FloatProperty.cast(handle);
-    //         }
-    //         adsk.core.Property.call(this, handle);
-    //     };
-    //     adsk.core.FloatProperty.prototype = Object.create(adsk.core.Property.prototype);
-    //     adsk.core.FloatProperty.prototype.constructor = adsk.core.FloatProperty;
-    //     adsk.core.FloatProperty.interfaceId = 'adsk.core.FloatProperty';
-    //     adsk.objectTypes['adsk.core.FloatProperty'] = adsk.core.FloatProperty;
-    //     adsk.core.FloatProperty.cast = function (object) {
-    //         return object instanceof adsk.core.FloatProperty ? object : null;
-    //     };
+    cast(object: Object): FloatProperty;
 
-    //     // Gets and sets the boolean flag that indicates if the float value has been overridden
-    //     // using a texture. Setting this property to False will remove the texture so that a float
-    //     // value is used. Setting this property to True will connect a texture to this float value.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'hasConnectedTexture', {
-    //         get : function () {
-    //             var result = this._execute('hasConnectedTexture');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('hasConnectedTexture', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets the boolean flag that indicates if the float value has been overridden
+    // using a texture. Setting this property to False will remove the texture so that a float
+    // value is used. Setting this property to True will connect a texture to this float value.
+    hasConnectedTexture: boolean;
 
-    //     // Gets the associated texture, if one exists. The HasConnectedTexture property controls
-    //     // if there is an associated texture or not. If it's parent writable you can edit the
-    //     // texture. If no texture exists, this property will return Nothing.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'connectedTexture', {
-    //         get : function () {
-    //             var result = this._execute('connectedTexture');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.AppearanceTexture) : null;
-    //         }
-    //     });
+    // Gets the associated texture, if one exists. The HasConnectedTexture property controls
+    // if there is an associated texture or not. If it's parent writable you can edit the
+    // texture. If no texture exists, this property will return Nothing.
+    connectedTexture: AppearanceTexture;
 
-    //     // Gets the boolean flag that indicates if the value of this property has any limits it must be within to
-    //     // be valid. If True, use the GetLimits method to get the limit values.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'hasLimits', {
-    //         get : function () {
-    //             var result = this._execute('hasLimits');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the boolean flag that indicates if the value of this property has any limits it must be within to
+    // be valid. If True, use the GetLimits method to get the limit values.
+    hasLimits: boolean;
 
-    //     // Gets the boolean flag that indicates if this property has multiple values or not.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'hasMultipleValues', {
-    //         get : function () {
-    //             var result = this._execute('hasMultipleValues');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the boolean flag that indicates if this property has multiple values or not.
+    hasMultipleValues: boolean;
 
-    //     // Gets the boolean flag that indicates that this property represents a percentage value so
-    //     // the valid values must be in the range of 0.0 to 1.0 unless they’re further limited by
-    //     // additional limits which can be determined with the HasLimits property.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'isPercentage', {
-    //         get : function () {
-    //             var result = this._execute('isPercentage');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the boolean flag that indicates that this property represents a percentage value so
+    // the valid values must be in the range of 0.0 to 1.0 unless they’re further limited by
+    // additional limits which can be determined with the HasLimits property.
+    isPercentage: boolean;
 
-    //     // Gets the units that the value of this property is returned in. The String returned is a
-    //     // valid Fusion unit string.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'units', {
-    //         get : function () {
-    //             var result = this._execute('units');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the units that the value of this property is returned in. The String returned is a
+    // valid Fusion unit string.
+    units: string;
 
-    //     // Gets and sets this property value. The value of this property should be ignored
-    //     // if the HasConnectedTexture property is true. Setting this will remove any
-    //     // associated texture, if there is one.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'value', {
-    //         get : function () {
-    //             var result = this._execute('value');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-    //             var args = {
-    //                 value : Number(value)
-    //             };
-    //             var result = this._execute('value', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets this property value. The value of this property should be ignored
+    // if the HasConnectedTexture property is true. Setting this will remove any
+    // associated texture, if there is one.
+    value: number;
 
-    //     // Gets and sets the values associated with this property. HasMultipleValues property
-    //     // indicates if this property will be returning more than one value.
-    //     Object.defineProperty(adsk.core.FloatProperty.prototype, 'values', {
-    //         get : function () {
-    //             var result = this._execute('values');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!Array.isArray(value)) { throw new TypeError('value must be an array'); }
-    //             var valueLength = value.length;
-    //             var valueIt;
-    //             for (valueIt = 0; valueIt < valueLength; ++valueIt) {
-    //                 if (!isFinite(value[valueIt])) { throw new TypeError('value[valueIt] must be a number'); }
-    //             }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('values', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets the values associated with this property. HasMultipleValues property
+    // indicates if this property will be returning more than one value.
+    values: number[];
 
-    //     // Method that returns any limits for the value of this property. The HasLimits property can
-    //     // be used to see if there are any limits or not.
-    //     // hasLowLimit : Output Boolean that indicates if there is a low limit or not.
-    //     // lowLimit : If the hasLowLimit argument is true, this argument returns the low limit.
-    //     // hasHighLimit : Output Boolean that indicates if there is a high limit or not.
-    //     // highLimit : If the hasHighLimit argument is true, this argument returns the high limit.
-    //     // Returns true if the method call was successful.
-    //     adsk.core.FloatProperty.prototype.getLimits = function (hasLowLimit, lowLimit, hasHighLimit, highLimit) {
-    //         if (typeof hasLowLimit !== 'object') { throw new TypeError('hasLowLimit must be an object'); }
-    //         if (typeof lowLimit !== 'object') { throw new TypeError('lowLimit must be an object'); }
-    //         if (typeof hasHighLimit !== 'object') { throw new TypeError('hasHighLimit must be an object'); }
-    //         if (typeof highLimit !== 'object') { throw new TypeError('highLimit must be an object'); }
-    //         var args = {
-    //             hasLowLimit : null,
-    //             lowLimit : null,
-    //             hasHighLimit : null,
-    //             highLimit : null
-    //         };
-    //         var result = this._execute('getLimits', args);
-    //         if (result && result.outargs) {
-    //             hasLowLimit.value = (result.outargs.hasLowLimit !== undefined) ? result.outargs.hasLowLimit : undefined;
-    //             lowLimit.value = (result.outargs.lowLimit !== undefined) ? result.outargs.lowLimit : undefined;
-    //             hasHighLimit.value = (result.outargs.hasHighLimit !== undefined) ? result.outargs.hasHighLimit : undefined;
-    //             highLimit.value = (result.outargs.highLimit !== undefined) ? result.outargs.highLimit : undefined;
-    //         }
-    //         return result ? result.value : undefined;
-    //     };
+    // Method that returns any limits for the value of this property. The HasLimits property can
+    // be used to see if there are any limits or not.
+    // hasLowLimit : Output Boolean that indicates if there is a low limit or not.
+    // lowLimit : If the hasLowLimit argument is true, this argument returns the low limit.
+    // hasHighLimit : Output Boolean that indicates if there is a high limit or not.
+    // highLimit : If the hasHighLimit argument is true, this argument returns the high limit.
+    // Returns true if the method call was successful.
+    getLimits(hasLowLimit: Object, lowLimit: Object, hasHighLimit: Object, highLimit: Object): boolean;
 }
 
 //=========== IntegerProperty ============
 // An integer value property associated with a material or appearance.
 interface IntegerProperty {
-    //     adsk.core.IntegerProperty = function IntegerProperty(handle) {
-    //         if (!(this instanceof adsk.core.IntegerProperty)) {
-    //             return adsk.core.IntegerProperty.cast(handle);
-    //         }
-    //         adsk.core.Property.call(this, handle);
-    //     };
-    //     adsk.core.IntegerProperty.prototype = Object.create(adsk.core.Property.prototype);
-    //     adsk.core.IntegerProperty.prototype.constructor = adsk.core.IntegerProperty;
-    //     adsk.core.IntegerProperty.interfaceId = 'adsk.core.IntegerProperty';
-    //     adsk.objectTypes['adsk.core.IntegerProperty'] = adsk.core.IntegerProperty;
-    //     adsk.core.IntegerProperty.cast = function (object) {
-    //         return object instanceof adsk.core.IntegerProperty ? object : null;
-    //     };
+    cast(object: Object): IntegerProperty;
 
-    //     // Gets the boolean flag that indicates if the value of this property has any limits it must
-    //     // be within to be valid. If True, use the GetLimits method to get the limit values.
-    //     Object.defineProperty(adsk.core.IntegerProperty.prototype, 'hasLimits', {
-    //         get : function () {
-    //             var result = this._execute('hasLimits');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the boolean flag that indicates if the value of this property has any limits it must
+    // be within to be valid. If True, use the GetLimits method to get the limit values.
+    hasLimits: boolean;
 
-    //     // Gets the boolean flag that indicates if this property has multiple values or not.
-    //     Object.defineProperty(adsk.core.IntegerProperty.prototype, 'hasMultipleValues', {
-    //         get : function () {
-    //             var result = this._execute('hasMultipleValues');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the boolean flag that indicates if this property has multiple values or not.
+    hasMultipleValues: boolean;
 
-    //     // Gets and sets this property value. The value of this property should be ignored
-    //     // if the HasConnectedTexture property is true. Setting this will remove any
-    //     // associated texture, if there is one.
-    //     Object.defineProperty(adsk.core.IntegerProperty.prototype, 'value', {
-    //         get : function () {
-    //             var result = this._execute('value');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-    //             var args = {
-    //                 value : Number(value)
-    //             };
-    //             var result = this._execute('value', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets this property value. The value of this property should be ignored
+    // if the HasConnectedTexture property is true. Setting this will remove any
+    // associated texture, if there is one.
+    value: number;
 
-    //     // Gets and sets the values associated with this property. HasMultipleValues property
-    //     // indicates if this property will be returning more than one value.
-    //     Object.defineProperty(adsk.core.IntegerProperty.prototype, 'values', {
-    //         get : function () {
-    //             var result = this._execute('values');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!Array.isArray(value)) { throw new TypeError('value must be an array'); }
-    //             var valueLength = value.length;
-    //             var valueIt;
-    //             for (valueIt = 0; valueIt < valueLength; ++valueIt) {
-    //                 if (!isFinite(value[valueIt])) { throw new TypeError('value[valueIt] must be a number'); }
-    //             }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('values', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets the values associated with this property. HasMultipleValues property
+    // indicates if this property will be returning more than one value.
+    values: number[];
 
-    //     // Method that returns any limits for the value of this property. The HasLimits property can
-    //     // be used to see if there are any limits or not.
-    //     // hasLowLimit : Output Boolean that indicates if there is a low limit or not.
-    //     // lowLimit : If the hasLowLimit argument is true, this argument returns the low limit.
-    //     // hasHighLimit : Output Boolean that indicates if there is a high limit or not.
-    //     // highLimit : If the hasHighLimit argument is true, this argument returns the high limit.
-    //     // Returns true if the method call was successful.
-    //     adsk.core.IntegerProperty.prototype.getLimits = function (hasLowLimit, lowLimit, hasHighLimit, highLimit) {
-    //         if (typeof hasLowLimit !== 'object') { throw new TypeError('hasLowLimit must be an object'); }
-    //         if (typeof lowLimit !== 'object') { throw new TypeError('lowLimit must be an object'); }
-    //         if (typeof hasHighLimit !== 'object') { throw new TypeError('hasHighLimit must be an object'); }
-    //         if (typeof highLimit !== 'object') { throw new TypeError('highLimit must be an object'); }
-    //         var args = {
-    //             hasLowLimit : null,
-    //             lowLimit : null,
-    //             hasHighLimit : null,
-    //             highLimit : null
-    //         };
-    //         var result = this._execute('getLimits', args);
-    //         if (result && result.outargs) {
-    //             hasLowLimit.value = (result.outargs.hasLowLimit !== undefined) ? result.outargs.hasLowLimit : undefined;
-    //             lowLimit.value = (result.outargs.lowLimit !== undefined) ? result.outargs.lowLimit : undefined;
-    //             hasHighLimit.value = (result.outargs.hasHighLimit !== undefined) ? result.outargs.hasHighLimit : undefined;
-    //             highLimit.value = (result.outargs.highLimit !== undefined) ? result.outargs.highLimit : undefined;
-    //         }
-    //         return result ? result.value : undefined;
-    //     };
+    // Method that returns any limits for the value of this property. The HasLimits property can
+    // be used to see if there are any limits or not.
+    // hasLowLimit : Output Boolean that indicates if there is a low limit or not.
+    // lowLimit : If the hasLowLimit argument is true, this argument returns the low limit.
+    // hasHighLimit : Output Boolean that indicates if there is a high limit or not.
+    // highLimit : If the hasHighLimit argument is true, this argument returns the high limit.
+    // Returns true if the method call was successful.
+    getLimits(hasLowLimit: Object, lowLimit: Object, hasHighLimit: Object, highLimit: Object): boolean;
 }
 
 //=========== StringProperty ============
 // A string value property associated with a material or appearance.
 interface StringProperty {
-    //     adsk.core.StringProperty = function StringProperty(handle) {
-    //         if (!(this instanceof adsk.core.StringProperty)) {
-    //             return adsk.core.StringProperty.cast(handle);
-    //         }
-    //         adsk.core.Property.call(this, handle);
-    //     };
-    //     adsk.core.StringProperty.prototype = Object.create(adsk.core.Property.prototype);
-    //     adsk.core.StringProperty.prototype.constructor = adsk.core.StringProperty;
-    //     adsk.core.StringProperty.interfaceId = 'adsk.core.StringProperty';
-    //     adsk.objectTypes['adsk.core.StringProperty'] = adsk.core.StringProperty;
-    //     adsk.core.StringProperty.cast = function (object) {
-    //         return object instanceof adsk.core.StringProperty ? object : null;
-    //     };
+    cast(object: Object): StringProperty;
 
-    //     // Gets and sets the property value.
-    //     Object.defineProperty(adsk.core.StringProperty.prototype, 'value', {
-    //         get : function () {
-    //             var result = this._execute('value');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-    //             var args = {
-    //                 value : value
-    //             };
-    //             var result = this._execute('value', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
-
-    //     return adsk;
-    // }));
+    // Gets and sets the property value.
+    value: string;
 }

@@ -2685,326 +2685,327 @@
 //         BallJointType : 6
 //     };
 
-//     //=========== Occurrence ============
-//     // Represents an occurrence of a component at any level within a subassembly.
-//     adsk.fusion.Occurrence = function Occurrence(handle) {
-//         if (!(this instanceof adsk.fusion.Occurrence)) {
-//             return adsk.fusion.Occurrence.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.Occurrence.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.Occurrence.prototype.constructor = adsk.fusion.Occurrence;
-//     adsk.fusion.Occurrence.interfaceId = 'adsk.fusion.Occurrence';
-//     adsk.objectTypes['adsk.fusion.Occurrence'] = adsk.fusion.Occurrence;
-//     adsk.fusion.Occurrence.cast = function (object) {
-//         return object instanceof adsk.fusion.Occurrence ? object : null;
-//     };
+//=========== Occurrence ============
+// Represents an occurrence of a component at any level within a subassembly.
+interface Occurrence {
+    //         if (!(this instanceof adsk.fusion.Occurrence)) {
+    //             return adsk.fusion.Occurrence.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.Occurrence.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.Occurrence.prototype.constructor = adsk.fusion.Occurrence;
+    //     adsk.fusion.Occurrence.interfaceId = 'adsk.fusion.Occurrence';
+    //     adsk.objectTypes['adsk.fusion.Occurrence'] = adsk.fusion.Occurrence;
+    //     adsk.fusion.Occurrence.cast = function (object) {
+    //         return object instanceof adsk.fusion.Occurrence ? object : null;
+    //     };
 
-//     // This is the sourceComponent for the occurrence and is affected
-//     // by the assembly context.
-//     // This is the top-level component where the path begins.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'sourceComponent', {
-//         get : function () {
-//             var result = this._execute('sourceComponent');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
-//         }
-//     });
+    //     // This is the sourceComponent for the occurrence and is affected
+    //     // by the assembly context.
+    //     // This is the top-level component where the path begins.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'sourceComponent', {
+    //         get : function () {
+    //             var result = this._execute('sourceComponent');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
+    //         }
+    //     });
 
-//     // Returns a read only list of child occurrences where only the occurrences
-//     // in this occurrence's AssemblyContext are returned .
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'childOccurrences', {
-//         get : function () {
-//             var result = this._execute('childOccurrences');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.OccurrenceList) : null;
-//         }
-//     });
+    //     // Returns a read only list of child occurrences where only the occurrences
+    //     // in this occurrence's AssemblyContext are returned .
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'childOccurrences', {
+    //         get : function () {
+    //             var result = this._execute('childOccurrences');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.OccurrenceList) : null;
+    //         }
+    //     });
 
-//     // The component this occurrence references.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'component', {
-//         get : function () {
-//             var result = this._execute('component');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
-//         }
-//     });
+    //     // The component this occurrence references.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'component', {
+    //         get : function () {
+    //             var result = this._execute('component');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
+    //         }
+    //     });
 
-//     // The name of the occurrence. This is the name as seen in the browser. It is a reflection
-//     // of the component name with an added counter suffix (i.e. 'OccurrenceName:1').
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'name', {
-//         get : function () {
-//             var result = this._execute('name');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The name of the occurrence. This is the name as seen in the browser. It is a reflection
+    //     // of the component name with an added counter suffix (i.e. 'OccurrenceName:1').
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'name', {
+    //         get : function () {
+    //             var result = this._execute('name');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // The name of the occurrence, including the full path of occurrences as seen in the browser.
-//     // The top-level component will depend on the context but will typically be the root component
-//     // of the design. A name for an occurrence that is at the third level of an assembly could be
-//     // "Sub1:1+Sub2:1+PartA:1".
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'fullPathName', {
-//         get : function () {
-//             var result = this._execute('fullPathName');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The name of the occurrence, including the full path of occurrences as seen in the browser.
+    //     // The top-level component will depend on the context but will typically be the root component
+    //     // of the design. A name for an occurrence that is at the third level of an assembly could be
+    //     // "Sub1:1+Sub2:1+PartA:1".
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'fullPathName', {
+    //         get : function () {
+    //             var result = this._execute('fullPathName');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Read-write property that gets and sets the appearance override for this occurrence.
-//     // This property can return null indicating there is no override appearance and that the
-//     // contents of the occurrence are displayed using there defined appearance.
-//     // Setting the property to null will remove any override appearance for this occurrence.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'appearance', {
-//         get : function () {
-//             var result = this._execute('appearance');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Appearance)) { throw new TypeError('value must be a adsk.core.Appearance'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('appearance', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Read-write property that gets and sets the appearance override for this occurrence.
+    //     // This property can return null indicating there is no override appearance and that the
+    //     // contents of the occurrence are displayed using there defined appearance.
+    //     // Setting the property to null will remove any override appearance for this occurrence.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'appearance', {
+    //         get : function () {
+    //             var result = this._execute('appearance');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Appearance) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.Appearance)) { throw new TypeError('value must be a adsk.core.Appearance'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('appearance', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets if the light bulb of this occurrence as displayed in the browser is on or off.
-//     // An occurrence will only be visible if the light bulb is switched on. However,
-//     // the light bulb can be on and the occurrence still invisible if a higher level occurrence
-//     // in the assembly context is not visible because its light bulb is off.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isLightBulbOn', {
-//         get : function () {
-//             var result = this._execute('isLightBulbOn');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isLightBulbOn', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets if the light bulb of this occurrence as displayed in the browser is on or off.
+    //     // An occurrence will only be visible if the light bulb is switched on. However,
+    //     // the light bulb can be on and the occurrence still invisible if a higher level occurrence
+    //     // in the assembly context is not visible because its light bulb is off.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isLightBulbOn', {
+    //         get : function () {
+    //             var result = this._execute('isLightBulbOn');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isLightBulbOn', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets whether the occurrence is visible.
-//     // This property is affected by the assembly context.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isVisible', {
-//         get : function () {
-//             var result = this._execute('isVisible');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets whether the occurrence is visible.
+    //     // This property is affected by the assembly context.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isVisible', {
+    //         get : function () {
+    //             var result = this._execute('isVisible');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets the 3d matrix data that defines this occurrences orientation and
-//     // position in its assembly context
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'transform', {
-//         get : function () {
-//             var result = this._execute('transform');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Matrix3D) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Matrix3D)) { throw new TypeError('value must be a adsk.core.Matrix3D'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('transform', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the 3d matrix data that defines this occurrences orientation and
+    //     // position in its assembly context
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'transform', {
+    //         get : function () {
+    //             var result = this._execute('transform');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Matrix3D) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.Matrix3D)) { throw new TypeError('value must be a adsk.core.Matrix3D'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('transform', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the timeline object associated with the creation of this occurrence.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'timelineObject', {
-//         get : function () {
-//             var result = this._execute('timelineObject');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.TimelineObject) : null;
-//         }
-//     });
+    //     // Returns the timeline object associated with the creation of this occurrence.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'timelineObject', {
+    //         get : function () {
+    //             var result = this._execute('timelineObject');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.TimelineObject) : null;
+    //         }
+    //     });
 
-//     // Returns the assembly occurrence (i.e. the occurrence) of this
-//     // object in an assembly. This is only valid in the case where this
-//     // references the component the object is defined within.
-//     // Returns null in the case where the object is not in the context of an assembly
-//     // but is already the native object.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'assemblyContext', {
-//         get : function () {
-//             var result = this._execute('assemblyContext');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
-//         }
-//     });
+    //     // Returns the assembly occurrence (i.e. the occurrence) of this
+    //     // object in an assembly. This is only valid in the case where this
+    //     // references the component the object is defined within.
+    //     // Returns null in the case where the object is not in the context of an assembly
+    //     // but is already the native object.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'assemblyContext', {
+    //         get : function () {
+    //             var result = this._execute('assemblyContext');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
+    //         }
+    //     });
 
-//     // The NativeObject is the object outside the context of an assembly.
-//     // Returns null in the case where this object is not in the context of
-//     // an assembly but is already the native object.
-//     // The return type is strongly typed for each object.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'nativeObject', {
-//         get : function () {
-//             var result = this._execute('nativeObject');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
-//         }
-//     });
+    //     // The NativeObject is the object outside the context of an assembly.
+    //     // Returns null in the case where this object is not in the context of
+    //     // an assembly but is already the native object.
+    //     // The return type is strongly typed for each object.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'nativeObject', {
+    //         get : function () {
+    //             var result = this._execute('nativeObject');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
+    //         }
+    //     });
 
-//     // Gets and sets whether this occurrence is grounded or not.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isGrounded', {
-//         get : function () {
-//             var result = this._execute('isGrounded');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isGrounded', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets whether this occurrence is grounded or not.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isGrounded', {
+    //         get : function () {
+    //             var result = this._execute('isGrounded');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isGrounded', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets whether this occurrence is selectable or not.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isSelectable', {
-//         get : function () {
-//             var result = this._execute('isSelectable');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isSelectable', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets whether this occurrence is selectable or not.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isSelectable', {
+    //         get : function () {
+    //             var result = this._execute('isSelectable');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isSelectable', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets whether this occurrence is isolated in the UI. When an occurrence
-//     // is isolated it is the only one visible in the user-interface. Only one occurrence
-//     // can be isolated at a time so setting this property to true will unisolate an occurrence
-//     // that is currently isolated. Setting this property to false for an occurrence that is
-//     // current isolated will unisolate it so that no occurrence will be isolated.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isIsolated', {
-//         get : function () {
-//             var result = this._execute('isIsolated');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isIsolated', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets whether this occurrence is isolated in the UI. When an occurrence
+    //     // is isolated it is the only one visible in the user-interface. Only one occurrence
+    //     // can be isolated at a time so setting this property to true will unisolate an occurrence
+    //     // that is currently isolated. Setting this property to false for an occurrence that is
+    //     // current isolated will unisolate it so that no occurrence will be isolated.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isIsolated', {
+    //         get : function () {
+    //             var result = this._execute('isIsolated');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isIsolated', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets whether this occurrence is the active edit target in the user interface.
-//     // This is the same as checking the state of the radio button next to the occurrence in the browser.
-//     // To activate the occurrence use the Activate method.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isActive', {
-//         get : function () {
-//             var result = this._execute('isActive');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets whether this occurrence is the active edit target in the user interface.
+    //     // This is the same as checking the state of the radio button next to the occurrence in the browser.
+    //     // To activate the occurrence use the Activate method.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isActive', {
+    //         get : function () {
+    //             var result = this._execute('isActive');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, etc
-//     // of this occurrence.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'physicalProperties', {
-//         get : function () {
-//             var result = this._execute('physicalProperties');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.PhysicalProperties) : null;
-//         }
-//     });
+    //     // Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, etc
+    //     // of this occurrence.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'physicalProperties', {
+    //         get : function () {
+    //             var result = this._execute('physicalProperties');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.PhysicalProperties) : null;
+    //         }
+    //     });
 
-//     // Gets if this occurrence is referencing an external component.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isReferencedComponent', {
-//         get : function () {
-//             var result = this._execute('isReferencedComponent');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets if this occurrence is referencing an external component.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'isReferencedComponent', {
+    //         get : function () {
+    //             var result = this._execute('isReferencedComponent');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the bounding box of this occurrence.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'boundingBox', {
-//         get : function () {
-//             var result = this._execute('boundingBox');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.BoundingBox3D) : null;
-//         }
-//     });
+    //     // Returns the bounding box of this occurrence.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'boundingBox', {
+    //         get : function () {
+    //             var result = this._execute('boundingBox');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.BoundingBox3D) : null;
+    //         }
+    //     });
 
-//     // Returns the joints that affect the position of this occurrence. For example, if a joint has
-//     // been created between this occurrence and another occurrence, this property will return that
-//     // joint. If the occurrence is a proxy, the joints returned will also be proxies in the same
-//     // context as the occurrence.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'joints', {
-//         get : function () {
-//             var result = this._execute('joints');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.JointList) : null;
-//         }
-//     });
+    //     // Returns the joints that affect the position of this occurrence. For example, if a joint has
+    //     // been created between this occurrence and another occurrence, this property will return that
+    //     // joint. If the occurrence is a proxy, the joints returned will also be proxies in the same
+    //     // context as the occurrence.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'joints', {
+    //         get : function () {
+    //             var result = this._execute('joints');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.JointList) : null;
+    //         }
+    //     });
 
-//     // Returns the rigid groups that this occurrence is a member of. If the occurrence is a proxy,
-//     // the joints returned will also be proxies in the same context as the occurrence.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'rigidGroups', {
-//         get : function () {
-//             var result = this._execute('rigidGroups');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RigidGroupList) : null;
-//         }
-//     });
+    //     // Returns the rigid groups that this occurrence is a member of. If the occurrence is a proxy,
+    //     // the joints returned will also be proxies in the same context as the occurrence.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'rigidGroups', {
+    //         get : function () {
+    //             var result = this._execute('rigidGroups');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RigidGroupList) : null;
+    //         }
+    //     });
 
-//     // Returns the as-built joints that affect the position of this occurrence. If the occurrence is a proxy,
-//     // the as-built joints returned will also be proxies in the same context as the occurrence.
-//     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'asBuiltJoints', {
-//         get : function () {
-//             var result = this._execute('asBuiltJoints');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.AsBuiltJointList) : null;
-//         }
-//     });
+    //     // Returns the as-built joints that affect the position of this occurrence. If the occurrence is a proxy,
+    //     // the as-built joints returned will also be proxies in the same context as the occurrence.
+    //     Object.defineProperty(adsk.fusion.Occurrence.prototype, 'asBuiltJoints', {
+    //         get : function () {
+    //             var result = this._execute('asBuiltJoints');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.AsBuiltJointList) : null;
+    //         }
+    //     });
 
-//     // Deletes the occurrence from the design. If this is the last occurrence
-//     // referencing a specific Component, the component is also deleted.
-//     // Returns true if the delete was successful.
-//     adsk.fusion.Occurrence.prototype.deleteMe = function () {
-//         var result = this._execute('deleteMe');
-//         return result ? result.value : undefined;
-//     };
+    //     // Deletes the occurrence from the design. If this is the last occurrence
+    //     // referencing a specific Component, the component is also deleted.
+    //     // Returns true if the delete was successful.
+    //     adsk.fusion.Occurrence.prototype.deleteMe = function () {
+    //         var result = this._execute('deleteMe');
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Creates or returns a proxy for the native object
-//     // - i.e. a new object that represents this object but adds the assembly context
-//     // defined by the input occurrence.
-//     // Fails if this object is not the NativeObject.
-//     // occurrence : The occurrence that represents the context you want to create this proxy in.
-//     // Returns the proxy for the occurrence in the context of the specified occurrence.
-//     // Returns null if it failed.
-//     adsk.fusion.Occurrence.prototype.createForAssemblyContext = function (occurrence) {
-//         if (occurrence !== null && !(occurrence instanceof adsk.fusion.Occurrence)) { throw new TypeError('occurrence must be a adsk.fusion.Occurrence'); }
-//         var args = {
-//             occurrence : (occurrence === null ? occurrence : occurrence.handle)
-//         };
-//         var result = this._execute('createForAssemblyContext', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
-//     };
+    //     // Creates or returns a proxy for the native object
+    //     // - i.e. a new object that represents this object but adds the assembly context
+    //     // defined by the input occurrence.
+    //     // Fails if this object is not the NativeObject.
+    //     // occurrence : The occurrence that represents the context you want to create this proxy in.
+    //     // Returns the proxy for the occurrence in the context of the specified occurrence.
+    //     // Returns null if it failed.
+    //     adsk.fusion.Occurrence.prototype.createForAssemblyContext = function (occurrence) {
+    //         if (occurrence !== null && !(occurrence instanceof adsk.fusion.Occurrence)) { throw new TypeError('occurrence must be a adsk.fusion.Occurrence'); }
+    //         var args = {
+    //             occurrence : (occurrence === null ? occurrence : occurrence.handle)
+    //         };
+    //         var result = this._execute('createForAssemblyContext', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
+    //     };
 
-//     // Makes the occurrence the active edit target in the user interface. This is the same
-//     // as enabling the radio button next to the occurrence in the browser.
-//     // Returns true if the activation was successful.
-//     adsk.fusion.Occurrence.prototype.activate = function () {
-//         var result = this._execute('activate');
-//         return result ? result.value : undefined;
-//     };
+    //     // Makes the occurrence the active edit target in the user interface. This is the same
+    //     // as enabling the radio button next to the occurrence in the browser.
+    //     // Returns true if the activation was successful.
+    //     adsk.fusion.Occurrence.prototype.activate = function () {
+    //         var result = this._execute('activate');
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Moves this occurrence from it's current component into the component owned by the specified occurrence.
-//     // This occurrence and the target occurrence must be in the same context.
-//     // targetOccurrence : The target occurrence defines both the component and the transform to apply when moving the occurrence. The
-//     // occurrence will be copied into the parent component of the target occurrence and the target occurrence also defines
-//     // the transform of how the occurrence will be copied so that the occurrence maintains it's same position in model space.
-//     // Returns the moved Occurrence or null in the case the move failed.
-//     adsk.fusion.Occurrence.prototype.moveToComponent = function (targetOccurrence) {
-//         if (targetOccurrence !== null && !(targetOccurrence instanceof adsk.fusion.Occurrence)) { throw new TypeError('targetOccurrence must be a adsk.fusion.Occurrence'); }
-//         var args = {
-//             targetOccurrence : (targetOccurrence === null ? targetOccurrence : targetOccurrence.handle)
-//         };
-//         var result = this._execute('moveToComponent', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
-//     };
+    //     // Moves this occurrence from it's current component into the component owned by the specified occurrence.
+    //     // This occurrence and the target occurrence must be in the same context.
+    //     // targetOccurrence : The target occurrence defines both the component and the transform to apply when moving the occurrence. The
+    //     // occurrence will be copied into the parent component of the target occurrence and the target occurrence also defines
+    //     // the transform of how the occurrence will be copied so that the occurrence maintains it's same position in model space.
+    //     // Returns the moved Occurrence or null in the case the move failed.
+    //     adsk.fusion.Occurrence.prototype.moveToComponent = function (targetOccurrence) {
+    //         if (targetOccurrence !== null && !(targetOccurrence instanceof adsk.fusion.Occurrence)) { throw new TypeError('targetOccurrence must be a adsk.fusion.Occurrence'); }
+    //         var args = {
+    //             targetOccurrence : (targetOccurrence === null ? targetOccurrence : targetOccurrence.handle)
+    //         };
+    //         var result = this._execute('moveToComponent', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
+    //     };
+}
 
 //     //=========== OccurrenceList ============
 //     // Provides a list of occurrences.
