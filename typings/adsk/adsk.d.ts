@@ -4,6 +4,10 @@
 declare var adsk:Autodesk;
 
 interface Autodesk {
+    debug:boolean;
+    terminate();
+    objectTypes;
+    createObject(handle, expectedType);
     core:Core;
     fusion:Fusion;
 }
@@ -14,6 +18,7 @@ interface Core {
 
 interface Fusion {
     Design:Design;
+    BRepBody:BRepBody;
 }
 
 //TODO: bring all enums (defined in the individual files) into here inside of the Core and Fusion interfaces

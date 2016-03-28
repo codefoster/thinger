@@ -3598,350 +3598,341 @@
 //         }
 //     });
 
-//     //=========== Component ============
-//     // Represents a component in the data model.
-//     // A component represents a set of geometry, features, and parameters that make up an item in the design.
-//     // A component can be referenced multiple times into a design with a Occurrence object.
-//     adsk.fusion.Component = function Component(handle) {
-//         if (!(this instanceof adsk.fusion.Component)) {
-//             return adsk.fusion.Component.cast(handle);
-//         }
-//         adsk.fusion.BaseComponent.call(this, handle);
-//     };
-//     adsk.fusion.Component.prototype = Object.create(adsk.fusion.BaseComponent.prototype);
-//     adsk.fusion.Component.prototype.constructor = adsk.fusion.Component;
-//     adsk.fusion.Component.interfaceId = 'adsk.fusion.Component';
-//     adsk.objectTypes['adsk.fusion.Component'] = adsk.fusion.Component;
-//     adsk.fusion.Component.cast = function (object) {
-//         return object instanceof adsk.fusion.Component ? object : null;
-//     };
+//=========== Component ============
+// Represents a component in the data model.
+// A component represents a set of geometry, features, and parameters that make up an item in the design.
+// A component can be referenced multiple times into a design with a Occurrence object.
+interface Component {
+    cast(object: Object): Component;
 
-//     // Returns the sketches collection associated with this component.
-//     // This provides access to the existing sketches and supports
-//     // the creation of new sketches.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'sketches', {
-//         get : function () {
-//             var result = this._execute('sketches');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Sketches) : null;
-//         }
-//     });
 
-//     // Returns the collection that provides access to all of the features
-//     // associated with this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'features', {
-//         get : function () {
-//             var result = this._execute('features');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Features) : null;
-//         }
-//     });
+    //     // Returns the sketches collection associated with this component.
+    //     // This provides access to the existing sketches and supports
+    //     // the creation of new sketches.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'sketches', {
+    //         get : function () {
+    //             var result = this._execute('sketches');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Sketches) : null;
+    //         }
+    //     });
 
-//     // Returns the mesh bodies collection associated with this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'meshBodies', {
-//         get : function () {
-//             var result = this._execute('meshBodies');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.MeshBodies) : null;
-//         }
-//     });
+    //     // Returns the collection that provides access to all of the features
+    //     // associated with this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'features', {
+    //         get : function () {
+    //             var result = this._execute('features');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Features) : null;
+    //         }
+    //     });
 
-//     // Returns the collection of model parameters in the Component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'modelParameters', {
-//         get : function () {
-//             var result = this._execute('modelParameters');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ModelParameters) : null;
-//         }
-//     });
+    //     // Returns the mesh bodies collection associated with this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'meshBodies', {
+    //         get : function () {
+    //             var result = this._execute('meshBodies');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.MeshBodies) : null;
+    //         }
+    //     });
 
-//     // Gets and sets if the light bulb of the origin folder as seen in the browser is on or off.
-//     // This controls the visibility of the origin construction geometry.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'isOriginFolderLightBulbOn', {
-//         get : function () {
-//             var result = this._execute('isOriginFolderLightBulbOn');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isOriginFolderLightBulbOn', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Returns the collection of model parameters in the Component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'modelParameters', {
+    //         get : function () {
+    //             var result = this._execute('modelParameters');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ModelParameters) : null;
+    //         }
+    //     });
 
-//     // Gets and sets if the light bulb of the construction folder as seen in the browser is on or off.
-//     // This controls the visibility of the (non-origin) construction geometry
-//     // (i.e. planes, points, axes).
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'isConstructionFolderLightBulbOn', {
-//         get : function () {
-//             var result = this._execute('isConstructionFolderLightBulbOn');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isConstructionFolderLightBulbOn', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets if the light bulb of the origin folder as seen in the browser is on or off.
+    //     // This controls the visibility of the origin construction geometry.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'isOriginFolderLightBulbOn', {
+    //         get : function () {
+    //             var result = this._execute('isOriginFolderLightBulbOn');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isOriginFolderLightBulbOn', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Gets and sets if the light bulb of the sketch folder as seen in the browser is on or off.
-//     // This controls the visibility of the sketches in this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'isSketchFolderLightBulbOn', {
-//         get : function () {
-//             var result = this._execute('isSketchFolderLightBulbOn');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isSketchFolderLightBulbOn', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets if the light bulb of the construction folder as seen in the browser is on or off.
+    //     // This controls the visibility of the (non-origin) construction geometry
+    //     // (i.e. planes, points, axes).
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'isConstructionFolderLightBulbOn', {
+    //         get : function () {
+    //             var result = this._execute('isConstructionFolderLightBulbOn');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isConstructionFolderLightBulbOn', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the XY origin construction plane.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'xYConstructionPlane', {
-//         get : function () {
-//             var result = this._execute('xYConstructionPlane');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
-//         }
-//     });
+    //     // Gets and sets if the light bulb of the sketch folder as seen in the browser is on or off.
+    //     // This controls the visibility of the sketches in this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'isSketchFolderLightBulbOn', {
+    //         get : function () {
+    //             var result = this._execute('isSketchFolderLightBulbOn');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isSketchFolderLightBulbOn', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the XZ origin construction plane.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'xZConstructionPlane', {
-//         get : function () {
-//             var result = this._execute('xZConstructionPlane');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
-//         }
-//     });
+    //     // Returns the XY origin construction plane.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'xYConstructionPlane', {
+    //         get : function () {
+    //             var result = this._execute('xYConstructionPlane');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
+    //         }
+    //     });
 
-//     // Returns the YZ origin construction plane.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'yZConstructionPlane', {
-//         get : function () {
-//             var result = this._execute('yZConstructionPlane');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
-//         }
-//     });
+    //     // Returns the XZ origin construction plane.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'xZConstructionPlane', {
+    //         get : function () {
+    //             var result = this._execute('xZConstructionPlane');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
+    //         }
+    //     });
 
-//     // Returns the X origin construction axis.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'xConstructionAxis', {
-//         get : function () {
-//             var result = this._execute('xConstructionAxis');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionAxis) : null;
-//         }
-//     });
+    //     // Returns the YZ origin construction plane.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'yZConstructionPlane', {
+    //         get : function () {
+    //             var result = this._execute('yZConstructionPlane');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
+    //         }
+    //     });
 
-//     // Returns the Y origin construction axis.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'yConstructionAxis', {
-//         get : function () {
-//             var result = this._execute('yConstructionAxis');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionAxis) : null;
-//         }
-//     });
+    //     // Returns the X origin construction axis.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'xConstructionAxis', {
+    //         get : function () {
+    //             var result = this._execute('xConstructionAxis');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionAxis) : null;
+    //         }
+    //     });
 
-//     // Returns the Z origin construction axis.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'zConstructionAxis', {
-//         get : function () {
-//             var result = this._execute('zConstructionAxis');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionAxis) : null;
-//         }
-//     });
+    //     // Returns the Y origin construction axis.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'yConstructionAxis', {
+    //         get : function () {
+    //             var result = this._execute('yConstructionAxis');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionAxis) : null;
+    //         }
+    //     });
 
-//     // Returns the origin construction point.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'originConstructionPoint', {
-//         get : function () {
-//             var result = this._execute('originConstructionPoint');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPoint) : null;
-//         }
-//     });
+    //     // Returns the Z origin construction axis.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'zConstructionAxis', {
+    //         get : function () {
+    //             var result = this._execute('zConstructionAxis');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionAxis) : null;
+    //         }
+    //     });
 
-//     // Gets and sets the part number associated with this component. Setting this
-//     // to an empty string will reset it to be the same as the component name.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'partNumber', {
-//         get : function () {
-//             var result = this._execute('partNumber');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('partNumber', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Returns the origin construction point.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'originConstructionPoint', {
+    //         get : function () {
+    //             var result = this._execute('originConstructionPoint');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPoint) : null;
+    //         }
+    //     });
 
-//     // Gets and sets the description associated with this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'description', {
-//         get : function () {
-//             var result = this._execute('description');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('description', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Gets and sets the part number associated with this component. Setting this
+    //     // to an empty string will reset it to be the same as the component name.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'partNumber', {
+    //         get : function () {
+    //             var result = this._execute('partNumber');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('partNumber', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the collection of joints associated with this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'joints', {
-//         get : function () {
-//             var result = this._execute('joints');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Joints) : null;
-//         }
-//     });
+    //     // Gets and sets the description associated with this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'description', {
+    //         get : function () {
+    //             var result = this._execute('description');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (value === undefined || value === null || value.constructor !== String) { throw new TypeError('value must be a string'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('description', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the collection of joint origins associated with this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'jointOrgins', {
-//         get : function () {
-//             var result = this._execute('jointOrgins');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.JointOrigins) : null;
-//         }
-//     });
+    //     // Returns the collection of joints associated with this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'joints', {
+    //         get : function () {
+    //             var result = this._execute('joints');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Joints) : null;
+    //         }
+    //     });
 
-//     // Returns the collection of as-built joints associated with this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'asBuiltJoints', {
-//         get : function () {
-//             var result = this._execute('asBuiltJoints');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.AsBuiltJoints) : null;
-//         }
-//     });
+    //     // Returns the collection of joint origins associated with this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'jointOrgins', {
+    //         get : function () {
+    //             var result = this._execute('jointOrgins');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.JointOrigins) : null;
+    //         }
+    //     });
 
-//     // Returns the collection of rigid groups associated with this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'rigidGroups', {
-//         get : function () {
-//             var result = this._execute('rigidGroups');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RigidGroups) : null;
-//         }
-//     });
+    //     // Returns the collection of as-built joints associated with this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'asBuiltJoints', {
+    //         get : function () {
+    //             var result = this._execute('asBuiltJoints');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.AsBuiltJoints) : null;
+    //         }
+    //     });
 
-//     // Gets and sets the physical material assigned to this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'material', {
-//         get : function () {
-//             var result = this._execute('material');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Material) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Material)) { throw new TypeError('value must be a adsk.core.Material'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('material', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Returns the collection of rigid groups associated with this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'rigidGroups', {
+    //         get : function () {
+    //             var result = this._execute('rigidGroups');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RigidGroups) : null;
+    //         }
+    //     });
 
-//     // Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, etc
-//     // of this component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'physicalProperties', {
-//         get : function () {
-//             var result = this._execute('physicalProperties');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.PhysicalProperties) : null;
-//         }
-//     });
+    //     // Gets and sets the physical material assigned to this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'material', {
+    //         get : function () {
+    //             var result = this._execute('material');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Material) : null;
+    //         },
+    //         set : function (value) {
+    //             if (value !== null && !(value instanceof adsk.core.Material)) { throw new TypeError('value must be a adsk.core.Material'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('material', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Returns the bounding box of this component. This is always in world space of the component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'boundingBox', {
-//         get : function () {
-//             var result = this._execute('boundingBox');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.BoundingBox3D) : null;
-//         }
-//     });
+    //     // Returns the PhysicalProperties object that has properties for getting the area, density, mass, volume, etc
+    //     // of this component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'physicalProperties', {
+    //         get : function () {
+    //             var result = this._execute('physicalProperties');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.PhysicalProperties) : null;
+    //         }
+    //     });
 
-//     // Gets and sets if the light bulb of the joints folder as seen in the browser is on or off.
-//     // This controls the visibility of the joints in this occurrence. The light
-//     // bulb is occurrence specific and independent of the component.
-//     Object.defineProperty(adsk.fusion.Component.prototype, 'isJointsFolderLightBulbOn', {
-//         get : function () {
-//             var result = this._execute('isJointsFolderLightBulbOn');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isJointsFolderLightBulbOn', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // Returns the bounding box of this component. This is always in world space of the component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'boundingBox', {
+    //         get : function () {
+    //             var result = this._execute('boundingBox');
+    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.BoundingBox3D) : null;
+    //         }
+    //     });
 
-//     // Creates an open profile based on the input curve(s).
-//     // curves : A SketchCurve or an ObjectCollection containing multiple sketch entities. If a single sketch curve
-//     // is input the chainCurves argument is checked to determine if connected curves (they do not need to be tangent)
-//     // should be automatically found. If multiple curves are provided then the chainCurves argument is always
-//     // treated as false so you must provide all of the curves in the object collection that you want included in the profile.
-//     // The provided curves must all connect together in a single path and they must all be co-planar.
-//     // chainCurves : If true, this finds any co-planar curves that connect to the single input curve and automatically includes them in the profile. If
-//     // false, only the curves provided will be used to define the profile. This argument is ignored and treated as false if multipled curves are input.
-//     // Returns the new Profile object or null in the case of a failure.
-//     adsk.fusion.Component.prototype.createOpenProfile = function (curves, chainCurves) {
-//         if (curves !== null && !(curves instanceof adsk.core.Base)) { throw new TypeError('curves must be a adsk.core.Base'); }
-//         if (chainCurves === null || (chainCurves !== undefined && typeof chainCurves !== 'boolean')) { throw new TypeError('chainCurves must be a boolean'); }
-//         var args = {
-//             curves : (curves === null ? curves : curves.handle)
-//         };
-//         if (chainCurves !== undefined) {
-//             args.chainCurves = chainCurves;
-//         }
-//         var result = this._execute('createOpenProfile', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Profile) : null;
-//     };
+    //     // Gets and sets if the light bulb of the joints folder as seen in the browser is on or off.
+    //     // This controls the visibility of the joints in this occurrence. The light
+    //     // bulb is occurrence specific and independent of the component.
+    //     Object.defineProperty(adsk.fusion.Component.prototype, 'isJointsFolderLightBulbOn', {
+    //         get : function () {
+    //             var result = this._execute('isJointsFolderLightBulbOn');
+    //             return result ? result.value : undefined;
+    //         },
+    //         set : function (value) {
+    //             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
+    //             var args = {
+    //                 value : value
+    //             };
+    //             var result = this._execute('isJointsFolderLightBulbOn', args);
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Creates a profile based on the outside open edges of a BRepFace.
-//     // edges : A single BRepEdge object or an ObjectCollection containing multiple BRepEdge objects. If a single edge
-//     // is input the chainEdges argument is checked to determine if connected edges (they do not need to be tangent)
-//     // should be automatically found. If multiple edges are provided then the chainEdges argument is always
-//     // treated as false so must provide all of the edges in the object collection that you want included in the profile.
-//     // The provided edges must all connect together in a single path and they must all be co-planar.
-//     // chainEdges : If true, this finds any co-planar edges that connect to the single input edge and automatically includes them in the profile. If
-//     // false, only the edges provided will be used to define the profile. This argument is ignored and treated as false if multipled edges are input.
-//     // Returns the new Profile object or null in the case of a failure.
-//     adsk.fusion.Component.prototype.createBRepEdgeProfile = function (edges, chainEdges) {
-//         if (edges !== null && !(edges instanceof adsk.core.Base)) { throw new TypeError('edges must be a adsk.core.Base'); }
-//         if (chainEdges === null || (chainEdges !== undefined && typeof chainEdges !== 'boolean')) { throw new TypeError('chainEdges must be a boolean'); }
-//         var args = {
-//             edges : (edges === null ? edges : edges.handle)
-//         };
-//         if (chainEdges !== undefined) {
-//             args.chainEdges = chainEdges;
-//         }
-//         var result = this._execute('createBRepEdgeProfile', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Profile) : null;
-//     };
+    //     // Creates an open profile based on the input curve(s).
+    //     // curves : A SketchCurve or an ObjectCollection containing multiple sketch entities. If a single sketch curve
+    //     // is input the chainCurves argument is checked to determine if connected curves (they do not need to be tangent)
+    //     // should be automatically found. If multiple curves are provided then the chainCurves argument is always
+    //     // treated as false so you must provide all of the curves in the object collection that you want included in the profile.
+    //     // The provided curves must all connect together in a single path and they must all be co-planar.
+    //     // chainCurves : If true, this finds any co-planar curves that connect to the single input curve and automatically includes them in the profile. If
+    //     // false, only the curves provided will be used to define the profile. This argument is ignored and treated as false if multipled curves are input.
+    //     // Returns the new Profile object or null in the case of a failure.
+    //     adsk.fusion.Component.prototype.createOpenProfile = function (curves, chainCurves) {
+    //         if (curves !== null && !(curves instanceof adsk.core.Base)) { throw new TypeError('curves must be a adsk.core.Base'); }
+    //         if (chainCurves === null || (chainCurves !== undefined && typeof chainCurves !== 'boolean')) { throw new TypeError('chainCurves must be a boolean'); }
+    //         var args = {
+    //             curves : (curves === null ? curves : curves.handle)
+    //         };
+    //         if (chainCurves !== undefined) {
+    //             args.chainCurves = chainCurves;
+    //         }
+    //         var result = this._execute('createOpenProfile', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Profile) : null;
+    //     };
 
-//     // Performs a Save Copy As on this component. This saves the specified component as a new document
-//     // in the specified location.
-//     // name : The name to use for the new document. If this is an empty string, Fusion will use the
-//     // name of the component being saved.
-//     // dataFolder : The data folder to save the new document to.
-//     // description : The description string of the document. This can be an empty string.
-//     // tag : The tag string of the document. This can be an empty string.
-//     // Returns a DataFileFuture object that can be used to track the progress of the upload and get the
-//     // resulting DataFile once it's available on A360.
-//     adsk.fusion.Component.prototype.saveCopyAs = function (name, dataFolder, description, tag) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         if (dataFolder !== null && !(dataFolder instanceof adsk.core.DataFolder)) { throw new TypeError('dataFolder must be a adsk.core.DataFolder'); }
-//         if (description === undefined || description === null || description.constructor !== String) { throw new TypeError('description must be a string'); }
-//         if (tag === undefined || tag === null || tag.constructor !== String) { throw new TypeError('tag must be a string'); }
-//         var args = {
-//             name : name,
-//             dataFolder : (dataFolder === null ? dataFolder : dataFolder.handle),
-//             description : description,
-//             tag : tag
-//         };
-//         var result = this._execute('saveCopyAs', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.core.DataFileFuture) : null;
-//     };
+    //     // Creates a profile based on the outside open edges of a BRepFace.
+    //     // edges : A single BRepEdge object or an ObjectCollection containing multiple BRepEdge objects. If a single edge
+    //     // is input the chainEdges argument is checked to determine if connected edges (they do not need to be tangent)
+    //     // should be automatically found. If multiple edges are provided then the chainEdges argument is always
+    //     // treated as false so must provide all of the edges in the object collection that you want included in the profile.
+    //     // The provided edges must all connect together in a single path and they must all be co-planar.
+    //     // chainEdges : If true, this finds any co-planar edges that connect to the single input edge and automatically includes them in the profile. If
+    //     // false, only the edges provided will be used to define the profile. This argument is ignored and treated as false if multipled edges are input.
+    //     // Returns the new Profile object or null in the case of a failure.
+    //     adsk.fusion.Component.prototype.createBRepEdgeProfile = function (edges, chainEdges) {
+    //         if (edges !== null && !(edges instanceof adsk.core.Base)) { throw new TypeError('edges must be a adsk.core.Base'); }
+    //         if (chainEdges === null || (chainEdges !== undefined && typeof chainEdges !== 'boolean')) { throw new TypeError('chainEdges must be a boolean'); }
+    //         var args = {
+    //             edges : (edges === null ? edges : edges.handle)
+    //         };
+    //         if (chainEdges !== undefined) {
+    //             args.chainEdges = chainEdges;
+    //         }
+    //         var result = this._execute('createBRepEdgeProfile', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Profile) : null;
+    //     };
+
+    //     // Performs a Save Copy As on this component. This saves the specified component as a new document
+    //     // in the specified location.
+    //     // name : The name to use for the new document. If this is an empty string, Fusion will use the
+    //     // name of the component being saved.
+    //     // dataFolder : The data folder to save the new document to.
+    //     // description : The description string of the document. This can be an empty string.
+    //     // tag : The tag string of the document. This can be an empty string.
+    //     // Returns a DataFileFuture object that can be used to track the progress of the upload and get the
+    //     // resulting DataFile once it's available on A360.
+    //     adsk.fusion.Component.prototype.saveCopyAs = function (name, dataFolder, description, tag) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         if (dataFolder !== null && !(dataFolder instanceof adsk.core.DataFolder)) { throw new TypeError('dataFolder must be a adsk.core.DataFolder'); }
+    //         if (description === undefined || description === null || description.constructor !== String) { throw new TypeError('description must be a string'); }
+    //         if (tag === undefined || tag === null || tag.constructor !== String) { throw new TypeError('tag must be a string'); }
+    //         var args = {
+    //             name : name,
+    //             dataFolder : (dataFolder === null ? dataFolder : dataFolder.handle),
+    //             description : description,
+    //             tag : tag
+    //         };
+    //         var result = this._execute('saveCopyAs', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.DataFileFuture) : null;
+    //     };
+}
 
 //     //=========== CylindricalJointMotion ============
 //     // Represents the set of information specific to a cylindrical joint.

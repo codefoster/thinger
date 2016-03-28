@@ -7,10 +7,8 @@
         "removeComments": true,
         "noLib": false
     },
-    "files": [
-        "typings/adsk/core/application.d.ts",
-        "typings/adsk/core/geometry.d.ts",
-        "typings/adsk/fusion/construction.d.ts"
+    "exclude": [
+        "typings"
     ]
 }
 

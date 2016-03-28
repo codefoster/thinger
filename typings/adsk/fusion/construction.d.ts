@@ -612,9 +612,10 @@ interface ConstructionPlane {
     //     var result = this._execute('createForAssemblyContext', args);
     //     return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
     // };
+}
 
-    //=========== ConstructionPlaneDefinition ============
-    // A Base class to return the information, possibly parametric, used to define the ConstructionPlane.
+//=========== ConstructionPlaneDefinition ============
+// A Base class to return the information, possibly parametric, used to define the ConstructionPlane.
 interface ConstructionPlaneDefinition {
     //     if (!(this instanceof adsk.fusion.ConstructionPlaneDefinition)) {
     //         return adsk.fusion.ConstructionPlaneDefinition.cast(handle);
@@ -939,9 +940,10 @@ interface ConstructionPlanes {
     //     var result = this._execute('add', args);
     //     return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPlane) : null;
     // };
+}
 
-    //=========== ConstructionPoint ============
-    // ConstructionPoint Object
+//=========== ConstructionPoint ============
+// ConstructionPoint Object
 interface ConstructionPoint {
     //     if (!(this instanceof adsk.fusion.ConstructionPoint)) {
     //         return adsk.fusion.ConstructionPoint.cast(handle);
@@ -1102,10 +1104,11 @@ interface ConstructionPoint {
     //     var result = this._execute('createForAssemblyContext', args);
     //     return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ConstructionPoint) : null;
     // };
+}
 
-    //=========== ConstructionPointDefinition ============
-    // A Base class to return the information (possibly parametric) used to
-    // define a ConstructionPoint.
+//=========== ConstructionPointDefinition ============
+// A Base class to return the information (possibly parametric) used to
+// define a ConstructionPoint.
 interface ConstructionPointDefinition {
     //     if (!(this instanceof adsk.fusion.ConstructionPointDefinition)) {
     //         return adsk.fusion.ConstructionPointDefinition.cast(handle);

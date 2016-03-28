@@ -1,3 +1,5 @@
+/// <reference path="components.d.ts"/>
+
 // /*global console*/
 // /*global define*/
 // /*global window*/
@@ -52,42 +54,15 @@
 // Object that represents an open Fusion design. This derives from the
 // Design base class and adds the Fusion specific functionality.
 interface Design {
-    //         if (!(this instanceof adsk.fusion.Design)) {
-    //             return adsk.fusion.Design.cast(handle);
-    //         }
-    //         adsk.core.Product.call(this, handle);
-    //     };
-    //     adsk.fusion.Design.prototype = Object.create(adsk.core.Product.prototype);
-    //     adsk.fusion.Design.prototype.constructor = adsk.fusion.Design;
-    //     adsk.fusion.Design.interfaceId = 'adsk.fusion.Design';
-    //     adsk.objectTypes['adsk.fusion.Design'] = adsk.fusion.Design;
-    cast(object);
+    cast(object: Object): Design;
 
-    //     // Gets and sets the current design type (DirectDesignType or ParametricDesignType)
-    //     // Changing an exising design from ParametricDesignType to DirectDesignType will result in the timeline and all design
-    //     // history being removed and further operations will not be captured in the timeline.
-    //     Object.defineProperty(adsk.fusion.Design.prototype, 'designType', {
-    //         get : function () {
-    //             var result = this._execute('designType');
-    //             return result ? result.value : undefined;
-    //         },
-    //         set : function (value) {
-    //             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-    //             var args = {
-    //                 value : Number(value)
-    //             };
-    //             var result = this._execute('designType', args);
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets and sets the current design type (DirectDesignType or ParametricDesignType)
+    // Changing an exising design from ParametricDesignType to DirectDesignType will result in the timeline and all design
+    // history being removed and further operations will not be captured in the timeline.
+    designType: number;
 
-    //     // Returns the root Component
-    //     Object.defineProperty(adsk.fusion.Design.prototype, 'rootComponent', {
-    //         get : function () {
-    //             var result = this._execute('rootComponent');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Component) : null;
-    //         }
-    //     });
+    // Returns the root Component
+    rootComponent: Component;
 
     //     // Returns the Components collection that provides access to existing components
     //     // in a design

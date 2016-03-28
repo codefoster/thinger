@@ -2167,26 +2167,10 @@ interface ToolbarControlList {
 //=========== ToolbarControls ============
 // ToolbarControls is a collection of ToolbarControl objects displayed in a toolbar or menu.
 interface ToolbarControls {
-    //         if (!(this instanceof adsk.core.ToolbarControls)) {
-    //             return adsk.core.ToolbarControls.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.ToolbarControls.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.ToolbarControls.prototype.constructor = adsk.core.ToolbarControls;
-    //     adsk.core.ToolbarControls.interfaceId = 'adsk.core.ToolbarControls';
-    //     adsk.objectTypes['adsk.core.ToolbarControls'] = adsk.core.ToolbarControls;
-    //     adsk.core.ToolbarControls.cast = function (object) {
-    //         return object instanceof adsk.core.ToolbarControls ? object : null;
-    //     };
+    cast(object: Object): ToolbarControls;
 
-    //     // Gets the number of controls in the collection.
-    //     Object.defineProperty(adsk.core.ToolbarControls.prototype, 'count', {
-    //         get : function () {
-    //             var result = this._execute('count');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // Gets the number of controls in the collection.
+    count: number;
 
     // Returns the ToolbarControl at the specified index.
     // When iterating by index, the controls are returned
@@ -2196,43 +2180,21 @@ interface ToolbarControls {
     // Returns the ToolbarControl at the specified index or null if an invalid index was specified.
     item(index: number): ToolbarControl;
 
-    //     // Returns the ToolbarControl at the specified ID.
-    //     // id : The ID of the control within the collection to return.
-    //     // Returns the ToolbarControl with the specified ID or null if no control has this ID.
-    //     adsk.core.ToolbarControls.prototype.itemById = function (id) {
-    //         if (id === undefined || id === null || id.constructor !== String) { throw new TypeError('id must be a string'); }
-    //         var args = {
-    //             id : id
-    //         };
-    //         var result = this._execute('itemById', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarControl) : null;
-    //     };
+    // Returns the ToolbarControl at the specified ID.
+    // id : The ID of the control within the collection to return.
+    // Returns the ToolbarControl with the specified ID or null if no control has this ID.
+    itemById(id: number): ToolbarControl;
 
-    //     // Adds a button to the controls in the toolbar, panel, or drop-down. The ID of the created
-    //     // command control is inherited from the associated command definition.
-    //     // commandDefinition : The associated CommandDefinition that defines the resources and receives events related to this control.
-    //     // positionID : Specifies the reference id of the control to position this control relative to.
-    //     // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
-    //     // parameter specifies whether to place the control before or after the reference control.
-    //     // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
-    //     // This argument is ignored is positionID is not specified.
-    //     // Returns the newly created ButtonControl object or null if the creation fails.
-    //     adsk.core.ToolbarControls.prototype.addCommand = function (commandDefinition, positionID, isBefore) {
-    //         if (commandDefinition !== null && !(commandDefinition instanceof adsk.core.CommandDefinition)) { throw new TypeError('commandDefinition must be a adsk.core.CommandDefinition'); }
-    //         if (positionID === null || (positionID !== undefined && positionID.constructor !== String)) { throw new TypeError('positionID must be a string'); }
-    //         if (isBefore === null || (isBefore !== undefined && typeof isBefore !== 'boolean')) { throw new TypeError('isBefore must be a boolean'); }
-    //         var args = {
-    //             commandDefinition : (commandDefinition === null ? commandDefinition : commandDefinition.handle)
-    //         };
-    //         if (positionID !== undefined) {
-    //             args.positionID = positionID;
-    //         }
-    //         if (isBefore !== undefined) {
-    //             args.isBefore = isBefore;
-    //         }
-    //         var result = this._execute('addCommand', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.CommandControl) : null;
-    //     };
+    // Adds a button to the controls in the toolbar, panel, or drop-down. The ID of the created
+    // command control is inherited from the associated command definition.
+    // commandDefinition : The associated CommandDefinition that defines the resources and receives events related to this control.
+    // positionID : Specifies the reference id of the control to position this control relative to.
+    // Not setting this value indicates that the control will be created at the end of all other controls in toolbar. The isBefore
+    // parameter specifies whether to place the control before or after the reference control.
+    // isBefore : Specifies whether to place the control before or after the reference control specified by the positionID parameter.
+    // This argument is ignored is positionID is not specified.
+    // Returns the newly created ButtonControl object or null if the creation fails.
+    addCommand(commandDefinition: CommandDefinition, positionID: string, isBefore: boolean): CommandControl;
 
     //     // Adds a drop-down to the controls in the toolbar, panel, or drop-down. When the drop-down is initially created it will be empty.
     //     // you can get the associated ToolbarControls object from the DropDownControl to add additional controls to the drop-down.
