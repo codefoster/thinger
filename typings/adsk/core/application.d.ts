@@ -1,6 +1,4 @@
-/// <reference path="dashboard.d.ts"/>
-/// <reference path="materials.d.ts"/>
-/// <reference path="userInterface.d.ts"/>
+/// <reference path="dashboard.d.ts" />
 
 interface Base {
     interfaceId: string;
@@ -1226,29 +1224,29 @@ interface DXF2DImportOptions {
 //=========== FusionArchiveImportOptions ============
 // Defines that a Fusion Archive import is to be done and specifies the various options.
 interface FusionArchiveImportOptions {
-    cast(object:Object):FusionArchiveImportOptions;
+    cast(object: Object): FusionArchiveImportOptions;
 }
 
 //=========== IGESImportOptions ============
 // Defines that an IGES import is to be done and specifies the various options.
 interface IGESImportOptions {
-    cast(object:Object):IGESImportOptions;
+    cast(object: Object): IGESImportOptions;
 }
 
 //=========== SATImportOptions ============
 // Defines that a SAT import is to be done and specifies the various options.
 interface SATImportOptions {
-    cast(object:Object):SATImportOptions;
+    cast(object: Object): SATImportOptions;
 }
 
 //=========== SMTImportOptions ============
 // Defines that an SMT import is to be done and specifies the various options.
 interface SMTImportOptions {
-    cast(object:Object):SMTImportOptions;
+    cast(object: Object): SMTImportOptions;
 }
 
 //=========== STEPImportOptions ============
 // Defines that a STEP import is to be done and specifies the various options.
 interface STEPImportOptions {
-    cast(object:Object):STEPImportOptions;
+    cast(object: Object): STEPImportOptions;
 }

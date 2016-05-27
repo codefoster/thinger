@@ -5298,278 +5298,186 @@ interface DraftFeatures {
 //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.ReverseNormalFeature) : null;
 //     };
 
-//     //=========== RevolveFeatureInput ============
-//     // This class defines the methods and properties that pertain to the definition of a revolve
-//     // feature.
-//     adsk.fusion.RevolveFeatureInput = function RevolveFeatureInput(handle) {
-//         if (!(this instanceof adsk.fusion.RevolveFeatureInput)) {
-//             return adsk.fusion.RevolveFeatureInput.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.RevolveFeatureInput.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.RevolveFeatureInput.prototype.constructor = adsk.fusion.RevolveFeatureInput;
-//     adsk.fusion.RevolveFeatureInput.interfaceId = 'adsk.fusion.RevolveFeatureInput';
-//     adsk.objectTypes['adsk.fusion.RevolveFeatureInput'] = adsk.fusion.RevolveFeatureInput;
-//     adsk.fusion.RevolveFeatureInput.cast = function (object) {
-//         return object instanceof adsk.fusion.RevolveFeatureInput ? object : null;
-//     };
+//=========== RevolveFeatureInput ============
+// This class defines the methods and properties that pertain to the definition of a revolve
+// feature.
+interface RevolveFeatureInput {
+    cast(object: Object): RevolveFeatureInput;
 
-//     // Gets and sets the profiles or planar faces used to define the shape of the revolve.
-//     // This property can return or be set with a single Profile, a single planar face, or
-//     // an ObjectCollection consisting of multiple profiles and planar faces. When an
-//     // ObjectCollection is used all of the profiles and faces must be co-planar.
-//     // This property returns null in the case where the feature is non-parametric.
-//     Object.defineProperty(adsk.fusion.RevolveFeatureInput.prototype, 'profile', {
-//         get : function () {
-//             var result = this._execute('profile');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('profile', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Gets and sets the profiles or planar faces used to define the shape of the revolve.
+    // This property can return or be set with a single Profile, a single planar face, or
+    // an ObjectCollection consisting of multiple profiles and planar faces. When an
+    // ObjectCollection is used all of the profiles and faces must be co-planar.
+    // This property returns null in the case where the feature is non-parametric.
+    profile: Base;
 
-//     // Gets and sets the type of operation performed by the revolve.
-//     Object.defineProperty(adsk.fusion.RevolveFeatureInput.prototype, 'operation', {
-//         get : function () {
-//             var result = this._execute('operation');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (!isFinite(value)) { throw new TypeError('value must be a number'); }
-//             var args = {
-//                 value : Number(value)
-//             };
-//             var result = this._execute('operation', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Gets and sets the type of operation performed by the revolve.
+    operation: number;
 
-//     // Gets and sets the entity used to define the axis of revolution.
-//     // The axis can be a sketch line, construction axis, or linear edge. If it is not in
-//     // the same plane as the profile, it is projected onto the profile plane.
-//     Object.defineProperty(adsk.fusion.RevolveFeatureInput.prototype, 'axis', {
-//         get : function () {
-//             var result = this._execute('axis');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Base) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.core.Base)) { throw new TypeError('value must be a adsk.core.Base'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('axis', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Gets and sets the entity used to define the axis of revolution.
+    // The axis can be a sketch line, construction axis, or linear edge. If it is not in
+    // the same plane as the profile, it is projected onto the profile plane.
+    axis: Base;
 
-//     // In order for geometry to be transformed correctly, an Occurrence for creation needs to be
-//     // specified when the Revolve is created based on geometry (e.g. a profile and/or face(s))
-//     // in another component AND (the Revolve) is not in the root component.
-//     // The CreationOccurrence is analogous to the active occurrence in the UI
-//     Object.defineProperty(adsk.fusion.RevolveFeatureInput.prototype, 'creationOccurrence', {
-//         get : function () {
-//             var result = this._execute('creationOccurrence');
-//             return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.Occurrence) : null;
-//         },
-//         set : function (value) {
-//             if (value !== null && !(value instanceof adsk.fusion.Occurrence)) { throw new TypeError('value must be a adsk.fusion.Occurrence'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('creationOccurrence', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // In order for geometry to be transformed correctly, an Occurrence for creation needs to be
+    // specified when the Revolve is created based on geometry (e.g. a profile and/or face(s))
+    // in another component AND (the Revolve) is not in the root component.
+    // The CreationOccurrence is analogous to the active occurrence in the UI
+    creationOccurrence: Occurrence;
 
-//     // Specifies if the revolution should be created as a solid or surface. If
-//     // it's a surface then there aren't any end caps and it's open. This is
-//     // initialized to true so a solid will be created if it's not changed.
-//     Object.defineProperty(adsk.fusion.RevolveFeatureInput.prototype, 'isSolid', {
-//         get : function () {
-//             var result = this._execute('isSolid');
-//             return result ? result.value : undefined;
-//         },
-//         set : function (value) {
-//             if (typeof value !== 'boolean') { throw new TypeError('value must be a boolean'); }
-//             var args = {
-//                 value : value
-//             };
-//             var result = this._execute('isSolid', args);
-//             return result ? result.value : undefined;
-//         }
-//     });
+    // Specifies if the revolution should be created as a solid or surface. If
+    // it's a surface then there aren't any end caps and it's open. This is
+    // initialized to true so a solid will be created if it's not changed.
+    isSolid: boolean;
 
-//     // Defines the extent of the revolution to be at a specified angle.
-//     // An angle and whether the extent is symmetric or only in one direction
-//     // is specified. If it's not symmetric a positive or negative angle can be
-//     // used to control the direction. If symmetric, the angle is the angle on one
-//     // side so the entire angle of the revolution will be twice the specified angle.
-//     // Use an angle of 360 deg or 2 pi radians to create a full revolve.
-//     // isSymmetric : Set to 'true' for a revolve symmetrical about the profile plane
-//     // angle : The ValueInput object that defines the angle of the revolution
-//     // Returns true if successful
-//     adsk.fusion.RevolveFeatureInput.prototype.setAngleExtent = function (isSymmetric, angle) {
-//         if (typeof isSymmetric !== 'boolean') { throw new TypeError('isSymmetric must be a boolean'); }
-//         if (angle !== null && !(angle instanceof adsk.core.ValueInput)) { throw new TypeError('angle must be a adsk.core.ValueInput'); }
-//         var args = {
-//             isSymmetric : isSymmetric,
-//             angle : (angle === null ? angle : angle.handle)
-//         };
-//         var result = this._execute('setAngleExtent', args);
-//         return result ? result.value : undefined;
-//     };
+    // Defines the extent of the revolution to be at a specified angle.
+    // An angle and whether the extent is symmetric or only in one direction
+    // is specified. If it's not symmetric a positive or negative angle can be
+    // used to control the direction. If symmetric, the angle is the angle on one
+    // side so the entire angle of the revolution will be twice the specified angle.
+    // Use an angle of 360 deg or 2 pi radians to create a full revolve.
+    // isSymmetric : Set to 'true' for a revolve symmetrical about the profile plane
+    // angle : The ValueInput object that defines the angle of the revolution
+    // Returns true if successful
+    setAngleExtent(isSymmetric: boolean, angle: ValueInput): boolean;
 
-//     // Defines the angle of the revolve to be to applied to both sides of the profile
-//     // at the specified angles.
-//     // angleOne : The ValueInput object that defines the angle for the first side of the revolution
-//     // angleTwo : The ValueInput object that defines the angle for the second side of the revolution
-//     // Returns true if successful
-//     adsk.fusion.RevolveFeatureInput.prototype.setTwoSideAngleExtent = function (angleOne, angleTwo) {
-//         if (angleOne !== null && !(angleOne instanceof adsk.core.ValueInput)) { throw new TypeError('angleOne must be a adsk.core.ValueInput'); }
-//         if (angleTwo !== null && !(angleTwo instanceof adsk.core.ValueInput)) { throw new TypeError('angleTwo must be a adsk.core.ValueInput'); }
-//         var args = {
-//             angleOne : (angleOne === null ? angleOne : angleOne.handle),
-//             angleTwo : (angleTwo === null ? angleTwo : angleTwo.handle)
-//         };
-//         var result = this._execute('setTwoSideAngleExtent', args);
-//         return result ? result.value : undefined;
-//     };
+    // Defines the angle of the revolve to be to applied to both sides of the profile
+    // at the specified angles.
+    // angleOne : The ValueInput object that defines the angle for the first side of the revolution
+    // angleTwo : The ValueInput object that defines the angle for the second side of the revolution
+    // Returns true if successful
+    setTwoSideAngleExtent(angleOne: ValueInput, angleTwo: ValueInput): boolean;
 
-//     // Defines the extent of the revolve to be from the sketch or profile plane to the
-//     // specified "To" face.
-//     // toEntity : The entity that defines the "to" extent. The valid types of entities can vary depending on
-//     // the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace,
-//     // BRepVertex, ConstructionPlane, or ConstructionPoint.
-//     // directionHint : Specifies the direction of the revolve.
-//     // Returns true if successful.
-//     adsk.fusion.RevolveFeatureInput.prototype.setOneSideToExtent = function (toEntity, directionHint) {
-//         if (toEntity !== null && !(toEntity instanceof adsk.core.Base)) { throw new TypeError('toEntity must be a adsk.core.Base'); }
-//         if (directionHint === null || (directionHint !== undefined && directionHint !== null && !(directionHint instanceof adsk.core.Vector3D))) { throw new TypeError('directionHint must be a adsk.core.Vector3D'); }
-//         var args = {
-//             toEntity : (toEntity === null ? toEntity : toEntity.handle)
-//         };
-//         if (directionHint !== undefined) {
-//             args.directionHint = (directionHint === null ? directionHint : directionHint.handle);
-//         }
-//         var result = this._execute('setOneSideToExtent', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Defines the extent of the revolve to be from the sketch or profile plane to the
+    //     // specified "To" face.
+    //     // toEntity : The entity that defines the "to" extent. The valid types of entities can vary depending on
+    //     // the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace,
+    //     // BRepVertex, ConstructionPlane, or ConstructionPoint.
+    //     // directionHint : Specifies the direction of the revolve.
+    //     // Returns true if successful.
+    //     adsk.fusion.RevolveFeatureInput.prototype.setOneSideToExtent = function (toEntity, directionHint) {
+    //         if (toEntity !== null && !(toEntity instanceof adsk.core.Base)) { throw new TypeError('toEntity must be a adsk.core.Base'); }
+    //         if (directionHint === null || (directionHint !== undefined && directionHint !== null && !(directionHint instanceof adsk.core.Vector3D))) { throw new TypeError('directionHint must be a adsk.core.Vector3D'); }
+    //         var args = {
+    //             toEntity : (toEntity === null ? toEntity : toEntity.handle)
+    //         };
+    //         if (directionHint !== undefined) {
+    //             args.directionHint = (directionHint === null ? directionHint : directionHint.handle);
+    //         }
+    //         var result = this._execute('setOneSideToExtent', args);
+    //         return result ? result.value : undefined;
+    //     };
 
-//     // Defines the extents of the revolve to be from the sketch plane to specified
-//     // faces in both directions. If the matchShape argument is true, the faces to revolve to
-//     // are extended to fully intersect the revolve.
-//     // toEntityOne : The first entity that defines the "to" extent. The valid types of entities can vary depending on
-//     // the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace,
-//     // BRepVertex, ConstructionPlane, or ConstructionPoint.
-//     // toEntityTwo : The second entity that defines the "to" extent. The valid types of entities can vary depending on
-//     // the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace,
-//     // BRepVertex, ConstructionPlane, or ConstructionPoint.
-//     // Returns true if successful.
-//     adsk.fusion.RevolveFeatureInput.prototype.setTwoSideToExtent = function (toEntityOne, toEntityTwo) {
-//         if (toEntityOne !== null && !(toEntityOne instanceof adsk.core.Base)) { throw new TypeError('toEntityOne must be a adsk.core.Base'); }
-//         if (toEntityTwo !== null && !(toEntityTwo instanceof adsk.core.Base)) { throw new TypeError('toEntityTwo must be a adsk.core.Base'); }
-//         var args = {
-//             toEntityOne : (toEntityOne === null ? toEntityOne : toEntityOne.handle),
-//             toEntityTwo : (toEntityTwo === null ? toEntityTwo : toEntityTwo.handle)
-//         };
-//         var result = this._execute('setTwoSideToExtent', args);
-//         return result ? result.value : undefined;
-//     };
+    //     // Defines the extents of the revolve to be from the sketch plane to specified
+    //     // faces in both directions. If the matchShape argument is true, the faces to revolve to
+    //     // are extended to fully intersect the revolve.
+    //     // toEntityOne : The first entity that defines the "to" extent. The valid types of entities can vary depending on
+    //     // the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace,
+    //     // BRepVertex, ConstructionPlane, or ConstructionPoint.
+    //     // toEntityTwo : The second entity that defines the "to" extent. The valid types of entities can vary depending on
+    //     // the type of feature this is being used with. For a revolve it can be a BRepBody, BRepFace,
+    //     // BRepVertex, ConstructionPlane, or ConstructionPoint.
+    //     // Returns true if successful.
+    //     adsk.fusion.RevolveFeatureInput.prototype.setTwoSideToExtent = function (toEntityOne, toEntityTwo) {
+    //         if (toEntityOne !== null && !(toEntityOne instanceof adsk.core.Base)) { throw new TypeError('toEntityOne must be a adsk.core.Base'); }
+    //         if (toEntityTwo !== null && !(toEntityTwo instanceof adsk.core.Base)) { throw new TypeError('toEntityTwo must be a adsk.core.Base'); }
+    //         var args = {
+    //             toEntityOne : (toEntityOne === null ? toEntityOne : toEntityOne.handle),
+    //             toEntityTwo : (toEntityTwo === null ? toEntityTwo : toEntityTwo.handle)
+    //         };
+    //         var result = this._execute('setTwoSideToExtent', args);
+    //         return result ? result.value : undefined;
+    //     };
+}
 
-//     //=========== RevolveFeatures ============
-//     // Collection that provides access to all of the existing revolve features in a design
-//     // and supports the ability to create new revolve features.
-//     adsk.fusion.RevolveFeatures = function RevolveFeatures(handle) {
-//         if (!(this instanceof adsk.fusion.RevolveFeatures)) {
-//             return adsk.fusion.RevolveFeatures.cast(handle);
-//         }
-//         adsk.core.Base.call(this, handle);
-//     };
-//     adsk.fusion.RevolveFeatures.prototype = Object.create(adsk.core.Base.prototype);
-//     adsk.fusion.RevolveFeatures.prototype.constructor = adsk.fusion.RevolveFeatures;
-//     adsk.fusion.RevolveFeatures.interfaceId = 'adsk.fusion.RevolveFeatures';
-//     adsk.objectTypes['adsk.fusion.RevolveFeatures'] = adsk.fusion.RevolveFeatures;
-//     adsk.fusion.RevolveFeatures.cast = function (object) {
-//         return object instanceof adsk.fusion.RevolveFeatures ? object : null;
-//     };
+//=========== RevolveFeatures ============
+// Collection that provides access to all of the existing revolve features in a design
+// and supports the ability to create new revolve features.
+interface RevolveFeatures {
+    //         if (!(this instanceof adsk.fusion.RevolveFeatures)) {
+    //             return adsk.fusion.RevolveFeatures.cast(handle);
+    //         }
+    //         adsk.core.Base.call(this, handle);
+    //     };
+    //     adsk.fusion.RevolveFeatures.prototype = Object.create(adsk.core.Base.prototype);
+    //     adsk.fusion.RevolveFeatures.prototype.constructor = adsk.fusion.RevolveFeatures;
+    //     adsk.fusion.RevolveFeatures.interfaceId = 'adsk.fusion.RevolveFeatures';
+    //     adsk.objectTypes['adsk.fusion.RevolveFeatures'] = adsk.fusion.RevolveFeatures;
+    //     adsk.fusion.RevolveFeatures.cast = function (object) {
+    //         return object instanceof adsk.fusion.RevolveFeatures ? object : null;
+    //     };
 
-//     // The number of revolve features in the collection.
-//     Object.defineProperty(adsk.fusion.RevolveFeatures.prototype, 'count', {
-//         get : function () {
-//             var result = this._execute('count');
-//             return result ? result.value : undefined;
-//         }
-//     });
+    //     // The number of revolve features in the collection.
+    //     Object.defineProperty(adsk.fusion.RevolveFeatures.prototype, 'count', {
+    //         get : function () {
+    //             var result = this._execute('count');
+    //             return result ? result.value : undefined;
+    //         }
+    //     });
 
-//     // Function that returns the specified revolve feature using an index into the collection.
-//     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
-//     // Returns the specified item or null if an invalid index was specified.
-//     adsk.fusion.RevolveFeatures.prototype.item = function (index) {
-//         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
-//         var args = {
-//             index : Number(index)
-//         };
-//         var result = this._execute('item', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeature) : null;
-//     };
+    //     // Function that returns the specified revolve feature using an index into the collection.
+    //     // index : The index of the item within the collection to return. The first item in the collection has an index of 0.
+    //     // Returns the specified item or null if an invalid index was specified.
+    //     adsk.fusion.RevolveFeatures.prototype.item = function (index) {
+    //         if (!isFinite(index)) { throw new TypeError('index must be a number'); }
+    //         var args = {
+    //             index : Number(index)
+    //         };
+    //         var result = this._execute('item', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeature) : null;
+    //     };
 
-//     // Creates a new RevolveFeatureInput object that is used to specify the input needed
-//     // to create a new revolve feature.
-//     // profile : The profile argument can be a single Profile, a single
-//     // planar face, or an ObjectCollection consisting of multiple profiles and planar faces.
-//     // When an ObjectCollection is used all of the profiles and faces must be co-planar.
-//     // axis : The axis can be a sketch line, construction axis, or linear edge. If it is not in
-//     // the same plane as the profile, it is projected onto the profile plane.
-//     // operation : The operation type to perform.
-//     // Returns the newly created RevolveFeatureInput object or null if the creation failed.
-//     adsk.fusion.RevolveFeatures.prototype.createInput = function (profile, axis, operation) {
-//         if (profile !== null && !(profile instanceof adsk.core.Base)) { throw new TypeError('profile must be a adsk.core.Base'); }
-//         if (axis !== null && !(axis instanceof adsk.core.Base)) { throw new TypeError('axis must be a adsk.core.Base'); }
-//         if (!isFinite(operation)) { throw new TypeError('operation must be a number'); }
-//         var args = {
-//             profile : (profile === null ? profile : profile.handle),
-//             axis : (axis === null ? axis : axis.handle),
-//             operation : Number(operation)
-//         };
-//         var result = this._execute('createInput', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeatureInput) : null;
-//     };
+    //     // Creates a new RevolveFeatureInput object that is used to specify the input needed
+    //     // to create a new revolve feature.
+    //     // profile : The profile argument can be a single Profile, a single
+    //     // planar face, or an ObjectCollection consisting of multiple profiles and planar faces.
+    //     // When an ObjectCollection is used all of the profiles and faces must be co-planar.
+    //     // axis : The axis can be a sketch line, construction axis, or linear edge. If it is not in
+    //     // the same plane as the profile, it is projected onto the profile plane.
+    //     // operation : The operation type to perform.
+    //     // Returns the newly created RevolveFeatureInput object or null if the creation failed.
+    //     adsk.fusion.RevolveFeatures.prototype.createInput = function (profile, axis, operation) {
+    //         if (profile !== null && !(profile instanceof adsk.core.Base)) { throw new TypeError('profile must be a adsk.core.Base'); }
+    //         if (axis !== null && !(axis instanceof adsk.core.Base)) { throw new TypeError('axis must be a adsk.core.Base'); }
+    //         if (!isFinite(operation)) { throw new TypeError('operation must be a number'); }
+    //         var args = {
+    //             profile : (profile === null ? profile : profile.handle),
+    //             axis : (axis === null ? axis : axis.handle),
+    //             operation : Number(operation)
+    //         };
+    //         var result = this._execute('createInput', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeatureInput) : null;
+    //     };
 
-//     // Creates a new revolve feature based on the information provided by the provided
-//     // RevolveFeatureInput object.
-//     // To create a new revolve, use the createInput function to create a new input object
-//     // and then use the methods and properties on that object to define the required input
-//     // for a revolve. Once the information is defined on the input object you can pass it
-//     // to the Add method to create the revolve.
-//     // input : The RevolveFeatureInput object that specifies the input needed to create a new extrude
-//     // Returns the newly created RevolveFeature or null if the creation failed.
-//     adsk.fusion.RevolveFeatures.prototype.add = function (input) {
-//         if (input !== null && !(input instanceof adsk.fusion.RevolveFeatureInput)) { throw new TypeError('input must be a adsk.fusion.RevolveFeatureInput'); }
-//         var args = {
-//             input : (input === null ? input : input.handle)
-//         };
-//         var result = this._execute('add', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeature) : null;
-//     };
+    //     // Creates a new revolve feature based on the information provided by the provided
+    //     // RevolveFeatureInput object.
+    //     // To create a new revolve, use the createInput function to create a new input object
+    //     // and then use the methods and properties on that object to define the required input
+    //     // for a revolve. Once the information is defined on the input object you can pass it
+    //     // to the Add method to create the revolve.
+    //     // input : The RevolveFeatureInput object that specifies the input needed to create a new extrude
+    //     // Returns the newly created RevolveFeature or null if the creation failed.
+    //     adsk.fusion.RevolveFeatures.prototype.add = function (input) {
+    //         if (input !== null && !(input instanceof adsk.fusion.RevolveFeatureInput)) { throw new TypeError('input must be a adsk.fusion.RevolveFeatureInput'); }
+    //         var args = {
+    //             input : (input === null ? input : input.handle)
+    //         };
+    //         var result = this._execute('add', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeature) : null;
+    //     };
 
-//     // Function that returns the specified revolve feature using the name of the feature.
-//     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
-//     // Returns the specified item or null if the specified name was not found.
-//     adsk.fusion.RevolveFeatures.prototype.itemByName = function (name) {
-//         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
-//         var args = {
-//             name : name
-//         };
-//         var result = this._execute('itemByName', args);
-//         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeature) : null;
-//     };
+    //     // Function that returns the specified revolve feature using the name of the feature.
+    //     // name : The name of the feature within the collection to return. This is the name seen in the timeline.
+    //     // Returns the specified item or null if the specified name was not found.
+    //     adsk.fusion.RevolveFeatures.prototype.itemByName = function (name) {
+    //         if (name === undefined || name === null || name.constructor !== String) { throw new TypeError('name must be a string'); }
+    //         var args = {
+    //             name : name
+    //         };
+    //         var result = this._execute('itemByName', args);
+    //         return (result && result.value) ? adsk.createObject(result.value, adsk.fusion.RevolveFeature) : null;
+    //     };
+}
 
 //     //=========== RibFeatures ============
 //     // Collection that provides access to all of the existing rib features in a design.

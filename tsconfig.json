@@ -6,9 +6,6 @@
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false
-    },
-    "exclude": [
-        "typings"
-    ]
+    }
 }
 

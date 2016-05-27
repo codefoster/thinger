@@ -2589,191 +2589,66 @@ interface Toolbars {
 //=========== UserInterface ============
 // Provides access to the user-interface related objects and functionality.
 interface UserInterface {
-    //         if (!(this instanceof adsk.core.UserInterface)) {
-    //             return adsk.core.UserInterface.cast(handle);
-    //         }
-    //         adsk.core.Base.call(this, handle);
-    //     };
-    //     adsk.core.UserInterface.prototype = Object.create(adsk.core.Base.prototype);
-    //     adsk.core.UserInterface.prototype.constructor = adsk.core.UserInterface;
-    //     adsk.core.UserInterface.interfaceId = 'adsk.core.UserInterface';
-    //     adsk.objectTypes['adsk.core.UserInterface'] = adsk.core.UserInterface;
-    //     adsk.core.UserInterface.cast = function (object) {
-    //         return object instanceof adsk.core.UserInterface ? object : null;
-    //     };
+    cast: UserInterface;
 
-    //     // Gets the current set of selected objects.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'activeSelections', {
-    //         get : function () {
-    //             var result = this._execute('activeSelections');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Selections) : null;
-    //         }
-    //     });
+    // Gets a collection that provides access to the toolbars. This includes
+    // the left and right QAT, and the Navbar.
+    toolbars: Toolbars;
 
-    //     // Gets the active workspace. The active workspace is the one currently active in the user interface.
-    //     // This can be null if there is no active product.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'activeWorkspace', {
-    //         get : function () {
-    //             var result = this._execute('activeWorkspace');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Workspace) : null;
-    //         }
-    //     });
+    // Gets all of the workspaces currently available.
+    workspaces: Workspaces;
 
-    //     // Gets all of the command definitions currently defined. This is all
-    //     // command definitions both internal and those defined through the API.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'commandDefinitions', {
-    //         get : function () {
-    //             var result = this._execute('commandDefinitions');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.CommandDefinitions) : null;
-    //         }
-    //     });
+    // Gets all of the toolbar panels. This returns all of the panels
+    // available, regardless of which workspace or product they're associated with.
+    allToolbarPanels: ToolbarPanelList;
 
-    //     // Gets a collection that provides access to the toolbars. This includes
-    //     // the left and right QAT, and the Navbar.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'toolbars', {
-    //         get : function () {
-    //             var result = this._execute('toolbars');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Toolbars) : null;
-    //         }
-    //     });
+    // The workspacePreActivate event fires at the VERY start of a workspace being activated.
+    // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
+    workspacePreActivate: WorkspaceEvent;
 
-    //     // Gets all of the workspaces currently available.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'workspaces', {
-    //         get : function () {
-    //             var result = this._execute('workspaces');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.Workspaces) : null;
-    //         }
-    //     });
+    // The workspaceActivated event fires at the VERY end of a workspace being activated.
+    // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
+    workspaceActivated: WorkspaceEvent;
 
-    //     // Gets all of the toolbar panels. This returns all of the panels
-    //     // available, regardless of which workspace or product they're associated with.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'allToolbarPanels', {
-    //         get : function () {
-    //             var result = this._execute('allToolbarPanels');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.ToolbarPanelList) : null;
-    //         }
-    //     });
+    // The workspacePreDeactivate event fires at the VERY start of a workspace being deactivated.
+    // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
+    workspacePreDeactivate: WorkspaceEvent;
 
-    //     // The workspacePreActivate event fires at the VERY start of a workspace being activated.
-    //     // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'workspacePreActivate', {
-    //         get : function () {
-    //             var result = this._execute('workspacePreActivate');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.WorkspaceEvent) : null;
-    //         }
-    //     });
+    // The workspaceDeactivated event fires at the VERY end of a workspace being deactivated.
+    // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
+    workspaceDeactivated: WorkspaceEvent;
 
-    //     // The workspaceActivated event fires at the VERY end of a workspace being activated.
-    //     // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'workspaceActivated', {
-    //         get : function () {
-    //             var result = this._execute('workspaceActivated');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.WorkspaceEvent) : null;
-    //         }
-    //     });
+    // Gets the id of the command definition from the active command (the one that is currently running)
+    activeCommand;
 
-    //     // The workspacePreDeactivate event fires at the VERY start of a workspace being deactivated.
-    //     // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'workspacePreDeactivate', {
-    //         get : function () {
-    //             var result = this._execute('workspacePreDeactivate');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.WorkspaceEvent) : null;
-    //         }
-    //     });
+    // Display a modal message box with the provided text.
+    // text : The message text to display in the dialog.
+    // title : If the optional title argument is provided, it sets the title for the dialog, otherwise the default product name is used.
+    // buttons : The optional buttons array can be used to specify which buttons to display on the dialog.
+    // The first button provided is the default action.
+    // If buttons are not specified, the dialog will default to a single OK button.
+    // icon : The optional icon argument can be used to specify which icon to display, otherwise the default of no icon is used.
+    // The button pressed to dismiss the dialog is returned.
+    messageBox(text:string, title?:string, buttons?, icon?):DialogResults;
 
-    //     // The workspaceDeactivated event fires at the VERY end of a workspace being deactivated.
-    //     // The client can add or remove WorkspaceEventHandlers from the WorkspaceEvent.
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'workspaceDeactivated', {
-    //         get : function () {
-    //             var result = this._execute('workspaceDeactivated');
-    //             return (result && result.value) ? adsk.createObject(result.value, adsk.core.WorkspaceEvent) : null;
-    //         }
-    //     });
+    // Displays a modal dialog to get string input from the user.
+    // prompt : The message text to display in the dialog.
+    // cancelled : Indicates if the dialog was cancelled.
+    // title : Sets the title for the dialog if specified, otherwise the default product name is used.
+    // defaultValue : The default string that's shown when the dialog is initially displayed, otherwise the input box is empty.
+    // Returns the string entered by the user but because the user can click Cancel, the cancelled argument should be tested before using the string.
+    inputBox(prompt, cancelled, title, defaultValue);
 
-    //     // Gets the id of the command definition from the active command (the one that is currently running)
-    //     Object.defineProperty(adsk.core.UserInterface.prototype, 'activeCommand', {
-    //         get : function () {
-    //             var result = this._execute('activeCommand');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
-
-    //     // Display a modal message box with the provided text.
-    //     // text : The message text to display in the dialog.
-    //     // title : If the optional title argument is provided, it sets the title for the dialog, otherwise the default product name is used.
-    //     // buttons : The optional buttons array can be used to specify which buttons to display on the dialog.
-    //     // The first button provided is the default action.
-    //     // If buttons are not specified, the dialog will default to a single OK button.
-    //     // icon : The optional icon argument can be used to specify which icon to display, otherwise the default of no icon is used.
-    //     // The button pressed to dismiss the dialog is returned.
-    //     adsk.core.UserInterface.prototype.messageBox = function (text, title, buttons, icon) {
-    //         if (text === undefined || text === null || text.constructor !== String) { throw new TypeError('text must be a string'); }
-    //         if (title === null || (title !== undefined && title.constructor !== String)) { throw new TypeError('title must be a string'); }
-    //         if (buttons === null || (buttons !== undefined && !isFinite(buttons))) { throw new TypeError('buttons must be a number'); }
-    //         if (icon === null || (icon !== undefined && !isFinite(icon))) { throw new TypeError('icon must be a number'); }
-    //         var args = {
-    //             text : text
-    //         };
-    //         if (title !== undefined) {
-    //             args.title = title;
-    //         }
-    //         if (buttons !== undefined) {
-    //             args.buttons = Number(buttons);
-    //         }
-    //         if (icon !== undefined) {
-    //             args.icon = Number(icon);
-    //         }
-    //         var result = this._execute('messageBox', args);
-    //         return result ? result.value : undefined;
-    //     };
-
-    //     // Displays a modal dialog to get string input from the user.
-    //     // prompt : The message text to display in the dialog.
-    //     // cancelled : Indicates if the dialog was cancelled.
-    //     // title : Sets the title for the dialog if specified, otherwise the default product name is used.
-    //     // defaultValue : The default string that's shown when the dialog is initially displayed, otherwise the input box is empty.
-    //     // Returns the string entered by the user but because the user can click Cancel, the cancelled argument should be tested before using the string.
-    //     adsk.core.UserInterface.prototype.inputBox = function (prompt, cancelled, title, defaultValue) {
-    //         if (prompt === undefined || prompt === null || prompt.constructor !== String) { throw new TypeError('prompt must be a string'); }
-    //         if (typeof cancelled !== 'object') { throw new TypeError('cancelled must be an object'); }
-    //         if (title === null || (title !== undefined && title.constructor !== String)) { throw new TypeError('title must be a string'); }
-    //         if (defaultValue === null || (defaultValue !== undefined && defaultValue.constructor !== String)) { throw new TypeError('defaultValue must be a string'); }
-    //         var args = {
-    //             prompt : prompt,
-    //             cancelled : null
-    //         };
-    //         if (title !== undefined) {
-    //             args.title = title;
-    //         }
-    //         if (defaultValue !== undefined) {
-    //             args.defaultValue = defaultValue;
-    //         }
-    //         var result = this._execute('inputBox', args);
-    //         if (result && result.outargs) {
-    //             cancelled.value = (result.outargs.cancelled !== undefined) ? result.outargs.cancelled : undefined;
-    //         }
-    //         return result ? result.value : undefined;
-    //     };
-
-    //     // Supports the selection of a single entity. This provides a simple way to prompt
-    //     // the user for a selection in a script. If you need more control over the selection a command
-    //     // should be created and a SelectionCommandInput used.
-    //     // prompt : The prompt displayed to the user during the selection.
-    //     // filter : A string defining the types of entities valid for selection. The valid list of selection filters can be found here: <a href="SelectionFilters_UM.htm">Selection Filters</a>.
-    //     // You can combine multiple types by using a comma delimiter. For example,
-    //     // the string "PlanarFaces,ConstructionPlanes" will allow the selection of either a planar face or a construction plane.
-    //     // Returns a Selection object that provides access the selected entity through it's "entity"
-    //     // property along with the location in space where the entity was selected. Returns null if the selection was aborted.
-    //     adsk.core.UserInterface.prototype.selectEntity = function (prompt, filter) {
-    //         if (prompt === undefined || prompt === null || prompt.constructor !== String) { throw new TypeError('prompt must be a string'); }
-    //         if (filter === undefined || filter === null || filter.constructor !== String) { throw new TypeError('filter must be a string'); }
-    //         var args = {
-    //             prompt : prompt,
-    //             filter : filter
-    //         };
-    //         var result = this._execute('selectEntity', args);
-    //         return (result && result.value) ? adsk.createObject(result.value, adsk.core.Selection) : null;
-    //     };
+    // Supports the selection of a single entity. This provides a simple way to prompt
+    // the user for a selection in a script. If you need more control over the selection a command
+    // should be created and a SelectionCommandInput used.
+    // prompt : The prompt displayed to the user during the selection.
+    // filter : A string defining the types of entities valid for selection. The valid list of selection filters can be found here: <a href="SelectionFilters_UM.htm">Selection Filters</a>.
+    // You can combine multiple types by using a comma delimiter. For example,
+    // the string "PlanarFaces,ConstructionPlanes" will allow the selection of either a planar face or a construction plane.
+    // Returns a Selection object that provides access the selected entity through it's "entity"
+    // property along with the location in space where the entity was selected. Returns null if the selection was aborted.
+    selectEntity(prompt: string, filter: string): Selection;
 
     //     // Creates a new FileDialog object which provides the ability to show a standard file selection dialog
     //     // to the user.

@@ -80,13 +80,8 @@ interface DataProject {
 //     // Collection object that provides a list of all available projects.
 interface DataProjects {
 
-    //     // The number of projects in this collection.
-    //     Object.defineProperty(adsk.core.DataProjects.prototype, 'count', {
-    //         get : function () {
-    //             var result = this._execute('count');
-    //             return result ? result.value : undefined;
-    //         }
-    //     });
+    // The number of projects in this collection.
+    count: number;
 
     // Returns the specified project.
     // index : The index of the project to return. The first project in the list has an index of 0.

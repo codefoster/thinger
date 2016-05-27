@@ -3,7 +3,7 @@ interface Autodesk {
     fromBase64(encoded:string):ArrayBuffer;
     utf8ToString(buffer:ArrayBuffer):string;
     readFile(filename:string)
-    writeFile(filename:string, data:ArrayBuffer, mode:string);
+    writeFile(filename:string, data:any, mode?:string);
     copyFile(fromFilename:string,toFilename:string);
     renameFile(fromFilename:string, toFilename:string);
     removeFile(filename:string);
